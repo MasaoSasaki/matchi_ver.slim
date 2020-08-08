@@ -1,2 +1,2 @@
-class Master::RestaurantsController < MastersController
+class Master::RestaurantsController < Master::Base
 end
