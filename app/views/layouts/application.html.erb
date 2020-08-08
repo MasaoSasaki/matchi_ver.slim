@@ -13,7 +13,12 @@
   <header>
     <div class="header">
       <div class="logo-image"></div>
-      <div class="logout"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></div>
+      <% url = request.fullpath %>
+      <% if url.include?('public') %>
+      <% elsif request.fullpath.include?('owner') %>
+      <% else request.fullpath.include?('master') %>
+        <div class="logout"><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></div>
+      <% end %>
     </div>
   </header>
   <body>
