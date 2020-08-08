@@ -32,6 +32,17 @@ class DeviseCreateRestaurants < ActiveRecord::Migration[5.2]
       # t.string   :unlock_token # Only if unlock strategy is :email or :both
       # t.datetime :locked_at
 
+      # original
+      t.string :name, null: false
+      t.text :introduction, null: false
+      t.string :postal_code, null: false
+      t.string :address, null: false
+      t.string :phone_number, null: false
+      t.string :corporate
+      t.string :twitter
+      t.string :facebook
+      t.string :instagram
+      t.text :completion_message
 
       t.timestamps null: false
     end
