@@ -13,3 +13,40 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  margin: 0;
+}
+
+header ul {
+  display: flex;
+  list-style: none;
+}
+
+header li {
+  margin: 0 10px;
+}
+
+header {
+  width: 1024px;
+  line-height: 70px;
+  margin: 0 auto;
+}
+
+.devise-form {
+  text-align: center;
+}
+
+.field,.actions {
+  margin: 10px;
+}
+
+.container {
+  width: 1024px;
+  margin: 0 auto;
+}
+
+footer {
+  line-height: 70px;
+  text-align: center;
+}

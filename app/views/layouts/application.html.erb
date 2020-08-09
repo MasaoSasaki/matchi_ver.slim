@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
   <head>
     <title>Matchi</title>
+
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -9,7 +10,35 @@
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
+  <header>
+    <div class="header">
+      <div class="logo-image"></div>
+      <div class="nav">
+        <nav>
+          <ul class="header-ul">
+            <% url = request.fullpath %>
+            <% if url.include?('public') %>
+            <% elsif request.fullpath.include?('owner') %>
+            <% else request.fullpath.include?('master') %>
+              <li><%= link_to '店舗新規登録', new_restaurant_registration_path %></li>
+              <li><%= link_to '店舗ログイン', new_restaurant_session_path %></li>
+              <% if admin_signed_in? %>
+                <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to '管理者ログイン', new_admin_session_path %></li>
+              <% end %>
+            <% end %>
+          </ul>
+        </nav>
+      </div>
+    </div>
+  </header>
   <body>
-    <%= yield %>
+    <div class="container">
+      <%= yield %>
+    </div>
   </body>
+  <footer>
+    <small>©︎Masao.Sasaki</small>
+  </footer>
 </html>
