@@ -18,9 +18,19 @@
   margin: 0;
 }
 
+header ul {
+  display: flex;
+  list-style: none;
+}
+
+header li {
+  margin: 0 10px;
+}
+
 header {
   width: 1024px;
   line-height: 70px;
+  margin: 0 auto;
 }
 
 .devise-form {
