@@ -56,11 +56,11 @@ ActiveRecord::Schema.define(version: 2020_08_09_041142) do
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name", null: false
-    t.text "introduction", null: false
-    t.string "postal_code", null: false
-    t.string "address", null: false
-    t.string "phone_number", null: false
+    t.string "name", default: "", null: false
+    t.text "introduction", default: "", null: false
+    t.string "postal_code", default: "", null: false
+    t.string "address", default: "", null: false
+    t.string "phone_number", default: "", null: false
     t.string "corporate"
     t.string "twitter"
     t.string "facebook"

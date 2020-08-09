@@ -33,11 +33,11 @@ class DeviseCreateRestaurants < ActiveRecord::Migration[5.2]
       # t.datetime :locked_at
 
       # original
-      t.string :name, null: false
-      t.text :introduction, null: false
-      t.string :postal_code, null: false
-      t.string :address, null: false
-      t.string :phone_number, null: false
+      t.string :name, null: false, default: ""
+      t.text :introduction, null: false, default: ""
+      t.string :postal_code, null: false, default: ""
+      t.string :address, null: false, default: ""
+      t.string :phone_number, null: false, default: ""
       t.string :corporate
       t.string :twitter
       t.string :facebook
