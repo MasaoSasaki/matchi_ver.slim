@@ -17,8 +17,12 @@ Rails.application.routes.draw do
       sessions: 'master/restaurants/sessions',
       registrations: 'master/restaurants/registrations'
     }
+    get '/' => 'restaurants#show'
+    resources :restaurants
+    resources :reservations
+    resources :menus
   end
-  
+
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
 end
