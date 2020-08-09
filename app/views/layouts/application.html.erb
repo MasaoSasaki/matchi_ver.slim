@@ -22,7 +22,11 @@
 
             <%# urlに'owner'があれば店舗用ヘッダー %>
             <% elsif request.fullpath.include?('owner') %>
-              <li><%= link_to '店舗ログイン', new_owner_restaurant_session_path %></li>
+              <% if owner_restaurant_signed_in? %>
+                <li><%= link_to 'ログアウト', destroy_owner_restaurant_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to '店舗ログイン', new_owner_restaurant_session_path %></li>
+              <% end %>
               <% if master_admin_signed_in? %>
                 <li><%= link_to '管理者トップ', new_master_admin_session_path %></li>
               <% end %>
@@ -50,6 +54,6 @@
   </body>
 
   <footer>
-    <small>©︎Masao.Sasaki</small>
+    <small>©︎MasaoSasaki</small>
   </footer>
 </html>

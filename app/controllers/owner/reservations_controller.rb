@@ -1,4 +1,4 @@
-class Owner::ReservationsController < ApplicationController
+class Owner::ReservationsController < Owner::Base
   def index
   end
 

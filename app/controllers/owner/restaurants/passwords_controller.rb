@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Owner::Rastaurants::PasswordsController < Devise::PasswordsController
+class Owner::Restaurants::PasswordsController < Devise::PasswordsController
   # GET /resource/password/new
   # def new
   #   super

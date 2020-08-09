@@ -1,4 +1,4 @@
-class Owner::MenusController < ApplicationController
+class Owner::MenusController < Owner::Base
   def index
   end
 

@@ -14,8 +14,8 @@ Rails.application.routes.draw do
 
   namespace :owner do
     devise_for :restaurants, controllers: {
-      sessions: 'master/restaurants/sessions',
-      registrations: 'master/restaurants/registrations'
+      sessions: 'owner/restaurants/sessions',
+      registrations: 'owner/restaurants/registrations'
     }
     get '/' => 'restaurants#show'
     resources :restaurants do

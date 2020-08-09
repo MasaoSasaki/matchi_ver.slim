@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe Owner::RastaurantsController, type: :controller do
+RSpec.describe Owner::RestaurantsController, type: :controller do
 
   describe "GET #show" do
     it "returns http success" do
