@@ -13,3 +13,26 @@
  *= require_tree .
  *= require_self
  */
+
+* {
+  margin: 0;
+}
+
+header {
+  width: 1024px;
+  line-height: 70px;
+}
+
+.sessions-new {
+  text-align: center;
+}
+
+.container {
+  width: 1024px;
+  margin: 0 auto;
+}
+
+footer {
+  line-height: 70px;
+  text-align: center;
+}
