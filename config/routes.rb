@@ -3,7 +3,11 @@ Rails.application.routes.draw do
     sessions: 'master/admins/sessions',
     registrations: 'master/admins/registrations'
   }
-  devise_for :restaurants
+  devise_for :restaurants, controllers: {
+    sessions: 'master/restaurants/sessions',
+    registrations: 'master/restaurants/registrations'
+  }
+
   devise_for :users
 
   namespace :master do
