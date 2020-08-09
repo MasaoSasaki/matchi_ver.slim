@@ -1,2 +1,17 @@
-<h1>Owner::Restaurants#edit</h1>
-<p>Find me in app/views/owner/restaurants/edit.html.erb</p>
+<div class="restaurant-edit">
+  <section class="restaurant-info-edit">
+    <%= form_with model: @restaurant do |f| %>
+    <div　class="flex restaurant-head">
+      <%= f.label :name, class: 'restaurant-show-h1' %>
+      <%= f.text_field :name %>
+    </div>
+    <div class="restaurant-img">
+      <%= f.label :restaurant_image, %>
+      <%= f.attachment_field :image %>
+    </div>
+    <div class="restaurant-body"></div>
+    <div class="restaurant-introduction"></div>
+    <div class="restaurant-edit"><%= link_to '店舗情報編集', edit_owner_restaurant_path, class: 'btn' %></div>
+  </section>
+  <section class="restaurant-status"></section>
+</div>
