@@ -4,5 +4,16 @@ class Owner::ReservationsController < Owner::Base
   end
 
   def show
+    @reservation = Reservation.find(params[:id])
+  end
+
+  def update
+    reservation = Reservation.find(params[:id])
+    redirect_to owner_reservation_path(reservation)
+  end
+
+  private
+  def reservation_params
+    params.require(:reservation).permit(:reservation_status)
   end
 end

@@ -1,2 +1,28 @@
-<h1>Owner::Reservations#show</h1>
-<p>Find me in app/views/owner/reservations/show.html.erb</p>
+<div class="reservation-show">
+  <h1>予約の詳細</h1>
+  <section>
+    <div class="reservation-show-head">
+      <ul class="flex">
+        <li><%= @reservation.id %></li>
+        <li><%= @reservation.created_at %></li>
+        <li><%= "#{@reservation.reservation_year} + #{@reservation.reservation_month} + #{@reservation.reservation_day}" %></li>
+      </ul>
+    </div>
+    <div class="reservation-show-body">
+      <ul>
+        <li><%= @reservation.user.name %></li>
+        <li><%= @reservation.people %></li>
+        <li><%= @reservation.menu %></li>
+      </ul>
+    </div>
+    <div class="reservation-show-foot">
+      <%= form_with model:@reservation, url: owner_resrevation_path, method: :patch do |f| %>
+        <div class="reservation-status">
+          <%= f.label :reservation_status %>
+          <%= f.select_box :reservation_status %>
+        </div>
+        <div class="submit"><%= f.submit '更新' %></div>
+      <% end %>
+    </div>
+  </section>
+</div>
