@@ -1,2 +1,32 @@
-<h1>Owner::Reservations#index</h1>
-<p>Find me in app/views/owner/reservations/index.html.erb</p>
+<div class="reservation-index">
+  <h1>Reservated List</h1>
+  <section class="reservation">
+    <table>
+      <thead>
+        <tr>
+          <th>予約ID</th>
+          <th>予約確定日</th>
+          <th>来店(予定)日</th>
+          <th>予約者名</th>
+          <th>人数</th>
+          <th>予約ステータス</th>
+          <th>メニュー名</th>
+        </tr>
+      </thead>
+      <% @reservations.each do |reservation| %>
+        <tbody>
+          <tr>
+            <td><%= reservation.id %></td>
+            <td><%= reservation.created_at %></td>
+            <td><%= "#{reservation.reservation_year} + #{reservation.reservation_month} + #{reservation.reservation_day}" %></td>
+            <td><%= reservation.user.name %></td>
+            <td><%= reservation.people %></td>
+            <td><%= reservation.reservation_statu %></td>
+            <td><%= reservation.menu.name %></td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
+  </section>
+  <section class="reservated-all"></section>
+</div>
