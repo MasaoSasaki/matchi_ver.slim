@@ -1,2 +1,29 @@
-<h1>Owner::Menus#show</h1>
-<p>Find me in app/views/owner/menus/show.html.erb</p>
+<div class="menus-show">
+  <h1>メニュー詳細</h1>
+  <div class="flex menus-show-head-left">
+    <ul>
+      <li>メニュー名：<%= @menu.name %></li>
+      <li>正規価格(税抜き)：<%= @menu.regular_price %></li>
+      <li>提供価格(税抜き)：<%= @menu.discount_price %></li>
+      <li>予約方法：<%= @menu %></li>
+      <li>販売ステータス：<%= @menu %></li>
+      <li>タグ：<%#= @menu %></li>
+    </ul>
+    <div class="menus-show-head-right"><%= attachment_image_tag @menu.menu_image %></div>
+  </div>
+  <div class="menus-show-body">
+    <div class="menus-content">内容：<br><%= @menu.content %></div>
+    <div class="cancel">キャンセル規定：<br><%= @menu.cancel %></div>
+  </div>
+  <div class="menus-show-foot">
+    <%= link_to '編集', edit_owner_restaurant_menu_path(@menu) %>
+    <%= link_to '削除', edit_owner_restaurant_menu_path(@menu), method: :delete,
+      data: {
+        confirm: "
+          削除しますか？/n
+          /n
+          編集から販売状況を「停止中」に変更することでもメニューを非公開にすることができます。/n
+          削除を続ける場合は「はい」を押してください。
+        "} %>
+  </div>
+</div>

@@ -1,2 +1,25 @@
-<h1>Owner::Menus#index</h1>
-<p>Find me in app/views/owner/menus/index.html.erb</p>
+<div class="menus-index">
+  <h1>Menus</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>メニューID</th>
+        <th>イメージ画像</th>
+        <th>メニュー名</th>
+        <th>予約状況</th>
+        <th>販売状況</th>
+      </tr>
+    </thead>
+    <% @menus.each do |menu| %>
+      <tbody>
+        <tr>
+          <td><%= menu.id %></td>
+          <td><%= menu.menu_image %></td>
+          <td><%= menu.name %></td>
+          <td><%= menu.reservation_method %></td>
+          <td><%= menu.is_sale_frag %></td>
+        </tr>
+      </tbody>
+    <% end %>
+  </table>
+</div>
