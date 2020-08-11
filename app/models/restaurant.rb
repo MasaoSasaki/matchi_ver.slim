@@ -7,4 +7,5 @@ class Restaurant < ApplicationRecord
   has_many :reservation
   has_many :menu, dependent: :destroy
 
+  attachment :restaurant_image
 end

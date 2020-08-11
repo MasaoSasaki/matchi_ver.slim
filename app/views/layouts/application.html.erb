@@ -17,15 +17,28 @@
         <nav>
           <ul class="header-ul">
             <% url = request.fullpath %>
+            <%# urlに'public'があれば一般ユーザー用ヘッダー %>
             <% if url.include?('public') %>
+
+            <%# urlに'owner'があれば店舗用ヘッダー %>
             <% elsif request.fullpath.include?('owner') %>
-            <% else request.fullpath.include?('master') %>
-              <li><%= link_to '店舗新規登録', new_restaurant_registration_path %></li>
-              <li><%= link_to '店舗ログイン', new_restaurant_session_path %></li>
-              <% if admin_signed_in? %>
-                <li><%= link_to 'ログアウト', destroy_admin_session_path, method: :delete %></li>
+              <% if owner_restaurant_signed_in? %>
+                <li><%= link_to 'ログアウト', destroy_owner_restaurant_session_path, method: :delete %></li>
               <% else %>
-                <li><%= link_to '管理者ログイン', new_admin_session_path %></li>
+                <li><%= link_to '店舗ログイン', new_owner_restaurant_session_path %></li>
+              <% end %>
+              <% if master_admin_signed_in? %>
+                <li><%= link_to '管理者トップ', new_master_admin_session_path %></li>
+              <% end %>
+
+            <%# urlに'master'があれば管理者用ヘッダー %>
+            <% elsif request.fullpath.include?('master') %>
+              <% if master_admin_signed_in? %>
+                <li><%= link_to '店舗新規登録', new_owner_restaurant_registration_path %></li>
+                <li><%= link_to '店舗ログイン', new_owner_restaurant_session_path %></li>
+                <li><%= link_to 'ログアウト', destroy_master_admin_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to '管理者ログイン', new_master_admin_session_path %></li>
               <% end %>
             <% end %>
           </ul>
@@ -33,12 +46,14 @@
       </div>
     </div>
   </header>
+
   <body>
     <div class="container">
       <%= yield %>
     </div>
   </body>
+
   <footer>
-    <small>©︎Masao.Sasaki</small>
+    <small>©︎MasaoSasaki</small>
   </footer>
 </html>

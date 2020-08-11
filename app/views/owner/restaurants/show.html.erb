@@ -1,0 +1,20 @@
+<div class="restaurant-show">
+  <section class="restaurant-info">
+    <div　class="flex restaurant-head">
+      <h1 class="restaurant-show-h1">店舗名：<%= @restaurant.name %> 様</h1>
+      <p class="">来店前予約件数　件</p>
+    </div>
+    <div class="restaurant-img"></div>
+    <div class="restaurant-body"></div>
+    <div class="restaurant-introduction"></div>
+    <div class="restaurant-edit"><%= link_to '店舗情報編集', edit_owner_restaurant_path, class: 'btn' %></div>
+  </section>
+  <section class="restaurant-status">
+    <div></div>
+    <div></div>
+    <div></div>
+    <div></div>
+    <div><%= link_to '予約履歴', owner_reservations_path %></div>
+    <div><%= link_to 'メニュー一覧', owner_restaurant_menus_path(current_owner_restaurant) %></div>
+  </section>
+</div>

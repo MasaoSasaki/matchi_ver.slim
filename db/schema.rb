@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_08_064142) do
+ActiveRecord::Schema.define(version: 2020_08_09_041142) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -24,17 +24,45 @@ ActiveRecord::Schema.define(version: 2020_08_08_064142) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
+  create_table "menus", force: :cascade do |t|
+    t.integer "restaurant_id"
+    t.string "title"
+    t.string "menu_image"
+    t.text "content"
+    t.text "cancel"
+    t.integer "regular_plice"
+    t.integer "discount_plice"
+    t.integer "reservation_method", default: 0
+    t.boolean "is_sale_frag", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "reservations", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "menu_id"
+    t.integer "reservation_year"
+    t.string "reservation_month"
+    t.string "reservation_day"
+    t.string "reservation_time"
+    t.integer "people"
+    t.integer "reservation_status", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "restaurants", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.string "name", null: false
-    t.text "introduction", null: false
-    t.string "postal_code", null: false
-    t.string "address", null: false
-    t.string "phone_number", null: false
+    t.string "name", default: "", null: false
+    t.string "restaurant_image"
+    t.text "introduction", default: "", null: false
+    t.string "postal_code", default: "", null: false
+    t.string "address", default: "", null: false
+    t.string "phone_number", default: "", null: false
     t.string "corporate"
     t.string "twitter"
     t.string "facebook"
@@ -58,7 +86,7 @@ ActiveRecord::Schema.define(version: 2020_08_08_064142) do
     t.string "name_first_kana", null: false
     t.string "handle_name"
     t.text "profile"
-    t.string "profile_image_id"
+    t.string "profile_image"
     t.string "twitter"
     t.string "facebook"
     t.string "instagram"
