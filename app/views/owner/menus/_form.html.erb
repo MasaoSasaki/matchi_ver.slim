@@ -1,0 +1,44 @@
+<div class="menu-form">
+  <%= form_with model: [@restaurant, @menu], url: owner_restaurant_menus_path, local: true do |f| %>
+    <section class="menu-status">
+      <div class="flex menu-form-table_image">
+        <table>
+          <tbody>
+            <tr>
+              <td><%= f.label :name, value: 'メニュー名' %></td>
+              <td><%= f.text_field :name %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :regular_plice, value: '正規価格（税抜き）：' %></td>
+              <td><%= f.text_field :regular_plice %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :discount_plice, value: '提供価格（税抜き）：' %></td>
+              <td><%= f.text_field :discount_plece %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :reservation_method, value: '予約方法' %></td>
+              <td><%= f.select :reservation_method, [['予約のみ', 0], ['予約可', 1], ['予約不可', 2]] %></td>
+            </tr>
+            <tr>
+              <td><%= f.label :is_sale_flag, value: '販売ステータス' %></td>
+              <td><%= f.select :is_sale_frag, [['販売中', true], ['販売停止中', false]] %></td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="menu-form-image">
+        </div>
+      </div>
+      <div class="menu-form-tag"></div>
+    </section>
+    <section class="menu-form-content">
+      <p><%= f.label :content, value: '内容' %></p>
+      <%= f.text_area :content %>
+    </section>
+    <section class="menu-form-cancel">
+      <p><%= f.label :cancel, value: 'キャンセル規定' %></p>
+      <%= f.text_area :cancel %>
+    </section>
+    <div class="submit"><%= f.submit "作成", class: 'btn' %></div>
+  <% end %>
+</div>
