@@ -7,9 +7,11 @@
     </tr>
   </thead>
   <tbody>
-    <%= @restaurants.each do |restaurant| %>
-      <td><%= retaurant.name %></td>
-      <td><%= @menus.where(restaurant_id: [retaurant.id]).count %></td>
-    <% end %>
+    <tr>
+      <% @restaurants.each do |restaurant| %>
+        <td><%= restaurant.name %></td>
+        <td><%= @menus.where(restaurant_id: restaurant.id).count %></td>
+      <% end %>
+    </tr>
   </tbody>
 </table>
