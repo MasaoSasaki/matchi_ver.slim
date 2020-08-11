@@ -1,12 +1,12 @@
 <div class="menu-form">
-  <%= form_with model: [@restaurant, @menu], url: owner_restaurant_menus_path, local: true do |f| %>
+  <%= form_with model: [restaurant, menu], url: path, local: true do |f| %>
     <section class="menu-status">
       <div class="flex menu-form-table_image">
         <table>
           <tbody>
             <tr>
-              <td><%= f.label :name, value: 'メニュー名' %></td>
-              <td><%= f.text_field :name %></td>
+              <td><%= f.label :title, value: 'メニュー名' %></td>
+              <td><%= f.text_field :title %></td>
             </tr>
             <tr>
               <td><%= f.label :regular_plice, value: '正規価格（税抜き）：' %></td>
@@ -14,7 +14,7 @@
             </tr>
             <tr>
               <td><%= f.label :discount_plice, value: '提供価格（税抜き）：' %></td>
-              <td><%= f.text_field :discount_plece %></td>
+              <td><%= f.text_field :discount_plice %></td>
             </tr>
             <tr>
               <td><%= f.label :reservation_method, value: '予約方法' %></td>
@@ -39,6 +39,6 @@
       <p><%= f.label :cancel, value: 'キャンセル規定' %></p>
       <%= f.text_area :cancel %>
     </section>
-    <div class="submit"><%= f.submit "作成", class: 'btn' %></div>
+    <div class="submit"><%= f.submit "#{submit}", class: 'btn' %></div>
   <% end %>
 </div>

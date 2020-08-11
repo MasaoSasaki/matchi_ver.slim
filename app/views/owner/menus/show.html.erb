@@ -23,8 +23,8 @@
     <div class="cancel">キャンセル規定：<br><%= @menu.cancel %></div>
   </div>
   <div class="menus-show-foot">
-    <%= link_to '編集', edit_owner_restaurant_menu_path(@menu) %>
-    <%= link_to '削除', owner_restaurant_menu_path(@menu), method: :delete,
+    <%= link_to '編集', edit_owner_restaurant_menu_path(current_owner_restaurant, @menu) %>
+    <%= link_to '削除', owner_restaurant_menu_path(current_owner_restaurant, @menu), method: :delete,
       data: {
         confirm: "
           削除しますか？
@@ -32,5 +32,6 @@
           編集から販売状況を「停止中」に変更することでもメニューを非公開にすることができます。
           削除を続ける場合は「OK」を押してください。
         "} %>
+    <%= link_to '一覧に戻る', owner_restaurant_menus_path %>
   </div>
 </div>

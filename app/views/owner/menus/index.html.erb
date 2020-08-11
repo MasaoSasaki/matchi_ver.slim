@@ -14,8 +14,8 @@
       <tbody>
         <tr>
           <td><%= menu.id %></td>
-          <td></td>
-          <td><%= menu.title %></td>
+          <td><%#= attachment_image_tag :menu_image %></td>
+          <td><%= link_to "#{menu.title}", owner_restaurant_menu_path(current_owner_restaurant, menu) %></td>
           <td><%= menu.reservation_method %></td>
           <td>
             <% if menu.is_sale_frag == true %>

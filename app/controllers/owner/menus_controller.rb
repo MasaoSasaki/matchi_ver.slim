@@ -26,6 +26,8 @@ class Owner::MenusController < Owner::Base
   def update
     restaurant = Restaurant.find(params[:restaurant_id])
     menu = Menu.find(params[:id])
+    menu.update(menu_params)
+    redirect_to owner_restaurant_menu_path(current_owner_restaurant, menu)
   end
 
   def destroy
