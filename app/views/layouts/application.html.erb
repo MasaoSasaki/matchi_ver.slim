@@ -22,6 +22,7 @@
 
             <%# urlに'owner'があれば店舗用ヘッダー %>
             <% elsif request.fullpath.include?('owner') %>
+              ユーザーログイン
               <% if owner_restaurant_signed_in? %>
                 <li><%= link_to 'ログアウト', destroy_owner_restaurant_session_path, method: :delete %></li>
               <% else %>
@@ -33,12 +34,11 @@
 
             <%# urlに'master'があれば管理者用ヘッダー %>
             <% elsif request.fullpath.include?('master') %>
+              ユーザーログイン
+              <li><%= link_to '店舗ログイン', new_owner_restaurant_session_path %></li>
               <% if master_admin_signed_in? %>
                 <li><%= link_to '店舗新規登録', new_owner_restaurant_registration_path %></li>
-                <li><%= link_to '店舗ログイン', new_owner_restaurant_session_path %></li>
                 <li><%= link_to 'ログアウト', destroy_master_admin_session_path, method: :delete %></li>
-              <% else %>
-                <li><%= link_to '管理者ログイン', new_master_admin_session_path %></li>
               <% end %>
             <% end %>
           </ul>
