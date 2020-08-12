@@ -1,35 +1,6 @@
 Rails.application.routes.draw do
 
-  namespace :public do
-    get 'bookmarks/index'
-    get 'bookmarks/show'
-  end
-  namespace :public do
-    get 'reservations/index'
-    get 'reservations/show'
-    get 'reservations/new'
-    get 'reservations/confirm'
-    get 'reservations/completion'
-  end
-  namespace :public do
-    get 'menus/index'
-    get 'menus/show'
-  end
-  namespace :public do
-    get 'restaurants/index'
-    get 'restaurants/show'
-  end
-  namespace :public do
-    get 'users/show'
-    get 'users/info'
-    get 'users/edit'
-    get 'users/profile'
-    get 'users/withdraw'
-  end
-  namespace :public do
-    get 'homes/top'
-    get 'homes/about'
-  end
+
   namespace :master do
     devise_for :admins, controllers: {
       sessions: 'master/admins/sessions',

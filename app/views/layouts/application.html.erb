@@ -2,18 +2,17 @@
 <html lang="ja">
   <head>
     <title>Matchi</title>
-
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
   </head>
 
   <header>
-    <div class="header">
+    <div class="flex header">
       <div class="logo-image"></div>
-      <div class="nav">
+      <div class="header-nav">
         <nav>
           <ul class="header-ul">
             <% url = request.fullpath %>
@@ -25,6 +24,7 @@
               <% else %>
                 <li><%= link_to 'ログイン', new_public_user_session_path %></li>
               <% end %>
+
             <%# urlに'owner'があれば店舗用ヘッダー %>
             <% elsif url.include?('owner') %>
               <li><%= link_to '一般会員ログイン', new_public_user_session_path %></li>
