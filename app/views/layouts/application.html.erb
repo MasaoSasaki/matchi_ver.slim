@@ -11,7 +11,9 @@
 
   <header>
     <div class="flex header">
-      <div class="logo-image"></div>
+      <%= link_to public_path do %>
+        <div class="logo-image"></div>
+      <% end %>
       <div class="header-nav">
         <nav>
           <ul class="header-ul">

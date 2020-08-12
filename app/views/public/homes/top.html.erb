@@ -4,7 +4,7 @@
 <section class="flex top-main">
   <div class="top-contents">
     <ul class="flex top-nav">
-      <%= link_to do %>
+      <%= link_to public_about_path do %>
         <li>サービス紹介</li>
       <% end %>
       <%= link_to do %>
@@ -17,7 +17,16 @@
         <li>お知らせ</li>
       <% end %>
     </ul>
-    <div class="category"></div>
+    <div class="restaurants-all">
+      <h2>レストラン一覧</h2>
+      <% @restaurants.each do |restaurant| %>
+        <div class="top-restaurant">
+          <%#= attachment_image_tag :restaurant_image %>
+          <h3><%= restaurant.name %></h3>
+          <p><%= restaurant.address %></p>
+        </div>
+      <% end %>
+    </div>
   </div>
 
   <div class="top-side">
