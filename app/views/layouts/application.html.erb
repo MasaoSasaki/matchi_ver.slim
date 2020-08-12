@@ -18,17 +18,8 @@
         <nav>
           <ul class="header-ul">
             <% url = request.fullpath %>
-            <%# urlに'public'があれば一般ユーザー用ヘッダー %>
-            <% if url.include?('public') %>
-              <% if public_user_signed_in? %>
-                <li><%= link_to 'MyPage', public_user_path(current_public_user), method: :delete %></li>
-                <li><%= link_to 'ログアウト', destroy_public_user_session_path, method: :delete %></li>
-              <% else %>
-                <li><%= link_to 'ログイン', new_public_user_session_path %></li>
-              <% end %>
-
             <%# urlに'owner'があれば店舗用ヘッダー %>
-            <% elsif url.include?('owner') %>
+            <% if url.include?('owner') %>
               <li><%= link_to '一般会員ログイン', new_public_user_session_path %></li>
               <% if owner_restaurant_signed_in? %>
                 <li><%= link_to 'ログアウト', destroy_owner_restaurant_session_path, method: :delete %></li>
@@ -46,6 +37,15 @@
               <% if master_admin_signed_in? %>
                 <li><%= link_to '店舗新規登録', new_owner_restaurant_registration_path %></li>
                 <li><%= link_to 'ログアウト', destroy_master_admin_session_path, method: :delete %></li>
+              <% end %>
+
+            <%# urlに'public'があれば一般ユーザー用ヘッダー %>
+            <% else %>
+              <% if public_user_signed_in? %>
+                <li><%= link_to 'MyPage', public_user_path(current_public_user), method: :delete %></li>
+                <li><%= link_to 'ログアウト', destroy_public_user_session_path, method: :delete %></li>
+              <% else %>
+                <li><%= link_to 'ログイン', new_public_user_session_path %></li>
               <% end %>
             <% end %>
           </ul>
