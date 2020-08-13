@@ -60,10 +60,6 @@ header {
   justify-content: space-between;
 }
 
-.header a {
-  // display: inline-block;
-}
-
 .logo-image {
   background-image: image-url("no_image.png");
   background-size: cover;
@@ -167,7 +163,7 @@ header {
 }
 
 //public/users
-.mypage-links {
+.user-links {
   padding: 20px;
   margin: 20px;
   border: 3px solid black;

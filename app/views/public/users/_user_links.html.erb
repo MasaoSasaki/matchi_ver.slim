@@ -1,0 +1,10 @@
+<div class="user-links">
+  <ul>
+    <li><%= link_to 'プロフィールを確認', public_user_profile_path(current_public_user) %></li>
+    <li><%= link_to 'ブックマーク', public_user_bookmarks_path(current_public_user) %></li>
+    <li><%= link_to '登録情報確認', public_user_info_path(current_public_user) %></li>
+    <li><%= link_to 'レビュー一覧' %></li>
+    <li><%= link_to '現在の予約状況', public_reservations_path %></li>
+    <li><%= link_to '予約履歴', public_reservations_path %></li>
+  </ul>
+</div>
