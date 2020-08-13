@@ -1,2 +1,23 @@
-<h1>Public::Users#show</h1>
-<p>Find me in app/views/public/users/show.html.erb</p>
+<div class="mypage">
+  <div class="mypage-main">
+    <h1>My Page</h1>
+    <h2><%= "#{current_public_user.name_family}" + "#{current_public_user.name_first}" %> 様</h2>
+    <ul>
+      <li>会員ランク：<%#= current_user.rank %></li>
+      <li>ポイント数：<%#= current_user.points %></li>
+      <li>予約数：<%= @reservation.count %> 件</li>
+      <li>レビューした数：<%#= @user_review.count %></li>
+      <li>レビューされた数：<%#= @restaurant_review.count %></li>
+    </ul>
+  </div>
+  <div class="mypage-links">
+    <ul>
+      <li><%= link_to 'プロフィールを確認', public_user_profile_path(current_public_user) %></li>
+      <li><%= link_to 'ブックマーク', public_user_bookmarks_path(current_public_user) %></li>
+      <li><%= link_to '登録情報確認', public_user_info_path(current_public_user) %></li>
+      <li><%= link_to 'レビュー一覧' %></li>
+      <li><%= link_to '現在の予約状況', public_reservations_path %></li>
+      <li><%= link_to '予約履歴', public_reservations_path %></li>
+    </ul>
+  </div>
+</div>

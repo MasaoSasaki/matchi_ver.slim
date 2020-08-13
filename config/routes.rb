@@ -31,6 +31,9 @@ Rails.application.routes.draw do
     get '/' => 'homes#top'
     get 'about' => 'homes#about'
     resources :users do
+      get 'profile' => 'users#profile'
+      get 'info' => 'users#info'
+      get 'withdraw' => 'users#withdraw'
       resources :bookmarks
     end
     resources :reservations

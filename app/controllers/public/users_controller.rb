@@ -1,5 +1,6 @@
 class Public::UsersController < Public::Base
   def show
+    @reservation = Reservation.where(user_id: params[:id])
   end
 
   def info
