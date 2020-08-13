@@ -2,7 +2,7 @@
   <h2>登録情報</h2>
   <div class="flex user-info">
     <div>
-      <h3>ハンドルネーム<%= @current_user.handle_name %></h3>
+      <h3>ハンドルネーム：<%= @current_user.handle_name %></h3>
       <div class="sns">
         <h3>SNS</h3>
         <ul class="flex">
@@ -25,7 +25,7 @@
           <li>メールアドレス２：<%= @current_user.email_sub %></li>
         </ul>
       </div>
-      <div class="berthday"><h3>生年月日</h3><p><%= "#{@current_user.birth_year}" + "#{@current_user.birth_month}" + "#{@current_user.birth_day}" %></p></div>
+      <div class="berth-day"><h3>生年月日</h3><p><%= "#{@current_user.birth_year}" + "#{@current_user.birth_month}" + "#{@current_user.birth_day}" %></p></div>
       <div class="age"><h3>年齢</h3><p></p></div>
     </div>
     <div class="profile-image">
