@@ -38,6 +38,10 @@ ul {
   display: flex;
 }
 
+.grid {
+  display: grid;
+}
+
 .under-line {
   text-decoration: underline;
 }
@@ -51,7 +55,8 @@ header li {
 }
 
 header {
-  width: 1024px;
+  max-width: 1024px;
+  padding: 0 70px;
   line-height: 70px;
   margin: 0 auto;
 }
@@ -178,8 +183,49 @@ header {
   border-radius: 5px;
 }
 
-.user-info div {
+.user-info div, .user-profile div, .user-sns, .profile-contents, .user-status, .user-performance {
   margin-top: 20px;
+}
+
+.box {
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+// .new-user-performance {
+//   // text-align: center;
+//   width:  620px;
+//   margin: 0 auto;
+//   grid-template:
+//     "title title title" 50px
+//     "..... ..... ....." 20px
+//     "box1  ..... box2 " 300px
+//     "..... ..... ....." 20px
+//     "box3  ..... box4 " 300px
+
+// ;}
+
+.user-performance h3 {
+  text-align: center;
+  grid-area: title;
+}
+.new-menu-reviewees {
+  margin: 0 auto;
+  grid-area: box1;
+}
+.new-restaurant-reviewees {
+  margin: 0 auto;
+  grid-area: box2;
+}
+.new-reviewers {
+  margin: 0 auto;
+  grid-area: box3;
+}
+.new-reservations {
+  margin: 0 auto;
+  grid-area: box4;
 }
 
 
@@ -200,7 +246,14 @@ footer {
 }
 
 // スマホ用
-@media (max-width: 500px) {
+@media (max-width: 600px) {
+
+  header {
+    width: auto;
+    padding: 0 70px;
+    line-height: 70px;
+    margin: 0 auto;
+  }
 
   .container {
     padding: 20px;
@@ -213,5 +266,29 @@ footer {
   .top-side {
     display: none;
   }
+
+  .box {
+    width: 400px;
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+
+  // .new-user-performance {
+  //   width: 300px;
+  //   margin: 0 auto;
+  //   grid-template:
+  //     "title" 30px
+  //     "....." 10px
+  //     "box1"
+  //     "....." 10px
+  //     "box2"
+  //     "....." 10px
+  //     "box3"
+  //     "....." 10px
+  //     "box4"
+  //     "....." 10px
+  //     ;
+  // }
 
 }

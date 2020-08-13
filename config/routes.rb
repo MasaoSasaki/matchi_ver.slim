@@ -31,11 +31,12 @@ Rails.application.routes.draw do
     get '/' => 'homes#top'
     get 'about' => 'homes#about'
     resources :users do
-      get 'profile' => 'users#profile'
-      get 'info' => 'users#info'
-      get 'withdraw' => 'users#withdraw'
       resources :bookmarks
     end
+    get 'users/:id/profile' => 'users#profile', as: 'users/profile'
+    get 'users/:id/info' => 'users#info', as: 'users/info'
+    get 'users/:id/withdraw' => 'users#withdraw', as: 'users/withdraw'
+
     resources :reservations
     resources :restaurants
     resources :menus

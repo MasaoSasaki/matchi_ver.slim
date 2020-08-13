@@ -32,6 +32,8 @@
       <%#= attachment_image_tag :profile_image, @current_user %>
     </div>
   </div>
-<%= render 'user_links' %>
+  <div class="user-info-edit"><%= link_to '登録情報編集', edit_public_user_path(@current_user) %></div>
+
+  <%= render 'user_links' %>
 
 </div>
