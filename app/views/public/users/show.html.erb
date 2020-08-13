@@ -1,7 +1,7 @@
 <div class="mypage">
   <div class="mypage-main">
     <h1>My Page</h1>
-    <h2><%= "#{current_public_user.name_family}" + "#{current_public_user.name_first}" %> 様</h2>
+    <h2><%= "#{@current_user.name_family}" + "#{@current_user.name_first}" %> 様</h2>
     <ul>
       <li>会員ランク：<%#= current_user.rank %></li>
       <li>ポイント数：<%#= current_user.points %></li>

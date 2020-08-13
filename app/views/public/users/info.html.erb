@@ -1,2 +1,37 @@
-<h1>Public::Users#info</h1>
-<p>Find me in app/views/public/users/info.html.erb</p>
+<div class="users-info">
+  <h2>登録情報</h2>
+  <div class="flex user-info">
+    <div>
+      <h3>ハンドルネーム<%= @current_user.handle_name %></h3>
+      <div class="sns">
+        <h3>SNS</h3>
+        <ul class="flex">
+          <%= link_to "https://twitter.com", target: :_blank do %>
+            <li class="sns-btn"><i class="fab fa-twitter"></i><%= @current_user.twitter %></li>
+          <% end %>
+          <%= link_to "https://facebook.com", target: :blank do %>
+            <li class="sns-btn"><i class="fab fa-facebook-f"></i><%= @current_user.facebook %></li>
+          <% end %>
+          <%= link_to "https://instagram.com", target: :blank do %>
+            <li class="sns-btn"><i class="fab fa-instagram"></i><%= @current_user.instagram %></li>
+          <% end %>
+        </ul>
+      </div>
+      <div class="contact">
+        <h3>連絡先</h3>
+        <ul>
+          <li>電話番号：<%= @current_user.phone_number %></li>
+          <li>メールアドレス１：<%= @current_user.email %></li>
+          <li>メールアドレス２：<%= @current_user.email_sub %></li>
+        </ul>
+      </div>
+      <div class="berthday"><h3>生年月日</h3><p><%= "#{@current_user.birth_year}" + "#{@current_user.birth_month}" + "#{@current_user.birth_day}" %></p></div>
+      <div class="age"><h3>年齢</h3><p></p></div>
+    </div>
+    <div class="profile-image">
+      <%#= attachment_image_tag :profile_image, @current_user %>
+    </div>
+  </div>
+<%= render 'user_links' %>
+
+</div>
