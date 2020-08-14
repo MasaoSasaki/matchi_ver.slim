@@ -3,5 +3,6 @@ class Public::RestaurantsController < Public::Base
   end
 
   def show
+    @restaurant = Restaurant.find(params[:id])
   end
 end
