@@ -10,7 +10,7 @@
   <tbody>
     <% @users.each do |user| %>
       <tr>
-        <td><%= "#{user.name_family}"+"#{user.name_first}" %></td>
+        <td><%= link_to "#{user.name_family}" + "#{user.name_first}", master_user_path(user) %></td>
         <td></td>
         <td><%= user.user_status %></td>
       </tr>
