@@ -8,10 +8,11 @@
     </tr>
   </thead>
   <tbody>
-    <%= @users.each do |user| %>
+    <% @users.each do |user| %>
       <tr>
-        <td><%= user.name %></td>
-        <td><%= user.status %></td>
+        <td><%= "#{user.name_family}"+"#{user.name_first}" %></td>
+        <td></td>
+        <td><%= user.user_status %></td>
       </tr>
     <% end %>
   </tbody>

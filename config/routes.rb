@@ -36,6 +36,8 @@ Rails.application.routes.draw do
     get 'users/:id/profile' => 'users#profile', as: 'users/profile'
     get 'users/:id/info' => 'users#info', as: 'users/info'
     get 'users/:id/withdraw' => 'users#withdraw', as: 'users/withdraw'
+    patch 'users/:id/withdrawal' => 'users#withdrawal', as: 'users/withdrawal'
+    get 'users/:id/withdrew' => 'users#withdrew', as: 'users/withdrew'
 
     resources :reservations
     resources :restaurants

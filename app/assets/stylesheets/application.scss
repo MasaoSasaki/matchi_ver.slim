@@ -100,11 +100,13 @@ header {
   text-align: center;
   padding: 0.6em;
   border-bottom: 1px solid white;
+  // background-color: white;
 }
 
 .top-nav a:hover {
-  background: linear-gradient(#fff, #eee);
   border-bottom: 1px solid black;
+  transition: 1000ms;
+  background: linear-gradient(#fff, #eee);
 }
 
 .top-side {
