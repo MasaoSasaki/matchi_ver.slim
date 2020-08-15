@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-
+  get '/' => 'public/homes#top'
+  
   namespace :master do
     devise_for :admins, controllers: {
       sessions: 'master/admins/sessions',
