@@ -14,8 +14,15 @@
  *= require_self
  */
 
+//共通
 * {
   margin: 0;
+  color: #444;
+  list-style: none;
+}
+
+ul {
+  padding: 0;
 }
 
 .btn {
@@ -31,9 +38,16 @@
   display: flex;
 }
 
+.grid {
+  display: grid;
+}
+
+.under-line {
+  text-decoration: underline;
+}
+
 header ul {
   display: flex;
-  list-style: none;
 }
 
 header li {
@@ -41,25 +55,242 @@ header li {
 }
 
 header {
-  width: 1024px;
+  max-width: 1024px;
+  padding: 0 70px;
   line-height: 70px;
   margin: 0 auto;
 }
 
-.devise-form {
+.header {
+  justify-content: space-between;
+}
+
+.logo-image {
+  background-image: image-url("no_image.png");
+  background-size: cover;
+  background-position: center;
+  width: 100px;
+  height: 70px;
+}
+
+// body
+.container {
+  margin: 0 auto;
+  padding: 0 50px;
+  min-height: 650px;
+}
+
+//public/homes
+.header-image {
+  margin-bottom: 10px;
+  background-image: image-url("header-1.jpg");
+  background-size: cover;
+  background-position: center;
+  height: 300px;
+}
+
+.top-contents {
+  padding: 10px;
+  flex: 1;
+}
+
+.top-nav a {
+  display: inline-block;
+  flex: 1;
+  text-align: center;
+  padding: 0.6em;
+  border-bottom: 1px solid white;
+  // background-color: white;
+}
+
+.top-nav a:hover {
+  border-bottom: 1px solid black;
+  transition: 1000ms;
+  background: linear-gradient(#fff, #eee);
+}
+
+.top-side {
+  padding: 10px;
+  flex-shrink: 0;
+  width: 200px;
+}
+
+.top-side > div {
+  margin-bottom: 25px;
+  padding: 20px;
+  background-color: #eeffff;
+}
+
+.registration {
+  background-color: lightgoldenrodyellow;
+  text-align: center;
+  text-decoration: none;
+  font-size: 2em;
+}
+
+.new-registration {
   text-align: center;
 }
 
-.field,.actions {
-  margin: 10px;
+.new-registration p {
+  margin-top: 10px;
 }
 
-.container {
-  width: 1024px;
+.new-menus {
+  width: 160px;
   margin: 0 auto;
+  font-size: 0.9em;
+  font-weight: bold;
+  text-align: center;
+  border-bottom: 1px solid #dddddd;
 }
 
+//public/About
+.about-contents h1 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  font-style: italic;
+  text-decoration: underline;
+  text-align: center;
+}
+
+.about-contents p {
+  text-align: center;
+}
+
+.about-message {
+  max-width: 700px;
+  margin: 10px auto;
+  padding: 30px;
+  font-size: 0.8em;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 20px;
+  background-color: rgb(255, 240, 240);
+}
+
+//public/users
+.user-links {
+  padding: 20px;
+  margin: 20px;
+  border: 3px solid black;
+  border-radius: 10px;
+  background: #f5f5f5
+}
+
+.sns-btn {
+  width: 50px;
+  text-align: center;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.user-info div, .user-profile div, .user-sns, .profile-contents, .user-status, .user-performance {
+  margin-top: 20px;
+}
+
+.box {
+  width: 300px;
+  height: 300px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+// .new-user-performance {
+//   // text-align: center;
+//   width:  620px;
+//   margin: 0 auto;
+//   grid-template:
+//     "title title title" 50px
+//     "..... ..... ....." 20px
+//     "box1  ..... box2 " 300px
+//     "..... ..... ....." 20px
+//     "box3  ..... box4 " 300px
+
+// ;}
+
+.user-performance h3 {
+  text-align: center;
+  grid-area: title;
+}
+.new-menu-reviewees {
+  margin: 0 auto;
+  grid-area: box1;
+}
+.new-restaurant-reviewees {
+  margin: 0 auto;
+  grid-area: box2;
+}
+.new-reviewers {
+  margin: 0 auto;
+  grid-area: box3;
+}
+.new-reservations {
+  margin: 0 auto;
+  grid-area: box4;
+}
+
+
+//devise
+.devise-form h3, .actions {
+  margin-top: 20px;
+}
+
+.actions {
+  margin-bottom: 10px;
+}
+
+// footer
 footer {
   line-height: 70px;
   text-align: center;
+  border-top: 1px solid black;
+}
+
+// スマホ用
+@media (max-width: 600px) {
+
+  header {
+    width: auto;
+    padding: 0 70px;
+    line-height: 70px;
+    margin: 0 auto;
+  }
+
+  .container {
+    padding: 20px;
+  }
+
+  .header-image {
+    height: 200px;
+  }
+
+  .top-side {
+    display: none;
+  }
+
+  .box {
+    width: 400px;
+    height: 300px;
+    border: 1px solid black;
+    border-radius: 5px;
+  }
+
+  // .new-user-performance {
+  //   width: 300px;
+  //   margin: 0 auto;
+  //   grid-template:
+  //     "title" 30px
+  //     "....." 10px
+  //     "box1"
+  //     "....." 10px
+  //     "box2"
+  //     "....." 10px
+  //     "box3"
+  //     "....." 10px
+  //     "box4"
+  //     "....." 10px
+  //     ;
+  // }
+
 }

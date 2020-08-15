@@ -70,3 +70,8 @@ gem 'jquery-rails'
 gem 'pry-rails'
 gem 'rubocop'
 gem 'rubocop-rails'
+
+gem 'dotenv-rails'
+group :production do
+  gem 'mysql2'
+end

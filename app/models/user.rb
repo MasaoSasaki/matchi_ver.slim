@@ -7,5 +7,11 @@ class User < ApplicationRecord
   has_many :reservation
   has_many :book_mark
 
+  enum user_status: [:"有効会員", :"退会済み", :"強制退会"]
+
+  def active_for_authentication?
+    super && (self.user_status == "有効会員")
+  end
+
   attachment :profile_image
 end

@@ -1,0 +1,55 @@
+<section calss="top-header">
+  <div class="header-image"></div>
+</section>
+<section class="flex top-main">
+  <div class="top-contents">
+    <ul class="flex top-nav">
+      <%= link_to public_about_path do %>
+        <li>サービス紹介</li>
+      <% end %>
+      <%= link_to do %>
+        <li>特集</li>
+      <% end %>
+      <%= link_to do %>
+        <li>ランキング</li>
+      <% end %>
+      <%= link_to do %>
+        <li>お知らせ</li>
+      <% end %>
+    </ul>
+    <div class="restaurants-all">
+      <h2>レストラン一覧</h2>
+      <% @restaurants.each do |restaurant| %>
+        <div class="top-restaurant">
+          <%#= attachment_image_tag :restaurant_image %>
+          <h3><%= link_to "#{restaurant.name}", public_restaurant_path(restaurant) %></h3>
+          <p><%= restaurant.address %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="top-side">
+    <% if public_user_signed_in? %>
+      <div class="simple-mypage">マイページ</div>
+    <% else %>
+      <div class="new-registration">
+        <%= link_to '新規登録', new_public_user_registration_path, class: "btn registration" %>
+        <p>登録済みの方は<%= link_to 'こちら', new_public_user_session_path%></p>
+      </div>
+    <% end %>
+    <div>
+      <p class="new-menus">最近更新されたメニュー</p>
+      <div>
+        <ul>
+          <% @menus.each do |menu| %>
+            <li>
+              <%= menu.title %></p>
+              <%#= attachment_image_tag :menu_image %>
+            </li>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>

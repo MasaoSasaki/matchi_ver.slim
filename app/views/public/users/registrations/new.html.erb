@@ -1,0 +1,61 @@
+<div class="devise-form">
+  <h2>新規会員登録</h2>
+
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+  <%= render "public/users/shared/error_messages", resource: resource %>
+
+    <div class="name-field">
+      <h3>　お名前</h3>
+      <p>　　予約時の情報として使用されます。</p>
+      <div class="flex name-field-kanji">
+        <div class="field">
+          <%= f.label :name_family, value: '姓：　' %>
+          <%= f.text_field :name_family, placeholder: '必須' %>
+        </div>
+        <div class="field">
+          <%= f.label :name_first, value: '名：　' %>
+          <%= f.text_field :name_first, placeholder: '必須' %>
+        </div>
+      </div>
+      <div class="flex name-field-kana">
+        <div class="field">
+          <%= f.label :name_family_kana, value: 'セイ：' %>
+          <%= f.text_field :name_family_kana, placeholder: '必須' %>
+        </div>
+        <div class="field">
+          <%= f.label :name_first_kana, value: 'メイ：' %>
+          <%= f.text_field :name_first_kana, placeholder: '必須' %>
+        </div>
+      </div>
+    </div>
+
+    <div class="field">
+      <h3><%= f.label :phone_number, value: '電話番号' %></h3>
+      <p><%= f.text_field :phone_number, placeholder: '必須' %></p>
+    </div>
+    <div class="field">
+      <h3><%= f.label :email, value: 'メールアドレス' %></h3>
+      <p>　ログイン時のIDとして使用されます。また、予約の確認や、メールマガジンの配信も行われます。</p>
+      <%= f.email_field :email, autocomplete: "email", placeholder: '必須' %>
+    </div>
+
+    <div class="field">
+      <h3><%= f.label :password, value: 'パスワード' %></h3>
+      <% if @minimum_password_length %>
+      <em>(<%= @minimum_password_length %>文字以上)</em>
+      <% end %><br />
+      <%= f.password_field :password, autocomplete: "new-password", placeholder: '必須' %>
+    </div>
+    <div class="field">
+      <h3><%= f.label :password_confirmation, 'パスワード（再入力）' %></h3>
+      <%= f.password_field :password_confirmation, autocomplete: "new-password", placeholder: '必須' %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit "登録", class: 'btn' %>
+    </div>
+  <% end %>
+
+  <%= render "public/users/shared/links" %>
+
+</div>

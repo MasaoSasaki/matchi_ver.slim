@@ -1,0 +1,17 @@
+<div class="public-reservation-new">
+  <h2>予約情報の入力</h2>
+  <h3>メニュー名</h3>
+  <%= @menu.title %>
+  <h3>内容</h3>
+  <%= @menu.content %>
+  <h3>キャンセル規定</h3>
+  <%= @menu.cancel %>
+  <div class="reservation-form">
+    <%= form_with url: public_user_reservations_confirm_path, method: :get, local: true do |f| %>
+      <%= f.label :people, value: '人数' %>
+      <%= f.number_field :people %>
+
+      <%= f.submit '確認する' %>
+    <% end %>
+  </div>
+</div>

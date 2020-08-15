@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
 
-  devise_for :users
 
   namespace :master do
     devise_for :admins, controllers: {
@@ -22,6 +21,30 @@ Rails.application.routes.draw do
       resources :menus
     end
     resources :reservations
+  end
+
+  namespace :public do
+    devise_for :users, controllers: {
+      sessions: 'public/users/sessions',
+      registrations: 'public/users/registrations'
+    }
+    get '/' => 'homes#top'
+    get 'about' => 'homes#about'
+    resources :users do
+      resources :bookmarks
+      get 'reservations/confirm' => 'reservations#confirm'
+      get 'reservations/completion' => 'reservations#completion'
+      resources :reservations
+    end
+
+    get 'users/:id/profile' => 'users#profile', as: 'users/profile'
+    get 'users/:id/info' => 'users#info', as: 'users/info'
+    get 'users/:id/withdraw' => 'users#withdraw', as: 'users/withdraw'
+    patch 'users/:id/withdrawal' => 'users#withdrawal', as: 'users/withdrawal'
+    get 'users/:id/withdrew' => 'users#withdrew', as: 'users/withdrew'
+
+    resources :restaurants
+    resources :menus
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
