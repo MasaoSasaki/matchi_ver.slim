@@ -19,13 +19,13 @@
     </ul>
     <div class="restaurants-all">
       <h2>レストラン一覧</h2>
-      <% @restaurants.each do |restaurant| %>
+      <%# @restaurants.each do |restaurant| %>
         <div class="top-restaurant">
           <%#= attachment_image_tag :restaurant_image %>
-          <h3><%= link_to "#{restaurant.name}", public_restaurant_path(restaurant) %></h3>
-          <p><%= restaurant.address %></p>
+          <h3><%#= link_to "#{restaurant.name}", public_restaurant_path(restaurant) %></h3>
+          <p><%#= restaurant.address %></p>
         </div>
-      <% end %>
+      <%# end %>
     </div>
   </div>
 
@@ -42,12 +42,12 @@
       <p class="new-menus">最近更新されたメニュー</p>
       <div>
         <ul>
-          <% @menus.each do |menu| %>
+          <%# @menus.each do |menu| %>
             <li>
-              <%= menu.title %></p>
+              <%#= menu.title %></p>
               <%#= attachment_image_tag :menu_image %>
             </li>
-          <% end %>
+          <%# end %>
         </ul>
       </div>
     </div>
