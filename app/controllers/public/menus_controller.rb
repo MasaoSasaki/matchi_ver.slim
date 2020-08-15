@@ -8,5 +8,6 @@ class Public::MenusController < Public::Base
     @menu = Menu.find(params[:id])
     restaurant_id = Menu.find(params[:id]).restaurant_id
     @restaurant = Restaurant.find(restaurant_id)
+    @reservation = Reservation.new
   end
 end

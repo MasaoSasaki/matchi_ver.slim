@@ -24,5 +24,10 @@
       <%= @menu.cancel %>
     </div>
   </div>
-  <div class="reservation"><%= link_to '予約する', new_public_user_reservation_path(current_public_user) %></div>
+  <div class="reservation">
+    <%= form_with url: new_public_user_reservation_path(current_public_user), method: :get, local: true do |f| %>
+      <%= f.hidden_field :menu_id, value: params[:id] %>
+      <%= f.submit '予約情報を入力する' %>
+    <% end %>
+  </div>
 </div>

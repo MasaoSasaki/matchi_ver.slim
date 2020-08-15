@@ -32,6 +32,8 @@ Rails.application.routes.draw do
     get 'about' => 'homes#about'
     resources :users do
       resources :bookmarks
+      get 'reservations/confirm' => 'reservations#confirm'
+      get 'reservations/completion' => 'reservations#completion'
       resources :reservations
     end
 
