@@ -66,7 +66,7 @@ ActiveRecord::Schema.define(version: 2020_08_11_110558) do
     t.datetime "remember_created_at"
     t.string "name", default: "", null: false
     t.string "restaurant_image"
-    t.text "introduction", default: "", null: false
+    t.text "introduction"
     t.string "postal_code", default: "", null: false
     t.string "address", default: "", null: false
     t.string "phone_number", default: "", null: false
