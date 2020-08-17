@@ -99,12 +99,12 @@ header {
   flex: 1;
   text-align: center;
   padding: 0.6em;
-  border-bottom: 1px solid white;
+  border-bottom: 3px solid white;
 }
 
 .top-nav a:hover {
-  border-bottom: 1px solid black;
-  transition: 1000ms;
+  border-bottom: 3px solid orange;
+  transition: 500ms;
   background: linear-gradient(#fff, #eee);
 }
 
@@ -195,11 +195,6 @@ header {
   border-radius: 5px;
 }
 
-// .box:nth-child(odd) {
-//   margin-right: 20px;
-// }
-
-
 .new-user-performance {
   flex-wrap: wrap;
 }
@@ -225,6 +220,19 @@ header {
   grid-area: box4;
 }
 
+// public/restaurants
+.public-restaurants-index > h2 {
+  text-align: center;
+}
+
+.restaurant-image {
+  width: 300px;
+  height: 200px;
+}
+
+.restaurant-contents {
+  flex: 1;
+}
 
 //devise
 .devise-form h3, .actions {

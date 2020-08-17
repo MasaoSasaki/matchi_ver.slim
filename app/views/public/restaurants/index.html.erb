@@ -1,3 +1,13 @@
-<div class="public-restaurants-idnex">
-  <h1><i>Restaurants</i></h1>
+<div class="public-restaurants-index">
+  <h2><u><i>Restaurants</i></u></h2>
+  <div class="flex restaurants-contents">
+    <div class="restaurant-image"></div>
+    <% @restaurants.each do |restaurant| %>
+      <div class="restaurant-contents">
+        <p><%= restaurant.name %></p>
+        <p><%= restaurant.address %></p>
+        <p><%= link_to 'メニュー一覧', public_restaurant_menus_path(restaurant) %></p>
+      </div>
+    <% end %>
+  </div>
 </div>
