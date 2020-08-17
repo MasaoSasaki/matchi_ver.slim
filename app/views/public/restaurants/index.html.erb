@@ -1,3 +1,36 @@
-<div class="public-restaurants-idnex">
-  <h1><i>Restaurants</i></h1>
+<div class="public-restaurants-index">
+  <h2><u><i>Restaurants</i></u></h2>
+  <div class="serch">
+    <p><a href="#" id="get-position" >現在地から探す</a></p>
+    <p id="location-result" class="close">現在地：<%= @location %> <span id="latitude"></span>付近</p>
+  </div>
+  <div class="flex restaurants-contents">
+    <div class="restaurant-image"></div>
+    <% @restaurants.each do |restaurant| %>
+      <div class="restaurant-contents">
+        <p><%= restaurant.name %></p>
+        <p><%= restaurant.address %></p>
+        <p><%= link_to 'メニュー一覧', public_restaurant_menus_path(restaurant) %></p>
+      </div>
+    <% end %>
+  </div>
 </div>
+<script>
+  // function getLocation() {
+  //   document.getElementById("location-result").classList.remove("close");
+  // }
+
+  // document.addEventListener("DOMContentLoaded", function() {
+  //   const LocationResult = document.getElementById("location-result")
+  //   document.getElementById("get-position").addEventListener("click", function() {
+  //     LocationResult.classList.remove("close");
+  //   });
+  // });
+
+  $(function() {
+    $("#get-position").on("click", function() {
+      $("#location-result").removeClass("close");
+    });
+  });
+
+</script>
