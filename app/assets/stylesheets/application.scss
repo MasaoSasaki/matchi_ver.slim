@@ -42,6 +42,15 @@ ul {
   display: grid;
 }
 
+// js関連
+.close {
+  display: none;
+}
+
+#get-position:hover {
+  cursor: pointer;
+}
+
 .under-line {
   text-decoration: underline;
 }
