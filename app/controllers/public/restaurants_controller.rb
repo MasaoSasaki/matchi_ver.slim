@@ -4,7 +4,6 @@ class Public::RestaurantsController < Public::Base
 
   def index
     @restaurants = Restaurant.all
-    @location = 100
   end
 
   def show

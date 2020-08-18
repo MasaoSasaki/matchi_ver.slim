@@ -15,30 +15,20 @@
 //= require jquery
 //= require_tree .
 
-// $("#get-position").on("click", function() {
-//   $("#location-result").removeClass("close")
-//   console.log("test")
-// })
+$(function() {
+  $("#get-position").on("click", function() {
+    if (navigator.geolocation) {
+      $(".location-result" + ".true").removeClass("hidden");
+      navigator.geolocation.getCurrentPosition(function(position) {
 
-// $(function() {
-//   const LocationResult = document.getElementById("location-result")
-//   // function get_location() {
-//   // locationResult.classList.remove("close")
-// }
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        $("#latitude").text('緯度'+latitude)
+        $("#longitude").text('経度'+longitude)
 
-
-// const getPosition = document.getElementById("get_position")
-
-// getPosition.addEventListener("click", function() {
-
-//   let latitude = document.querySelector('#latitude');
-//   let longitude = document.querySelector('#longitude');
-//   let heading = document.querySelector('#heading');
-//   navigator.geolocation.getCurrentPosition(
-//     function getPosition(pos) {
-//       latitude.innerHTML = pos.coords.latitude;
-//       longitude.innerHTML = pos.coords.longitude;
-//       heading.innerHTML = pos.coords.heading;
-//     },
-//   );
-// })
+      });
+    } else {
+      $(".location-result" + ".false").removeClass("hidden");
+    }
+  });
+});
