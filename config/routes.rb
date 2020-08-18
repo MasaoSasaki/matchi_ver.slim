@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get '/' => 'public/homes#top'
-  
+
   namespace :master do
     devise_for :admins, controllers: {
       sessions: 'master/admins/sessions',
@@ -27,7 +27,8 @@ Rails.application.routes.draw do
   namespace :public do
     devise_for :users, controllers: {
       sessions: 'public/users/sessions',
-      registrations: 'public/users/registrations'
+      registrations: 'public/users/registrations',
+      passwords: 'public/users/passwords'
     }
     get '/' => 'homes#top'
     get 'about' => 'homes#about'
