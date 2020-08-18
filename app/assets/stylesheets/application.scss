@@ -100,7 +100,7 @@ header {
 }
 
 .top-main {
-  padding: 0 70px;
+  padding: 0 30px;
 }
 
 .top-contents {
@@ -124,7 +124,7 @@ header {
 .top-side {
   padding: 10px;
   flex-shrink: 0;
-  width: 200px;
+  width: 250px;
 }
 
 .top-side > div {
@@ -155,6 +155,10 @@ header {
   font-weight: bold;
   text-align: center;
   border-bottom: 1px solid #dddddd;
+}
+
+#map {
+  height: 400px;
 }
 
 //public/About

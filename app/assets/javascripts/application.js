@@ -15,20 +15,29 @@
 //= require jquery
 //= require_tree .
 
+//緯度経度から住所を取得
 $(function() {
   $("#get-position").on("click", function() {
     if (navigator.geolocation) {
+      // 緯度経度を取得
       $(".location-result" + ".true").removeClass("hidden");
       navigator.geolocation.getCurrentPosition(function(position) {
 
         var latitude = position.coords.latitude;
         var longitude = position.coords.longitude;
-        $("#latitude").text('緯度'+latitude)
-        $("#longitude").text('経度'+longitude)
+        $("#latitude").text('緯度' + latitude)
+        $("#longitude").text('経度' + longitude)
 
+        $(function() {
+          new google.maps.Map(document.getElementById("map"), {
+            center: {lat: latitude, lng: longitude},
+            zoom: 15
+          });
+        });
       });
     } else {
       $(".location-result" + ".false").removeClass("hidden");
     }
   });
 });
+

@@ -21,12 +21,6 @@
         </ul>
         <div class="restaurants-all">
           <h2>レストラン一覧</h2>
-          <div class="serch">
-            <p><a href="#" id="get-position" >周辺から探す</a></p>
-            <% location = 100 %>
-            <p class="location-result true hidden">現在地：<span id="latitude"></span><br><span id="longitude"></span> 付近</p>
-            <p class="location-result false hidden">現在地情報を利用できません。</p>
-          </div>
           <% @restaurants.each do |restaurant| %>
             <div class="top-restaurant">
               <%#= attachment_image_tag :restaurant_image %>
@@ -58,6 +52,13 @@
               <% end %>
             </ul>
           </div>
+        </div>
+        <div class="serch">
+          <p><a href="#" id="get-position" >周辺から探す</a></p>
+          <% location = 100 %>
+          <p class="location-result true hidden">現在地：<span id="latitude"></span><br><span id="longitude"></span><br>住所：<span id="address"></span> 付近</p>
+          <div id="map" class="location-result true hidden"></div>
+          <p class="location-result false hidden">現在地情報を利用できません。</p>
         </div>
       </div>
     </div>
