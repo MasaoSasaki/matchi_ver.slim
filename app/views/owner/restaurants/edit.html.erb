@@ -1,11 +1,11 @@
-<%= form_with model: @restaurant, url: owner_restaurant_path, method: :patch do |f| %>
-  <div class="contents restaurant-edit">
-    <section class="restaurant-info-edit">
+<div class="restaurant-edit">
+  <%= form_with model: @restaurant, url: owner_restaurant_path, method: :patch, local: :true do |f| %>
+    <section class="contents restaurant-info-edit">
       <div class="restaurant-img">
         <%#= f.label :restaurant_image %>
         <%#= f.attachment_field :restaurant_image %>
       </div>
-      <div　class="restaurant-name">
+      <div class="restaurant-name">
         <%= f.label :name, value: '店舗名', class: 'restaurant-show-h1' %>
         <%= f.text_field :name %>
       </div>
@@ -51,7 +51,7 @@
         <%= f.text_area :completion_message %>
       </div>
       <div class="submit"><%= f.submit '更新' %></div>
+      <div><%= link_to '店舗情報に戻る', owner_restaurant_path(@restaurant) %></div>
     </section>
-    <div><%= link_to '店舗情報に戻る', owner_restaurant_path(@restaurant) %></div>
-  </div>
-<% end %>
+  <% end %>
+</div>
