@@ -21,6 +21,10 @@
   list-style: none;
 }
 
+body {
+  // padding: 0 70px;
+}
+
 ul {
   padding: 0;
 }
@@ -64,7 +68,10 @@ header li {
 }
 
 header {
-  max-width: 1024px;
+  border-bottom: solid 1px #ccc;
+}
+
+.header-container {
   padding: 0 70px;
   line-height: 70px;
   margin: 0 auto;
@@ -83,9 +90,13 @@ header {
 }
 
 // body
-.container {
+// .body-container {
+//   padding: 70px;
+// }
+
+.contents {
   margin: 0 auto;
-  padding: 0 50px;
+  max-width: 900px;
   min-height: 650px;
 }
 
@@ -98,8 +109,11 @@ header {
   height: 300px;
 }
 
+.top-main {
+  padding: 0 70px;
+}
+
 .top-contents {
-  padding: 10px;
   flex: 1;
 }
 
@@ -256,7 +270,7 @@ header {
 footer {
   line-height: 70px;
   text-align: center;
-  border-top: 1px solid black;
+  border-top: 1px solid #ccc;
 }
 
 // タブレット端末用
@@ -271,14 +285,14 @@ footer {
 // スマホ用
 @media (max-width: 600px) {
 
-  header {
+  .header-container {
     width: auto;
     padding: 0 30px;
     line-height: 70px;
     margin: 0 auto;
   }
 
-  .container {
+  .body-container {
     padding: 0 20px;
   }
 
