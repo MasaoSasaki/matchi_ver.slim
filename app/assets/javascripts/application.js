@@ -29,9 +29,19 @@ $(function() {
         $("#longitude").text('経度' + longitude)
 
         $(function() {
-          new google.maps.Map(document.getElementById("map"), {
-            center: {lat: latitude, lng: longitude},
+          map = new google.maps.Map(document.getElementById("map"), {
+          center: {lat: latitude, lng: longitude},
             zoom: 15
+          });
+          marker = new google.maps.Marker({
+            position: new google.maps.LatLng(latitude, longitude),
+            map: map
+          });
+          infoWindow = new google.maps.InfoWindow({
+            content: "現在地付近"
+          });
+          marker.addListener("click", function(){
+            infoWindow.open(map, marker);
           });
         });
       });
