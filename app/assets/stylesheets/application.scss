@@ -58,6 +58,11 @@ td, th {
   text-decoration: underline;
 }
 
+header {
+  border-bottom: solid 1px #ccc;
+  margin-bottom: 20px;
+}
+
 header ul {
   display: flex;
 }
@@ -66,9 +71,6 @@ header li {
   margin: 0 10px;
 }
 
-header {
-  border-bottom: solid 1px #ccc;
-}
 
 .header-container {
   padding: 0 70px;

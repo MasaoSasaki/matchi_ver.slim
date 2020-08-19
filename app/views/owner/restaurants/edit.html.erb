@@ -19,7 +19,10 @@
             <%= f.label :phone_number, value: '電話番号' %>
             <%= f.text_field :phone_number %>
           </li>
-          <li>メールアドレスの変更は</li>
+          <li>
+            <%= f.label :email, value: 'メールアドレス' %>
+            <%= f.text_field :email, placeholder: '必須' %>
+          </li>
         </ul>
       </div>
       <div class="corporate-site">
@@ -27,6 +30,7 @@
         <%= f.text_field :corporate %>
       </div>
       <div class="sns">
+        <h3>SNS</h3>
         <ul>
           <li class="twitter">
             <%= f.label :twitter %>
@@ -43,8 +47,8 @@
         </ul>
       </div>
       <div class="introduction">
-        <%= f.label :introduction, value: '店舗紹介' %>
-        <%= f.text_area :introduction %>
+        <h3>店舗紹介</h3>
+        <%= f.text_area :introduction, size: '50x10' %>
       </div>
       <div class="completion-message">
         <%= f.label :completion_message, value: '予約完了時のメッセージ' %>
