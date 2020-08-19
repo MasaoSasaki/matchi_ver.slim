@@ -1,6 +1,8 @@
 class Owner::RestaurantsController < Owner::Base
   def show
     @restaurant = Restaurant.find(params[:id])
+    current_menu = Menu.where(restaurant_id: params[:id])
+    @reservations_count = Reservation.where(menu_id: current_menu).count
   end
 
   def edit
