@@ -6,7 +6,7 @@
     <div class="flex">
       <div class="top-contents">
         <ul class="flex top-nav">
-          <%= link_to public_about_path do %>
+          <%= link_to about_path do %>
             <li>サービス紹介</li>
           <% end %>
           <%= link_to do %>
@@ -46,7 +46,7 @@
             <ul>
               <% @menus.each do |menu| %>
                 <li>
-                  <%= menu.title %></p>
+                  <%= link_to "#{menu.title}", public_menu_path(menu) %></p>
                   <%#= attachment_image_tag :menu_image %>
                 </li>
               <% end %>
