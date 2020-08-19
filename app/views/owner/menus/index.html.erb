@@ -1,5 +1,6 @@
 <div class="contents menus-index">
   <h1>Menus</h1>
+  <div class="menus-create"><%= link_to 'メニュー作成', new_owner_restaurant_menu_path(@current_restaurant), class: 'btn' %></div>
   <table>
     <thead>
       <tr>
@@ -15,7 +16,7 @@
         <tr>
           <td><%= menu.id %></td>
           <td><%#= attachment_image_tag :menu_image %></td>
-          <td><%= link_to "#{menu.title}", owner_restaurant_menu_path(current_owner_restaurant, menu) %></td>
+          <td><%= link_to "#{menu.title}", owner_restaurant_menu_path(@current_restaurant, menu) %></td>
           <td><%= menu.reservation_method %></td>
           <td>
             <% if menu.is_sale_frag == true %>

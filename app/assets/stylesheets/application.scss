@@ -25,6 +25,10 @@ ul {
   padding: 0;
 }
 
+td, th {
+  padding: 15px;
+}
+
 .btn {
   font-weight: bold;
   text-decoration: none;
@@ -89,6 +93,11 @@ header {
   padding: 0 70px;
   max-width: 900px;
   min-height: 650px;
+}
+
+// owner/menus
+.menus-create {
+  text-align: right;
 }
 
 //public/homes
@@ -263,10 +272,12 @@ header {
 
 // footer
 footer {
+  margin-top: 20px;
   line-height: 70px;
   text-align: center;
   border-top: 1px solid #ccc;
 }
+
 
 // タブレット端末用
 @media (max-width: 850px) {
