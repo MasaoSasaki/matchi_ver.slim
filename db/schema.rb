@@ -76,7 +76,7 @@ ActiveRecord::Schema.define(version: 2020_08_20_075244) do
     t.text "completion_message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "prefecture"
+    t.integer "prefecture_code"
     t.string "city"
     t.string "street"
     t.string "building"

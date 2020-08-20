@@ -11,32 +11,32 @@
           <tr>
             <td><h3>住所</h3></td>
             <td><p><%= f.label :postal_code, value: '郵便番号(半角7桁、ハイフンなし)' %></p></td>
-            <td><%= f.text_field :postal_code, placeholder: '1234567', class: 'number-form' %><br><span class="error-message number-error"></span></td>
+            <td><%= f.number_field :postal_code, placeholder: '1234567', class: 'number-form' %><br><span class="error-message number-error"></span></td>
           </tr>
           <tr>
             <td></td>
-            <td>都道府県</td>
-            <td></td>
+            <td><p><%= f.label :prefecture_code, value: '都道府県' %></p></td>
+            <td><%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name %></td>
           </tr>
           <tr>
             <td></td>
-            <td>市区町村</td>
-            <td></td>
+            <td><p><%= f.label :city, value: '市区町村' %></p></td>
+            <td><%= f.text_field :city %></td>
           </tr>
           <tr>
             <td></td>
-            <td>番地</td>
-            <td></td>
+            <td><p><%= f.label :street, value: '番地' %></p></td>
+            <td><%= f.text_field :street %></td>
           </tr>
           <tr>
             <td></td>
-            <td>建物名</td>
-            <td></td>
+            <td><p><%= f.label :building, value: '建物名' %></p></td>
+            <td><%= f.text_field :building %></td>
           </tr>
           <tr>
             <td><h3><span>連絡先</span></h3></td>
             <td><p><%= f.label :phone_number, value: '電話番号(半角数字、ハイフンなし)' %></p></td>
-            <td><%= f.text_field :phone_number, class: 'number-form' %><br><span class="error-message number-form"></span></td>
+            <td><%= f.number_field :phone_number, class: 'number-form', placeholder: '123456789012' %><br><span class="error-message number-form"></span></td>
           </tr>
           <tr>
             <td><h3>ホームページURL</h3></td>
