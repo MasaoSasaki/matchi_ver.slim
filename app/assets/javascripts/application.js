@@ -59,12 +59,14 @@ $(function() {
   });
 });
 
+// 入力された数値の自動半角化
 $(function() {
   $(".number-form").change(function() {
     let number = $(this).val();
     number = number.replace( /[０-９]/g, function(s) {
       return String.fromCharCode(s.charCodeAt(0) - 65248);
     });
+    // 入力値が無効の場合の処理
     $(this).val(number);
     if (isNaN(number)) {
       $(this).parent().children('span').text("正しい数値が入力されていません。")

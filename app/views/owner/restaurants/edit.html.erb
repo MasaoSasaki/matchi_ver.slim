@@ -1,6 +1,6 @@
 <div class="restaurant-edit">
-    <section class="contents restaurant-edit">
-  <%= form_with model: @restaurant, url: owner_restaurant_path, method: :patch, local: :true do |f| %>
+  <section class="contents restaurant-edit">
+    <%= form_with model: @restaurant, url: owner_restaurant_path, method: :patch, local: :true do |f| %>
       <table class="restaurant-edit-form">
         <tbody>
           <tr>
@@ -77,6 +77,6 @@
       </table>
       <div class="submit"><%= f.submit '情報を更新する', id: 'restaurant-update', class: 'btn' %></div>
       <div><%= link_to '店舗情報に戻る', owner_restaurant_path(@restaurant) %></div>
-  <% end %>
-    </section>
+    <% end %>
+  </section>
 </div>
