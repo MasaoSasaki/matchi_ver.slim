@@ -10,7 +10,7 @@ class Restaurant < ApplicationRecord
   # attachment :restaurant_image
 
   include JpPrefecture
-  jp_prefecture :prefecture_code
+  jp_prefecture :prefecture, method_name: :pref
 
   def prefecture_name
     JpPrefecture::Prefecture.find(code: prefecture_id).try(:name)

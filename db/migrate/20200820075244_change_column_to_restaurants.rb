@@ -2,7 +2,7 @@ class ChangeColumnToRestaurants < ActiveRecord::Migration[5.2]
 
   def up
     # 住所の詳細カラムを追加
-    add_column :restaurants, :prefecture_code, :integer
+    add_column :restaurants, :prefecture, :string
     add_column :restaurants, :city, :string
     add_column :restaurants, :street, :string
     add_column :restaurants, :building, :string
@@ -12,7 +12,7 @@ class ChangeColumnToRestaurants < ActiveRecord::Migration[5.2]
   end
 
   def down
-    remove_column :restaurants, :prefecture_code
+    remove_column :restaurants, :prefecture
     remove_column :restaurants, :city
     remove_column :restaurants, :street
     remove_column :restaurants, :building

@@ -33,22 +33,24 @@
               <% url = request.fullpath %>
               <%# urlに'owner'があれば店舗用ヘッダー %>
               <% if url.include?('owner') %>
-                <li><%= link_to '一般会員ログイン', new_public_user_session_path %></li>
-                <% if owner_restaurant_signed_in? %>
-                  <li><%= link_to '店舗ログアウト', destroy_owner_restaurant_session_path, method: :delete %></li>
-                <% end %>
                 <% if master_admin_signed_in? %>
                   <li><%= link_to '管理者トップ', new_master_admin_session_path %></li>
+                  <li><%= link_to '管理者ログアウト', destroy_master_admin_session_path, method: :delete %></li>
                 <% end %>
+                <% if owner_restaurant_signed_in? %>
+                  <li><%= link_to '店舗トップ', owner_restaurant_path(current_owner_restaurant) %></li>
+                  <li><%= link_to '店舗ログアウト', destroy_owner_restaurant_session_path, method: :delete %></li>
+                <% end %>
+                <li><%= link_to '一般会員ログイン', new_public_user_session_path %></li>
 
               <%# urlに'master'があれば管理者用ヘッダー %>
               <% elsif url.include?('master') %>
-                <li><%= link_to '一般会員ログイン', new_public_user_session_path %></li>
-                <li><%= link_to '店舗ログイン', new_owner_restaurant_session_path %></li>
                 <% if master_admin_signed_in? %>
                   <li><%= link_to '店舗新規登録', new_owner_restaurant_registration_path %></li>
                   <li><%= link_to '管理者ログアウト', destroy_master_admin_session_path, method: :delete %></li>
                 <% end %>
+                <li><%= link_to '店舗ログイン', new_owner_restaurant_session_path %></li>
+                <li><%= link_to '一般会員ログイン', new_public_user_session_path %></li>
 
               <%# 上記以外なら一般ユーザー用ヘッダー %>
               <% else %>

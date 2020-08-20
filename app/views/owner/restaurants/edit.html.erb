@@ -15,8 +15,8 @@
           </tr>
           <tr>
             <td></td>
-            <td><p><%= f.label :prefecture_code, value: '都道府県' %></p></td>
-            <td><%= f.collection_select :prefecture_code, JpPrefecture::Prefecture.all, :code, :name %></td>
+            <td><p><%= f.label :prefecture, value: '都道府県' %></p></td>
+            <td><%= f.collection_select :prefecture, JpPrefecture::Prefecture.all, :name, :name, include_blank: true %></td>
           </tr>
           <tr>
             <td></td>
@@ -37,6 +37,11 @@
             <td><h3><span>連絡先</span></h3></td>
             <td><p><%= f.label :phone_number, value: '電話番号(半角数字、ハイフンなし)' %></p></td>
             <td><%= f.number_field :phone_number, class: 'number-form', placeholder: '123456789012' %><br><span class="error-message number-form"></span></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><p><%= f.label :email, value: 'メールアドレス' %></p></td>
+            <td><%= f.text_field :email, placeholder: 'example.com' %></td>
           </tr>
           <tr>
             <td><h3>ホームページURL</h3></td>

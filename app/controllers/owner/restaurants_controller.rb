@@ -18,8 +18,10 @@ class Owner::RestaurantsController < Owner::Base
   private
   def restaurant_params
     params.require(:restaurant).permit(
-      :name, :restaurant_image, :introduction, :postal_code, :address, :phone_number,
-      :corpolate, :twitter, :facebook, :instagram, :completion_message
+      :name, :restaurant_image, :introduction,
+      :postal_code, :prefecture, :city, :street, :building,
+      :phone_number, :email, :corpolate,
+      :twitter, :facebook, :instagram, :completion_message
     )
   end
 
