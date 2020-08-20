@@ -74,6 +74,7 @@ gem 'jquery-rails'
 gem 'pry-rails'
 gem 'rubocop'
 gem 'rubocop-rails'
+gem 'gon'
 
 gem 'dotenv-rails'
 group :production do
