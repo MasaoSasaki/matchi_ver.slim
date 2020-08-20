@@ -17,7 +17,7 @@ class Restaurant < ApplicationRecord
   end
 
   def prefecture_name=(prefecture_name)
-    self.prefecture_id = JpPrefecture::Prefecture.find(name: prefecture_name).code
+    self.prefecture_id = JpPrefecture::Prefecture.find(name: prefecture).code
   end
 
 end

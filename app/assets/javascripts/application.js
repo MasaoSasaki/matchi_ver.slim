@@ -48,7 +48,7 @@ $(function() {
           const restaurants = gon.restaurants;
           $(function(){
             for (let i = 0; i < restaurants.length; i++) {
-              console.log(restaurants[i].name)
+              console.log(restaurants[i].prefecture, restaurants[i].city)
             }
           });
         });

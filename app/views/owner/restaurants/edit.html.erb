@@ -11,12 +11,12 @@
           <tr>
             <td><h3>住所</h3></td>
             <td><p><%= f.label :postal_code, value: '郵便番号(半角7桁、ハイフンなし)' %></p></td>
-            <td><%= f.number_field :postal_code, placeholder: '1234567', class: 'number-form' %><br><span class="error-message number-error"></span></td>
+            <td><%= f.number_field :postal_code, placeholder: '1234567' %></td>
           </tr>
           <tr>
             <td></td>
             <td><p><%= f.label :prefecture, value: '都道府県' %></p></td>
-            <td><%= f.collection_select :prefecture, JpPrefecture::Prefecture.all, :name, :name, include_blank: true %></td>
+            <td><%= f.collection_select :prefecture, JpPrefecture::Prefecture.all, :name, :name, include_blank: '都道府県', id: "address_prefecture" %></td>
           </tr>
           <tr>
             <td></td>
@@ -36,7 +36,7 @@
           <tr>
             <td><h3><span>連絡先</span></h3></td>
             <td><p><%= f.label :phone_number, value: '電話番号(半角数字、ハイフンなし)' %></p></td>
-            <td><%= f.number_field :phone_number, class: 'number-form', placeholder: '123456789012' %><br><span class="error-message number-form"></span></td>
+            <td><%= f.number_field :phone_number, placeholder: '123456789012' %></td>
           </tr>
           <tr>
             <td></td>

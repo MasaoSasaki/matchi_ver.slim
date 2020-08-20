@@ -26,7 +26,7 @@
             <div class="top-restaurant">
               <%#= attachment_image_tag :restaurant_image %>
               <h3><%= link_to "#{restaurant.name}", public_restaurant_path(restaurant) %></h3>
-              <p><%= restaurant.address %></p>
+              <p><%= restaurant.prefecture + restaurant.city %></p>
             </div>
           <% end %>
         </div>
