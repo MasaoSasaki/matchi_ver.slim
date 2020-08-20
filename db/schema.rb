@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 2020_08_20_075244) do
     t.string "menu_image"
     t.text "content"
     t.text "cancel"
-    t.integer "regular_plice"
-    t.integer "discount_plice"
+    t.integer "regular_price"
+    t.integer "discount_price"
     t.integer "reservation_method", default: 0
     t.boolean "is_sale_frag", default: true
     t.datetime "created_at", null: false
