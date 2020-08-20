@@ -13,6 +13,7 @@
 //= require rails-ujs
 //= require activestorage
 //= require jquery
+//= require jquery.jpostal
 //= require_tree .
 
 //緯度経度から住所を取得
@@ -56,4 +57,17 @@ $(function() {
       $(".location-result" + ".false").removeClass("hidden");
     }
   });
+});
+
+$(function() {
+  $(".number-form").change(function() {
+    let number = $(this).val();
+    number = number.replace( /[０-９]/g, function(s) {
+      return String.fromCharCode(s.charCodeAt(0) - 65248);
+    });
+    $(this).val(number);
+    if (isNaN(number)) {
+      $(this).parent().children('span').text("正しい数値が入力されていません。")
+    }
+  }).change();
 });

@@ -17,7 +17,7 @@
 //共通
 * {
   margin: 0;
-  color: #444;
+  color: #555;
   list-style: none;
 }
 
@@ -31,11 +31,15 @@ td, th {
 
 .btn {
   font-weight: bold;
+  font-size: 1em;
   text-decoration: none;
   display: inline-block;
-  padding: 0.4em;
-  border: solid 1px black;
+  padding: 0.5em 0.7em;
+  border: solid 1px #ccc;
   border-radius: 5px;
+}
+.btn:hover {
+  cursor: pointer;
 }
 
 .flex {
@@ -50,9 +54,6 @@ td, th {
   display: none;
 }
 
-#get-position:hover {
-  cursor: pointer;
-}
 
 .under-line {
   text-decoration: underline;
@@ -71,6 +72,9 @@ header li {
   margin: 0 10px;
 }
 
+.error-message {
+  color: red;
+}
 
 .header-container {
   padding: 0 70px;
@@ -95,6 +99,11 @@ header li {
   padding: 0 70px;
   max-width: 900px;
   min-height: 650px;
+}
+
+// owner/restauranrs
+.restaurant-edit .submit {
+  text-align: center;
 }
 
 // owner/menus
@@ -167,6 +176,10 @@ header li {
   font-weight: bold;
   text-align: center;
   border-bottom: 1px solid #dddddd;
+}
+
+#get-position:hover {
+  cursor: pointer;
 }
 
 #map {
