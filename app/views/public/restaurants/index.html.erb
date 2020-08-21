@@ -4,9 +4,9 @@
     <div class="restaurant-image"></div>
     <% @restaurants.each do |restaurant| %>
       <div class="restaurant-contents">
-        <p><%= restaurant.name %></p>
-        <p><%= restaurant.address %></p>
-        <p><%= link_to 'メニュー一覧', public_restaurant_menus_path(restaurant) %></p>
+        <p><%= link_to "#{restaurant.name}", public_restaurant_path(restaurant) %></p>
+        <p><%= restaurant.prefecture %></p>
+        <p><%= link_to 'メニュー一覧', public_menus_path(restaurant) %></p>
       </div>
     <% end %>
   </div>

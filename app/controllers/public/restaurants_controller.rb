@@ -1,9 +1,8 @@
 class Public::RestaurantsController < Public::Base
 
-  @@location = 0
-
   def index
     @restaurants = Restaurant.all
+    @restaurants_address = Restaurant
   end
 
   def show
@@ -11,7 +10,6 @@ class Public::RestaurantsController < Public::Base
   end
 
   def get_location
-    @@location = 100
     redirect_to :back
   end
 
