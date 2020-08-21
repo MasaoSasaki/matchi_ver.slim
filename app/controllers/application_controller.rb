@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  before_action :configure_user_permitted_parameters, if: :devise_controller?
 
   before_action :configure_user_permitted_parameters, if: :devise_controller?
   # before_action :basic_auth

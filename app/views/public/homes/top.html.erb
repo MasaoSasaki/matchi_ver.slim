@@ -31,7 +31,7 @@
             </div>
             <div class="restaurant-info">
               <h3><%= link_to "#{restaurant.name}", public_restaurant_path(restaurant) %></h3>
-              <p><%= restaurant.prefecture + restaurant.city %></p>
+              <p><%= "#{restaurant.prefecture}" + "#{restaurant.city}" %></p>
             </div>
           </div>
         <% end %>
