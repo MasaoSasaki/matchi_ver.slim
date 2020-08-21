@@ -18,7 +18,7 @@
             </tr>
             <tr>
               <td><%= f.label :reservation_method, value: '予約方法' %></td>
-              <td><%= f.select :reservation_method, [['予約のみ', 0], ['予約可', 1], ['予約不可', 2]] %></td>
+              <td><%= f.select :reservation_method, Menu.reservation_methods.keys.map {|method| [method]} %></td>
             </tr>
             <tr>
               <td><%= f.label :is_sale_flag, value: '販売ステータス' %></td>
@@ -33,11 +33,11 @@
     </section>
     <section class="menu-form-content">
       <p><%= f.label :content, value: '内容' %></p>
-      <%= f.text_area :content %>
+      <%= f.text_area :content, size: '50x10' %>
     </section>
     <section class="menu-form-cancel">
       <p><%= f.label :cancel, value: 'キャンセル規定' %></p>
-      <%= f.text_area :cancel %>
+      <%= f.text_area :cancel, size: '50x10' %>
     </section>
     <div class="submit"><%= f.submit "#{submit}", class: 'btn' %></div>
   <% end %>

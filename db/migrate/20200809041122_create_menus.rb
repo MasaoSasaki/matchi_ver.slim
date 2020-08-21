@@ -6,8 +6,8 @@ class CreateMenus < ActiveRecord::Migration[5.2]
       t.string :menu_image
       t.text :content, null: :false
       t.text :cancel, null: :false
-      t.integer :regular_plice, null: :false
-      t.integer :discount_plice, null: :false
+      t.integer :regular_price, null: :false
+      t.integer :discount_price, null: :false
       t.integer :reservation_method, null: :false, default: 0
       t.boolean :is_sale_frag, null: :false, default: true
 

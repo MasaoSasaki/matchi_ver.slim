@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_08_11_110558) do
+ActiveRecord::Schema.define(version: 2020_08_20_075244) do
 
   create_table "admins", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(version: 2020_08_11_110558) do
     t.string "menu_image"
     t.text "content"
     t.text "cancel"
-    t.integer "regular_plice"
-    t.integer "discount_plice"
+    t.integer "regular_price"
+    t.integer "discount_price"
     t.integer "reservation_method", default: 0
     t.boolean "is_sale_frag", default: true
     t.datetime "created_at", null: false
@@ -68,7 +68,6 @@ ActiveRecord::Schema.define(version: 2020_08_11_110558) do
     t.string "restaurant_image"
     t.text "introduction"
     t.string "postal_code", default: "", null: false
-    t.string "address", default: "", null: false
     t.string "phone_number", default: "", null: false
     t.string "corporate"
     t.string "twitter"
@@ -77,6 +76,10 @@ ActiveRecord::Schema.define(version: 2020_08_11_110558) do
     t.text "completion_message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "prefecture"
+    t.string "city"
+    t.string "street"
+    t.string "building"
     t.index ["email"], name: "index_restaurants_on_email", unique: true
     t.index ["reset_password_token"], name: "index_restaurants_on_reset_password_token", unique: true
   end

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
-  get '/' => 'public/homes#top'
+  get '/' => 'public/homes#top', as: 'root'
+  get 'about' => 'public/homes#about'
 
   namespace :master do
     devise_for :admins, controllers: {
@@ -30,8 +31,7 @@ Rails.application.routes.draw do
       registrations: 'public/users/registrations',
       passwords: 'public/users/passwords'
     }
-    get '/' => 'homes#top'
-    get 'about' => 'homes#about'
+    # get '/' => 'homes#top'
     resources :users do
       resources :bookmarks
       get 'reservations/confirm' => 'reservations#confirm'

@@ -2,70 +2,90 @@
 <html lang="ja">
   <head>
     <title>Matchi</title>
+    <script src="//maps.google.com/maps/api/js?key=AIzaSyA8ks-KyO23ez_qnkC6Kn5b0QSKZbFudnE"></script>
+    <%= include_gon %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-103585894-15"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'UA-103585894-15');
+    </script>
   </head>
 
   <header>
-    <div class="flex header">
-      <%= link_to public_path do %>
-        <div class="logo-image"></div>
-      <% end %>
-      <div class="header-nav">
-        <nav>
-          <ul class="header-ul">
-            <% url = request.fullpath %>
-            <%# urlに'owner'があれば店舗用ヘッダー %>
-            <% if url.include?('owner') %>
-              <li><%= link_to '一般会員ログイン', new_public_user_session_path %></li>
-              <% if owner_restaurant_signed_in? %>
-                <li><%= link_to 'ログアウト', destroy_owner_restaurant_session_path, method: :delete %></li>
-              <% else %>
+    <div class="header-container">
+      <div class="flex header">
+        <%= link_to root_path do %>
+          <div class="logo-image"></div>
+        <% end %>
+        <div class="header-nav">
+          <nav>
+            <ul class="header-ul">
+              <% url = request.fullpath %>
+              <%# urlに'owner'があれば店舗用ヘッダー %>
+              <% if url.include?('owner') %>
+                <% if master_admin_signed_in? %>
+                  <li><%= link_to '管理者トップ', new_master_admin_session_path %></li>
+                  <li><%= link_to '管理者ログアウト', destroy_master_admin_session_path, method: :delete %></li>
+                <% end %>
+                <% if owner_restaurant_signed_in? %>
+                  <li><%= link_to '店舗トップ', owner_restaurant_path(current_owner_restaurant) %></li>
+                  <li><%= link_to '店舗ログアウト', destroy_owner_restaurant_session_path, method: :delete %></li>
+                <% end %>
+                <li><%= link_to '一般会員ログイン', new_public_user_session_path %></li>
+
+              <%# urlに'master'があれば管理者用ヘッダー %>
+              <% elsif url.include?('master') %>
+                <% if master_admin_signed_in? %>
+                  <li><%= link_to '店舗新規登録', new_owner_restaurant_registration_path %></li>
+                  <li><%= link_to '管理者ログアウト', destroy_master_admin_session_path, method: :delete %></li>
+                <% end %>
                 <li><%= link_to '店舗ログイン', new_owner_restaurant_session_path %></li>
-              <% end %>
-              <% if master_admin_signed_in? %>
-                <li><%= link_to '管理者トップ', new_master_admin_session_path %></li>
-              <% end %>
+                <li><%= link_to '一般会員ログイン', new_public_user_session_path %></li>
 
-            <%# urlに'master'があれば管理者用ヘッダー %>
-            <% elsif url.include?('master') %>
-              <li><%= link_to '一般会員ログイン', new_public_user_session_path %></li>
-              <li><%= link_to '店舗ログイン', new_owner_restaurant_session_path %></li>
-              <% if master_admin_signed_in? %>
-                <li><%= link_to '店舗新規登録', new_owner_restaurant_registration_path %></li>
-                <li><%= link_to 'ログアウト', destroy_master_admin_session_path, method: :delete %></li>
-              <% end %>
-
-            <%# 上記以外なら一般ユーザー用ヘッダー %>
-            <% else %>
-              <% if master_admin_signed_in? %>
-                <li><%= link_to '管理者トップ', new_master_admin_session_path %></li>
-              <% end %>
-              <% if public_user_signed_in? %>
-                <li><%= link_to 'MyPage', public_user_path(current_public_user) %></li>
-                <li><%= link_to 'ログアウト', destroy_public_user_session_path, method: :delete %></li>
+              <%# 上記以外なら一般ユーザー用ヘッダー %>
               <% else %>
-                <li><%= link_to 'ログイン', new_public_user_session_path %></li>
+                <% if master_admin_signed_in? %>
+                  <li><%= link_to '管理者トップ', new_master_admin_session_path %></li>
+                  <li><%= link_to '管理者ログアウト', destroy_master_admin_session_path, method: :delete %></li>
+                <% end %>
+                <% if owner_restaurant_signed_in? %>
+                  <li><%= link_to '店舗TOP', owner_restaurant_path(current_owner_restaurant) %></li>
+                  <li><%= link_to '店舗ログアウト', destroy_owner_restaurant_session_path, method: :delete %></li>
+                <% end %>
+                <% if public_user_signed_in? %>
+                  <li><%= link_to 'MyPage', public_user_path(current_public_user) %></li>
+                  <li><%= link_to 'ログアウト', destroy_public_user_session_path, method: :delete %></li>
+                <% else %>
+                  <li><%= link_to 'ログイン', new_public_user_session_path %></li>
+                <% end %>
               <% end %>
-            <% end %>
-          </ul>
-        </nav>
+            </ul>
+          </nav>
+        </div>
       </div>
     </div>
   </header>
 
   <body>
-    <div class="container">
+    <div class="body-container">
       <%= yield %>
     </div>
   </body>
 
   <footer>
-    <small>©︎MasaoSasaki</small>
+    <div class="footer-container">
+      <small>©︎MasaoSasaki</small>
+    </div>
   </footer>
 
 </html>

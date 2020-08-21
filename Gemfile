@@ -74,6 +74,8 @@ gem 'jquery-rails'
 gem 'pry-rails'
 gem 'rubocop'
 gem 'rubocop-rails'
+gem 'gon'
+gem 'jp_prefecture', '~> 0.10.0'
 
 gem 'dotenv-rails'
 group :production do
