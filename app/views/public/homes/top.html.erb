@@ -1,3 +1,4 @@
+<%= hidden_field_tag :restaurants_json, value: "#{@restaurants_json}" %>
 <div class="top">
   <section calss="top-header">
     <div class="header-image"></div>
@@ -25,7 +26,7 @@
             <div class="top-restaurant">
               <%#= attachment_image_tag :restaurant_image %>
               <h3><%= link_to "#{restaurant.name}", public_restaurant_path(restaurant) %></h3>
-              <p><%= restaurant.address %></p>
+              <p><%= restaurant.prefecture + restaurant.city %></p>
             </div>
           <% end %>
         </div>
@@ -55,7 +56,6 @@
         </div>
         <div class="serch">
           <p><a href="#" id="get-position" >周辺から探す</a></p>
-          <% location = 100 %>
           <p class="location-result true hidden">現在地：<span id="latitude"></span><br><span id="longitude"></span><br>住所：<span id="address"></span> 付近</p>
           <div id="map" class="location-result true hidden"></div>
           <p class="location-result false hidden">現在地情報を利用できません。</p>
