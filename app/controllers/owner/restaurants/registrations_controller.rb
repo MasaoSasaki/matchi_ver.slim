@@ -38,6 +38,16 @@ class Owner::Restaurants::RegistrationsController < Devise::RegistrationsControl
   #   super
   # end
 
+  # アカウント登録後
+  def after_sign_up_path_for(resource)
+    owner_restaurant_path(resource)
+  end
+
+  #アカウント編集後
+  def after_update_path_for(resource)
+    owner_restaurant_path(resource)
+  end
+
   # protected
 
   # If you have extra params to permit, append them to the sanitizer.
