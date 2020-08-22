@@ -24,8 +24,8 @@ $(function() {
       $(".location-result" + ".true").removeClass("hidden");
       navigator.geolocation.getCurrentPosition(function(position) {
 
-        const currentLat = position.coords.latitude;
-        const currentLng = position.coords.longitude;
+        var currentLat = position.coords.latitude;
+        var currentLng = position.coords.longitude;
         $("#latitude").text('緯度' + currentLat)
         $("#longitude").text('経度' + currentLng)
 
