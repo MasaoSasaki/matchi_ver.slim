@@ -54,7 +54,6 @@ td, th {
   display: none;
 }
 
-
 .under-line {
   text-decoration: underline;
 }
@@ -82,7 +81,7 @@ header li {
   margin: 0 auto;
 }
 
-.header {
+.pc-header {
   justify-content: space-between;
 }
 
@@ -94,14 +93,21 @@ header li {
   height: 70px;
 }
 
+.hamburger {
+  display: none;
+}
+
+.body-container {
+  min-height: 650px;
+}
+
 .contents {
   margin: 0 auto;
   padding: 0 70px;
   max-width: 900px;
-  min-height: 650px;
 }
 
-// owner/restauranrs
+// owner/restaurants
 .restaurant-edit .submit {
   text-align: center;
 }
@@ -149,7 +155,7 @@ header li {
 }
 
 .top-side > div {
-  margin-bottom: 25px;
+  margin-top: 20px;
   padding: 20px;
   background-color: #eeffff;
 }
@@ -169,7 +175,7 @@ header li {
   margin-top: 10px;
 }
 
-.new-menus {
+.new-menus-list {
   width: 160px;
   margin: 0 auto;
   font-size: 0.9em;
@@ -178,12 +184,19 @@ header li {
   border-bottom: 1px solid #dddddd;
 }
 
+#get-position {
+  width: 100px;
+  text-align: center;
+  margin: 0 auto;
+}
+
 #get-position:hover {
   cursor: pointer;
 }
 
 #map {
   height: 400px;
+  margin-top: 10px;
 }
 
 //public/About
@@ -287,17 +300,33 @@ header li {
 
 // footer
 footer {
-  margin-top: 20px;
-  line-height: 70px;
-  text-align: center;
+  padding-top: 20px;
+  margin: 20px 0;
   border-top: 1px solid #ccc;
 }
 
+.copyright {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.footer-container {
+  justify-content: space-around;
+}
+
+.footer-links li {
+  font-size: 0.8em;
+}
 
 // タブレット端末用
 @media (max-width: 850px) {
 
-  .top-side {
+}
+
+// PC・タブレット共通
+@media (min-width: 601px) {
+
+  .sp-header {
     display: none;
   }
 
@@ -308,9 +337,29 @@ footer {
 
   .header-container {
     width: auto;
-    padding: 0 30px;
-    line-height: 70px;
+    padding: 0 20px;
+    min-height: 70px;
     margin: 0 auto;
+  }
+
+  .pc-header {
+    display: none;
+  }
+
+  .sp-header {
+    justify-content: space-around;
+  }
+
+  .bar {
+    border-bottom: solid 5px black;
+  }
+
+  .hamburger {
+    width: 50px;
+    height: 50px;
+    border-bottom: solid 1px black;
+    border-radius: 5px;
+    background: #aaa;
   }
 
   .body-container {
@@ -321,6 +370,10 @@ footer {
     height: 200px;
   }
 
+  .body-container {
+    min-height: 500px;
+  }
+
   .contents {
     margin: 0 auto;
     padding: 0 20px;
@@ -328,15 +381,17 @@ footer {
     height: 100%;
   }
 
-  .top-nav a {
-    padding: 0.6em 0;
-  }
-
-  .top-nav a:nth-child(4) {
-    display: none;
+  .top-main {
+    padding: 0;
   }
 
   .top-side {
+    width: 100%;
+    margin-top: 20px;
+    padding: 0;
+  }
+
+  .top-nav, .simple-mypage, .new-registration, .new-menus {
     display: none;
   }
 

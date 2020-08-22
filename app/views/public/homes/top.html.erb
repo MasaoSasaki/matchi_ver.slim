@@ -1,12 +1,15 @@
 <%= hidden_field_tag :restaurants_json, value: "#{@restaurants_json}" %>
+
 <div class="top">
   <section calss="top-header">
     <div class="header-image"></div>
   </section>
   <section class="top-main">
     <div class="flex">
+
+    <%# メインコンテンツ %>
       <div class="top-contents">
-        <ul class="flex top-nav">
+        <ul class="flex top-nav" >
           <%= link_to about_path do %>
             <li>サービス紹介</li>
           <% end %>
@@ -32,6 +35,7 @@
         </div>
       </div>
 
+      <%# サイドバー %>
       <div class="top-side">
         <% if public_user_signed_in? %>
           <div class="simple-mypage">マイページ</div>
@@ -41,8 +45,8 @@
             <p>登録済みの方は<%= link_to 'こちら', new_public_user_session_path%></p>
           </div>
         <% end %>
-        <div>
-          <p class="new-menus">最近更新されたメニュー</p>
+        <div class="new-menus">
+          <p class="new-menus-list">最近更新されたメニュー</p>
           <div>
             <ul>
               <% @menus.each do |menu| %>
@@ -54,13 +58,16 @@
             </ul>
           </div>
         </div>
-        <div class="serch">
-          <p><a href="#" id="get-position" >周辺から探す</a></p>
-          <p class="location-result true hidden">現在地：<span id="latitude"></span><br><span id="longitude"></span><br>住所：<span id="address"></span> 付近</p>
+        <div class="search">
+          <p id="get-position"><u>周辺から探す</u></p>
+          <small><span id="loading"></span></small>
+          <p class="location-result true hidden"></p>
+          <p class="location-result false hidden">現在地情報が利用できませんでした。</p>
+          <p class="location-result error hidden">レストラン情報が取得できませんでした。</p>
           <div id="map" class="location-result true hidden"></div>
-          <p class="location-result false hidden">現在地情報を利用できません。</p>
         </div>
       </div>
+
     </div>
   </section>
 </div>
