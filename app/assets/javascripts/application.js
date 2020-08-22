@@ -24,10 +24,10 @@ $(function() {
       $(".location-result" + ".true").removeClass("hidden");
       navigator.geolocation.getCurrentPosition(function(position) {
 
-        var currentLat = position.coords.latitude;
-        var currentLng = position.coords.longitude;
-        $("#latitude").text('緯度' + currentLat)
-        $("#longitude").text('経度' + currentLng)
+        const current_Lat = position.coords.latitude;
+        const current_Lng = position.coords.longitude;
+        $("#latitude").text(label_latitude + currentLat)
+        $("#longitude").text(label_longitude + currentLng)
 
         //現在地を地図上に表示
         $(function() {
