@@ -24,19 +24,19 @@ $(function() {
       $(".location-result" + ".true").removeClass("hidden");
       navigator.geolocation.getCurrentPosition(function(position) {
 
-        const current_Lat = position.coords.latitude;
-        const current_Lng = position.coords.longitude;
-        $("#latitude").text(label_latitude + currentLat)
-        $("#longitude").text(label_longitude + currentLng)
+        const CurrentLat = position.coords.latitude;
+        const CurrentLng = position.coords.longitude;
+        $("#latitude").text(label_latitude + CurrentLat)
+        $("#longitude").text(label_longitude + CurrentLng)
 
         //現在地を地図上に表示
         $(function() {
           map = new google.maps.Map(document.getElementById("map"), {
-            center: {lat: currentLat, lng: currentLng},
+            center: {lat: CurrentLat, lng: CurrentLng},
             zoom: 13
           });
           marker = new google.maps.Marker({
-            position: new google.maps.LatLng(currentLat, currentLng),
+            position: new google.maps.LatLng(CurrentLat, CurrentLng),
             map: map
           });
           infoWindow = new google.maps.InfoWindow({
