@@ -1,10 +1,12 @@
 <div class="contents user-profile">
   <small>
-    このページは店舗アカウントから閲覧可能です。<br>
+    このページは店舗アカウントからも閲覧可能です。<br>
     プロフィールに個人情報を記載される際は、十分ご注意ください。
   </small>
   <div class="flex profile-head">
-    <div class="profile-image"></div>
+    <div class="profile-image">
+      <%= attachment_image_tag @user, :profile_image, format: "jpeg", fallback: "no_image.png" %>
+    </div>
     <div class="handle-name-sns">
       <h3>HN：<%= @user.handle_name %></h3>
       <div class="user-sns">

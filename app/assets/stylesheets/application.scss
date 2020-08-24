@@ -296,6 +296,26 @@ h2 {
   grid-area: box4;
 }
 
+//public/users/profile
+.profile-head {
+  justify-content: space-between;
+}
+
+.profile-image {
+  text-align: center;
+  margin-right: 20px;
+  flex: 1;
+}
+
+.profile_image {
+  max-width: 250px;
+  padding-right: 20px;
+}
+
+.handle-name-sns {
+  flex: 1;
+}
+
 // public/restaurants
 .public-restaurants-index > h2 {
   text-align: center;
