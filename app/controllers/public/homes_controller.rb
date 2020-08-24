@@ -6,5 +6,23 @@ class Public::HomesController < Public::Base
   end
 
   def about
+
   end
+
+  def contact
+
+  end
+
+  def privacy
+
+  end
+
+  def terms
+
+  end
+
+  def admin
+    
+  end
+
 end

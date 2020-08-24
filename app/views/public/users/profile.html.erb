@@ -1,23 +1,25 @@
 <div class="contents user-profile">
   <small>
-    このページは店舗アカウントから閲覧可能です。<br>
+    このページは店舗アカウントからも閲覧可能です。<br>
     プロフィールに個人情報を記載される際は、十分ご注意ください。
   </small>
   <div class="flex profile-head">
-    <div class="profile-image"></div>
+    <div class="profile-image">
+      <%= attachment_image_tag @user, :profile_image, format: "jpeg", fallback: "no_image.png", class: 'circle' %>
+    </div>
     <div class="handle-name-sns">
       <h3>HN：<%= @user.handle_name %></h3>
       <div class="user-sns">
         <h3>SNS</h3>
         <ul class="flex">
-          <%= link_to "https://twitter.com", target: :_blank do %>
-            <li class="sns-btn"><i class="fab fa-twitter"></i><%= @user.twitter %></li>
+          <%= link_to "https://twitter.com/#{@user.twitter}", target: :_blank do %>
+            <li class="sns-btn"><i class="fab fa-twitter"></i><%=  %></li>
           <% end %>
-          <%= link_to "https://facebook.com", target: :blank do %>
-            <li class="sns-btn"><i class="fab fa-facebook-f"></i><%= @user.facebook %></li>
+          <%= link_to "https://facebook.com/profile.php?id=#{@user.facebook}", target: :blank do %>
+            <li class="sns-btn"><i class="fab fa-facebook-f"></i></li>
           <% end %>
-          <%= link_to "https://instagram.com", target: :blank do %>
-            <li class="sns-btn"><i class="fab fa-instagram"></i><%= @user.instagram %></li>
+          <%= link_to "https://instagram.com/#{@user.instagram}", target: :blank do %>
+            <li class="sns-btn"><i class="fab fa-instagram"></i></li>
           <% end %>
         </ul>
       </div>
