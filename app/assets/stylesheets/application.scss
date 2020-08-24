@@ -15,6 +15,13 @@
  */
 
 //共通
+
+:root {
+  --logo-image-width: 100px;
+  --logo-image-height: 70px;
+  --hamburger-transition: 0.3s;
+}
+
 * {
   margin: 0;
   color: #555;
@@ -58,16 +65,19 @@ td, th {
   text-decoration: underline;
 }
 
+.circle {
+  border-radius: 50%;
+}
+.hamburger:hover {
+  cursor: pointer;
+}
+
 header {
   border-bottom: solid 1px #ccc;
   margin-bottom: 20px;
 }
 
-header ul {
-  display: flex;
-}
-
-header li {
+.pc-header li {
   margin: 0 10px;
 }
 
@@ -89,13 +99,10 @@ header li {
   background-image: image-url("no_image.png");
   background-size: cover;
   background-position: center;
-  width: 100px;
-  height: 70px;
+  width: var(--logo-image-width);
+  height: var(--logo-image-height);
 }
 
-.hamburger {
-  display: none;
-}
 
 .body-container {
   min-height: 650px;
@@ -318,8 +325,47 @@ footer {
   font-size: 0.8em;
 }
 
+#move-head {
+  position: fixed;
+  bottom: 15px;
+  right: 15px;
+}
+
+.move-head {
+  width: 50px;
+  height: 50px;
+  background-color: rgba($color: #ffdd00, $alpha: 0.5);
+  border: #ffaa00;
+  text-align: center;
+  position: relative;
+}
+
+.move-head > .fa-arrow-up {
+  line-height: 50px;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.circle:hover {
+  cursor: pointer;
+}
+
+// PC端末用
+@media (min-width: 851px) {
+
+}
+
 // タブレット端末用
 @media (max-width: 850px) {
+
+  .top-side {
+    width: 100%;
+    margin-top: 20px;
+    padding: 0;
+  }
+
+  // .top-nav, .simple-mypage, .new-registration, .new-menus {
+  //   display: none;
+  // }
 
 }
 
@@ -347,19 +393,106 @@ footer {
   }
 
   .sp-header {
-    justify-content: space-around;
+    height: 70px;
+    position: relative;
   }
 
-  .bar {
-    border-bottom: solid 5px black;
+  .sp-header .logo-image {
+    width: var(--logo-image-width);
+    margin-right: 50%;
+    float: left;
+    position: absolute;
+    left: 40%;
   }
 
   .hamburger {
-    width: 50px;
-    height: 50px;
-    border-bottom: solid 1px black;
+    transition: 0.1s;
+    margin-top: 15px;
+    width: 40px;
+    height: 40px;
+    border: solid 1px #aaa;
     border-radius: 5px;
-    background: #aaa;
+    float: left;
+    position: relative;
+    text-align: center;
+    z-index: 2;
+  }
+
+  .bar {
+    width: 80%;
+    height: 3px;
+    background-color: #aaa;
+    position: absolute;
+    border-radius: 3px;
+    left: 10%;
+  }
+
+  .bar-top {
+    transition: var(--hamburger-transition);
+    top: 22%;
+  }
+  .bar-center {
+    transition: var(--hamburger-transition);
+    top: 44%;
+  }
+  .bar-bottom {
+    transition: var(--hamburger-transition);
+    top: 70%;
+  }
+  .circle .bar-top {
+    transition: var(--hamburger-transition);
+    top: 47%;
+    transform: rotate(45deg);
+  }
+  .circle .bar-center {
+    transition: var(--hamburger-transition);
+    top: 44%;
+    opacity: 0;
+  }
+  .circle .bar-bottom {
+    transition: var(--hamburger-transition);
+    transform: rotate(-45deg);
+    top: 47%;
+  }
+
+  header {
+    position: relative;
+  }
+
+  .hamburger-menu {
+    width: 60%;
+    height: 100vh;
+    background-color:rgba(0, 0, 0, 0.9);
+    position: fixed;
+    text-align: center;
+    top: 0;
+    left: -100%;
+    z-index: 1;
+    transition: var(--hamburger-transition) cubic-bezier(1, 0, 0, 0);
+  }
+
+  .hamburger-menu ul {
+    margin-top: 70px;
+  }
+  .hamburger-menu a {
+    color: white;
+  }
+
+  .menu-hide {
+    width: 60%;
+    height: 100vh;
+    background-color:rgba(0, 0, 0, 0.9);
+    position: fixed;
+    text-align: center;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transition: var(--hamburger-transition) cubic-bezier(0, 0, 0, 1);
+  }
+
+  .circle {
+    transition: var(--hamburger-transition);
+    border-radius: 50%;
   }
 
   .body-container {

@@ -22,25 +22,22 @@ const $win = $(window);
 $win.on('load resize', function() {
   const windowWidth = window.innerWidth;
 
-  if (windowWidth <= 600) {
+  if (windowWidth <= 850) {
     $(".top-main").children("div").toggleClass("flex");
   }
 });
 
 
-//緯度経度から住所を取得
+// 地図情報取得
 $(function() {
 
-  // top.html.erb(:1 JSONタグ)が読み込まれたら現在地を取得開始
+  // homes/top.html.erb(:1 JSONタグ)が読み込まれたら現在地を取得開始
   $("#restaurants_json").ready(function() {
     $("#loading").append("(読み込み中)");
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(function(position) {
-
         const CurrentLat = position.coords.latitude;
         const CurrentLng = position.coords.longitude;
-        $("#latitude").text(label_latitude + CurrentLat)
-        $("#longitude").text(label_longitude + CurrentLng)
 
         //現在地を地図上に表示
         $(function() {
@@ -69,14 +66,14 @@ $(function() {
                 {"address": address},
                 function(result, status) {
                   if (status == google.maps.GeocoderStatus.OK) {
-                    var lat = result[0].geometry.location.lat();
-                    var lng = result[0].geometry.location.lng();
+                    let lat = result[0].geometry.location.lat();
+                    let lng = result[0].geometry.location.lng();
                     marker[i] = new google.maps.Marker({
                       position: new google.maps.LatLng(lat, lng),
                       map: map
                     });
                     i = i + 1;
-                    var link = "https://matchi-gourmet/public/restaurants/"+i;
+                    let link = "https://matchi-gourmet/public/restaurants/"+i;
                     i = i - 1;
                     infoWindow[i] = new google.maps.InfoWindow(
                       {
@@ -87,7 +84,7 @@ $(function() {
                       infoWindow[i].open(map, marker[i]);
                     });
                   } else {
-                    $(".location-result" + ".error").removeClass("hedden");
+                    $(".location-result" + ".error").removeClass("hidden");
                   }
                 }
               );
@@ -136,11 +133,32 @@ $(function() {
     }
   });
 
-  // geolocationが使えるかどうかの処理（ウインドウ）
+  // geolocationが使える場合、クリックで地図を表示
   $("#get-position").on("click", function() {
     if (navigator.geolocation) {
       $(".location-result" + ".true").removeClass("hidden");
     }
   });
 
+});
+
+// ヘッダーにスクロール
+$(function() {
+  $(".move-head").on("click", function(){
+    $('body,html').animate({scrollTop:0}, 200, 'swing');
+  });
+});
+
+// ハンバーガーメニュー
+$(function() {
+  $(".hamburger").on("click", function() {
+    $(this).toggleClass("circle");
+    $(".hamburger-menu").toggleClass("menu-hide");
+    $(".hamburger-menu").on("click", function() {
+      if ($(".hamburger-menu").hasClass("menu-hide")) {
+        $(".hamburger-menu").toggleClass("menu-hide");
+        $(".hamburger").toggleClass("circle");
+      }
+    });
+  });
 });

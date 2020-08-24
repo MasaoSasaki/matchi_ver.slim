@@ -21,16 +21,17 @@
   </script>
 </head>
 
+<body>
 <header>
   <div class="header-container">
-    <%# PC画面メニュー %>
+    <%# PC画面ヘッダー %>
     <div class="flex pc-header">
-    <%= link_to root_path do %>
-      <div class="logo-image"></div>
-    <% end %>
+      <%= link_to root_path do %>
+        <div class="logo-image"></div>
+      <% end %>
       <div class="header-nav">
         <nav>
-          <ul class="header-ul">
+          <ul class="flex header-ul">
             <% url = request.fullpath %>
             <%# urlに'owner'があれば店舗用ヘッダー %>
             <% if url.include?('owner') %>
@@ -67,6 +68,7 @@
                 <li><%= link_to 'MyPage', public_user_path(current_public_user) %></li>
                 <li><%= link_to 'ログアウト', destroy_public_user_session_path, method: :delete %></li>
               <% else %>
+                <li><%= link_to '新規登録', new_public_user_registration_path %></li>
                 <li><%= link_to 'ログイン', new_public_user_session_path %></li>
               <% end %>
             <% end %>
@@ -75,27 +77,40 @@
       </div>
     </div>
 
-    <%# スマホ用ハンバーガーメニュー %>
-    <div class="flex sp-header">
+    <%# スマホ画面ヘッダー %>
+    <div class="sp-header">
+      <div class="hamburger">
+        <span class="bar bar-top"></span>
+        <span class="bar bar-center"></span>
+        <span class="bar bar-bottom"></span>
+      </div>
     <%= link_to root_path do %>
       <div class="logo-image"></div>
     <% end %>
-      <div class="hamburger">
-        <h3>ハンバーガー</h3>
-        <span class="bar top"></span>
-        <span class="bar center"></span>
-        <span class="bar bottom"></span>
+      <div class="hamburger-menu">
+        <ul>
+          <li><%= link_to 'TOP', root_path %></li>
+            <% if public_user_signed_in? %>
+              <li><%= link_to 'MyPage', public_user_path(current_public_user) %></li>
+            <% else %>
+              <li><%= link_to '新規登録', new_public_user_registration_path %></li>
+              <li><%= link_to 'ログイン', new_public_user_session_path %></li>
+            <% end %>
+          <li><%= link_to 'レストラン一覧', public_restaurants_path %></li>
+          <li><%= link_to 'メニュー一覧', public_menus_path %></li>
+        </ul>
       </div>
     </div>
 
   </div>
 </header>
 
-<body>
+<main>
   <div class="body-container">
     <%= yield %>
   </div>
-</body>
+  <%# ハンバーガーメーニュー %>
+</main>
 
 <footer>
   <div class="flex footer-container">
@@ -114,6 +129,9 @@
   <div class="copyright">
     <small>©︎ 2020 MasaoSasaki</small>
   </div>
+  <div id="move-head">
+    <div class="circle move-head"><i class="fa-2x fas fa-arrow-up"></i></div>
+  </div>
 </footer>
-
+</body>
 </html>
