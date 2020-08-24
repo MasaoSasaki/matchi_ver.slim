@@ -6,14 +6,14 @@
       <div class="sns">
         <h3>SNS</h3>
         <ul class="flex">
-          <%= link_to "https://twitter.com", target: :_blank do %>
-            <li class="sns-btn"><i class="fab fa-twitter"></i><%= @current_user.twitter %></li>
+          <%= link_to "https://twitter.com/#{@current_user.twitter}", target: :_blank do %>
+            <li class="sns-btn"><i class="fab fa-twitter"></i></li>
           <% end %>
-          <%= link_to "https://facebook.com", target: :blank do %>
-            <li class="sns-btn"><i class="fab fa-facebook-f"></i><%= @current_user.facebook %></li>
+          <%= link_to "https://facebook.com/profile.php?id=#{@current_user.facebook}", target: :blank do %>
+            <li class="sns-btn"><i class="fab fa-facebook-f"></i></li>
           <% end %>
-          <%= link_to "https://instagram.com", target: :blank do %>
-            <li class="sns-btn"><i class="fab fa-instagram"></i><%= @current_user.instagram %></li>
+          <%= link_to "https://instagram.com/#{@current_user.instagram}", target: :blank do %>
+            <li class="sns-btn"><i class="fab fa-instagram"></i></li>
           <% end %>
         </ul>
       </div>
@@ -25,7 +25,7 @@
           <li>メールアドレス２：<%= @current_user.email_sub %></li>
         </ul>
       </div>
-      <div class="berth-day"><h3>生年月日</h3><p><%= "#{@current_user.birth_year}" + "#{@current_user.birth_month}" + "#{@current_user.birth_day}" %></p></div>
+      <div class="berth-day"><h3>生年月日</h3><p><%= "#{@current_user.birth_year}" + "年" + "#{@current_user.birth_month}" + "月" + "#{@current_user.birth_day}" + "日" %></p></div>
       <div class="age"><h3>年齢</h3><p></p></div>
     </div>
     <div class="profile-image">

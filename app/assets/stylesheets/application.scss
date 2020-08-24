@@ -28,6 +28,10 @@
   list-style: none;
 }
 
+body {
+  background-color: #fffafa;
+}
+
 ul {
   padding: 0;
 }
@@ -105,7 +109,7 @@ header {
 
 
 .body-container {
-  min-height: 650px;
+  min-height: 500px;
 }
 
 .contents {
@@ -125,6 +129,20 @@ header {
 }
 
 //public/homes
+
+.homes-container {
+  max-width: 900px;
+  padding: 70px;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin-top: 30px;
+}
+
 .header-image {
   margin-bottom: 10px;
   background-image: image-url("header-1.jpg");
@@ -241,6 +259,7 @@ header {
 
 .sns-btn {
   width: 50px;
+  margin: 5px;
   text-align: center;
   border: 1px solid black;
   border-radius: 5px;
@@ -281,6 +300,40 @@ header {
   margin: 0 auto;
   grid-area: box4;
 }
+
+//public/users/profile
+.profile-head {
+  justify-content: space-between;
+}
+
+.profile-image {
+  text-align: center;
+  margin-right: 20px;
+  flex: 1;
+}
+
+.profile_image {
+  max-width: 250px;
+  padding-right: 20px;
+}
+
+.handle-name-sns {
+  flex: 1;
+}
+
+// public/users/edit
+  .users-edit-btn {
+    justify-content: space-between;
+  }
+  .users-edit-btn .submit {
+    flex: 1;
+    text-align: right;
+  }
+  .users-edit-btn .destroy {
+    flex: 1;
+    text-align: right;
+    font-size: 0.8em;
+  }
 
 // public/restaurants
 .public-restaurants-index > h2 {
@@ -347,6 +400,11 @@ footer {
 
 .circle:hover {
   cursor: pointer;
+}
+
+.homes-container li {
+  list-style-type: decimal;
+  margin: 0.8em 0;
 }
 
 // PC端末用
@@ -533,6 +591,16 @@ footer {
     height: 300px;
     border: 1px solid black;
     border-radius: 5px;
+  }
+
+  // homes
+  .homes-container {
+    padding: 0;
+  }
+
+  // public/users/profile
+  .profile_image {
+    padding-right: 0;
   }
 
 }

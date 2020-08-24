@@ -24,6 +24,8 @@ $win.on('load resize', function() {
 
   if (windowWidth <= 850) {
     $(".top-main").children("div").toggleClass("flex");
+  // } else if (windowWidth <= 600) {
+    $(".profile-head").toggleClass("flex");
   }
 });
 
