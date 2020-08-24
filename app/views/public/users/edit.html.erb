@@ -1,60 +1,69 @@
 <div class="contents users-edit">
   <h2>登録情報編集</h2>
   <%= form_with model: @current_user, url: public_user_path(@current_user), local: true, method: :patch do |f| %>
-    <div class="edit-head">
-      <h2><%= "#{@current_user.name_family}" + "#{@current_user.name_first}" %> 様</h2>
-      <div class="users-edit-form">
-        <h3><%= f.label :handle_name, value: 'ハンドルネーム：' %></h3>
-        <%= f.text_field :handle_name %>
-      </div>
-      <div class="profile-image">
-        <div class="users-edit-form"></div>
-      </div>
-      <h3>SNS</h3>
-      <div class="users-edit-form">
-        <%= f.label :twitter %>
-        <%= f.text_field :twitter %>
-      </div>
-      <div class="users-edit-form">
-        <%= f.label :facebook %>
-        <%= f.text_field :facebook %>
-      </div>
-      <div class="users-edit-form">
-        <%= f.label :instagram %>
-        <%= f.text_field :instagram %>
-      </div>
-      <h3>連絡先</h3>
-      <div class="users-edit-form">
-        <%= f.label :phone_number, value: '電話番号' %>
-        <%= f.text_field :phone_number %>
-      </div>
-      <div class="users-edit-form">
-        <%= f.label :email, value: 'メールアドレス1' %>
-        <%= f.text_field :email, placeholder: '必須' %>
-      </div>
-      <div class="users-edit-form">
-        <%= f.label :email_sub, value: 'メールアドレス2' %>
-        <%= f.text_field :email_sub %>
-      </div>
-      <h3>生年月日</h3>
-      <div class="users-edit-form">
-        <%= f.label :birth_year %>
-        <%= f.text_field :birth_year %>
-      </div>
-      <div class="users-edit-form">
-        <%= f.label :birth_month %>
-        <%= f.text_field :birth_month %>
-      </div>
-      <div class="users-edit-form">
-        <%= f.label :birth_day %>
-        <%= f.text_field :birth_day %>
-      </div>
-      <%= f.submit '変更を保存', class: 'btn' %>
+    <h2><%= "#{@current_user.name_family}" + "#{@current_user.name_first}" %> 様</h2>
+    <small>お名前の変更は<%= link_to 'こちら', contact_path %>より、直接お問い合わせください。</small>
+    <table class="edit-head">
+      <body>
+        <tr>
+         <td><h3><%= f.label :handle_name, value: 'ハンドルネーム：' %></h3></td>
+         <td></td>
+         <td><%= f.text_field :handle_name %></td>
+        </tr>
+        <tr>
+          <td><h3>SNS</h3></td>
+          <td><%= f.label :twitter %></td>
+          <td><%= f.text_field :twitter %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.label :facebook %></td>
+          <td><%= f.text_field :facebook %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.label :instagram %></td>
+          <td><%= f.text_field :instagram %></td>
+        </tr>
+        <tr>
+          <td><h3>連絡先</h3></td>
+          <td><%= f.label :phone_number, value: '電話番号' %></td>
+          <td><%= f.number_field :phone_number %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.label :email, value: 'メールアドレス1' %></td>
+          <td><%= f.text_field :email, placeholder: '必須' %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.label :email_sub, value: 'メールアドレス2' %></td>
+          <td><%= f.text_field :email_sub %></td>
+        </tr>
+        <tr>
+          <td><h3>生年月日</h3></td>
+          <td><%= f.label :birth_year, value: '西暦（4桁）' %></td>
+          <td><%= f.number_field :birth_year %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.label :birth_month, value: '月（2桁）' %></td>
+          <td><%= f.number_field :birth_month %></td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><%= f.label :birth_day, value: '日（2桁）' %></td>
+          <td><%= f.number_field :birth_day %></td>
+        </tr>
+
+      </body>
+    </table>
+    <div class="flex users-edit-btn">
+      <div class="submit"><%= f.submit '変更を保存', class: 'btn' %></div>
+      <div class="destroy"><%= link_to '退会する', public_users_withdraw_path(@current_user) %></div>
     </div>
   <% end %>
 
-  </div>
   <div class="btn-area">
-    <div class="destroy"><%= link_to '退会する', public_users_withdraw_path(@current_user), class: 'btn' %></div>
   </div>
 </div>
