@@ -105,7 +105,7 @@ header {
 
 
 .body-container {
-  min-height: 650px;
+  min-height: 500px;
 }
 
 .contents {
@@ -125,6 +125,20 @@ header {
 }
 
 //public/homes
+
+.homes-container {
+  max-width: 900px;
+  padding: 70px;
+}
+
+h1 {
+  margin-bottom: 10px;
+}
+
+h2 {
+  margin-top: 30px;
+}
+
 .header-image {
   margin-bottom: 10px;
   background-image: image-url("header-1.jpg");
@@ -349,6 +363,11 @@ footer {
   cursor: pointer;
 }
 
+.terms li {
+  list-style-type: decimal;
+  margin: 0.8em 0;
+}
+
 // PC端末用
 @media (min-width: 851px) {
 
@@ -533,6 +552,11 @@ footer {
     height: 300px;
     border: 1px solid black;
     border-radius: 5px;
+  }
+
+  // homes
+  .homes-container {
+    padding: 0;
   }
 
 }
