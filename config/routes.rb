@@ -2,6 +2,10 @@ Rails.application.routes.draw do
 
   get '/' => 'public/homes#top', as: 'root'
   get 'about' => 'public/homes#about'
+  get 'contact' => 'public/homes#contact'
+  get 'privacy' => 'public/homes#privacy'
+  get 'terms' => 'public/homes#terms'
+  get 'admin' => 'public/homes#admin'
 
   namespace :master do
     devise_for :admins, controllers: {
