@@ -28,6 +28,10 @@
   list-style: none;
 }
 
+body {
+  background-color: #fffafa;
+}
+
 ul {
   padding: 0;
 }
@@ -592,6 +596,11 @@ footer {
   // homes
   .homes-container {
     padding: 0;
+  }
+
+  // public/users/profile
+  .profile_image {
+    padding-right: 0;
   }
 
 }
