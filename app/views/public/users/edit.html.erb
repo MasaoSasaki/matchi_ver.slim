@@ -6,6 +6,11 @@
     <table class="edit-head">
       <body>
         <tr>
+         <td><h3><%= f.label :profile_image, value: 'プロフィール画像：' %></h3></td>
+         <td></td>
+         <td><%= f.attachment_field :profile_image %></td>
+        </tr>
+        <tr>
          <td><h3><%= f.label :handle_name, value: 'ハンドルネーム：' %></h3></td>
          <td></td>
          <td><%= f.text_field :handle_name %></td>
