@@ -34,7 +34,7 @@ ActiveRecord::Schema.define(version: 2020_08_20_075244) do
   create_table "menus", force: :cascade do |t|
     t.integer "restaurant_id"
     t.string "title"
-    t.string "menu_image"
+    t.string "menu_image_id"
     t.text "content"
     t.text "cancel"
     t.integer "regular_price"
@@ -65,7 +65,7 @@ ActiveRecord::Schema.define(version: 2020_08_20_075244) do
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
     t.string "name", default: "", null: false
-    t.string "restaurant_image"
+    t.string "restaurant_image_id"
     t.text "introduction"
     t.string "postal_code", default: "", null: false
     t.string "phone_number", default: "", null: false
@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2020_08_20_075244) do
     t.string "name_first_kana", null: false
     t.string "handle_name"
     t.text "profile"
-    t.string "profile_image"
+    t.string "profile_image_id"
     t.string "twitter"
     t.string "facebook"
     t.string "instagram"
