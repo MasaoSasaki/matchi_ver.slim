@@ -298,10 +298,6 @@ h2 {
 }
 
 //public/users/profile
-.profile-head {
-  justify-content: space-between;
-}
-
 .profile-image {
   text-align: center;
   margin-right: 20px;
@@ -394,7 +390,7 @@ footer {
   color: rgba(255, 255, 255, 0.7);
 }
 
-.circle:hover {
+.move-head:hover {
   cursor: pointer;
 }
 
@@ -413,25 +409,6 @@ footer {
 
 }
 
-// タブレット端末用
-@media (max-width: 850px) {
-
-    .top-main {
-      padding: 0 30px;
-    }
-
-  .top-side {
-    width: 100%;
-    margin-top: 20px;
-    padding: 0;
-  }
-
-  // .top-nav, .simple-mypage, .new-registration, .new-menus {
-  //   display: none;
-  // }
-
-}
-
 // PC・タブレット共通
 @media (min-width: 601px) {
 
@@ -439,7 +416,28 @@ footer {
     display: none;
   }
 
+  .profile-head {
+    display: flex;
+    justify-content: space-between;
+  }
+
 }
+
+// タブレット端末用
+@media (max-width: 850px) {
+
+  .top-main {
+    padding: 0 30px;
+  }
+
+  .top-side {
+    width: 100%;
+    margin-top: 20px;
+    padding: 0;
+  }
+
+}
+
 
 // スマホ用
 @media (max-width: 600px) {
@@ -604,6 +602,7 @@ footer {
   }
 
   // public/users/profile
+
   .profile_image {
     padding-right: 0;
   }
