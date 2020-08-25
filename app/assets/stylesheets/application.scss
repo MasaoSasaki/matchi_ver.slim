@@ -29,7 +29,7 @@
 }
 
 body {
-  background-color: #fffafa;
+  background-color: #fffcfc;
 }
 
 ul {
@@ -149,10 +149,6 @@ h2 {
   background-size: cover;
   background-position: center;
   height: 300px;
-}
-
-.top-main {
-  padding: 0 30px;
 }
 
 .top-contents {
@@ -410,10 +406,19 @@ footer {
 // PC端末用
 @media (min-width: 851px) {
 
+  .top-main {
+    padding: 0 30px;
+    display: flex;
+  }
+
 }
 
 // タブレット端末用
 @media (max-width: 850px) {
+
+    .top-main {
+      padding: 0 30px;
+    }
 
   .top-side {
     width: 100%;

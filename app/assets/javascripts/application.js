@@ -16,20 +16,6 @@
 //= require jquery.jpostal
 //= require_tree .
 
-//画面サイズによるCSSの処理
-const $win = $(window);
-
-$win.on('load resize', function() {
-  const windowWidth = window.innerWidth;
-
-  if (windowWidth <= 850) {
-    $(".top-main").children("div").toggleClass("flex");
-  // } else if (windowWidth <= 600) {
-    $(".profile-head").toggleClass("flex");
-  }
-});
-
-
 // 地図情報取得
 $(function() {
 
