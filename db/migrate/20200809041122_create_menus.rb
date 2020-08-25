@@ -3,7 +3,7 @@ class CreateMenus < ActiveRecord::Migration[5.2]
     create_table :menus do |t|
       t.integer :restaurant_id, null: :false
       t.string :title, null: :false
-      t.string :menu_image
+      t.string :menu_image_id
       t.text :content, null: :false
       t.text :cancel, null: :false
       t.integer :regular_price, null: :false
