@@ -34,7 +34,7 @@ class DeviseCreateRestaurants < ActiveRecord::Migration[5.2]
 
       # original
       t.string :name, null: false, default: ""
-      t.string :restaurant_image
+      t.string :restaurant_image_id
       t.text :introduction, default: nil
       t.string :postal_code, null: false, default: ""
       t.string :address, null: false, default: ""
