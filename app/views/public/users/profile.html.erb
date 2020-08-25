@@ -5,7 +5,7 @@
   </small>
   <div class="profile-head">
     <div class="profile-image">
-      <%= attachment_image_tag @user, :profile_image, format: "jpeg", fallback: "no_image.png", class: 'circle' %>
+      <%= attachment_image_tag @user, :profile_image, format: "jpeg", size: '250x250', fallback: "no_image.png", class: 'circle' %>
     </div>
     <div class="handle-name-sns">
       <h3>HN：<%= @user.handle_name %></h3>
