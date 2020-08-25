@@ -39,7 +39,7 @@ class Public::UsersController < Public::Base
   private
   def user_params
     params.require(:user).permit(
-      :handle_name, :profile, :profile_image_id,
+      :handle_name, :profile, :profile_image,
       :twitter, :facebook, :instagram, :phone_number, :email_sub,
       :email, :birth_year, :birth_month, :birth_day)
   end
