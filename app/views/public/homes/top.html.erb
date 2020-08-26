@@ -25,12 +25,29 @@
       <div class="restaurants-all">
         <h2>レストラン一覧</h2>
         <% @restaurants.each do |restaurant| %>
-          <div class="top-restaurant">
-            <%#= attachment_image_tag :restaurant_image %>
-            <h3><%= link_to "#{restaurant.name}", public_restaurant_path(restaurant) %></h3>
-            <p><%= restaurant.prefecture + restaurant.city %></p>
+          <div class="flex top-restaurant">
+            <div class="restaurant-image">
+              <%= attachment_image_tag restaurant, :restaurant_image %>
+            </div>
+            <div class="restaurant-info">
+              <h3><%= link_to "#{restaurant.name}", public_restaurant_path(restaurant) %></h3>
+              <p><%= restaurant.prefecture + restaurant.city %></p>
+            </div>
           </div>
         <% end %>
+        <h2>メニュー一覧</h2>
+        <% @menus.each do |menu| %>
+          <div class="flex top-menus">
+            <div class="menu-image">
+              <%= attachment_image_tag menu, :menu_image %>
+            </div>
+            <div class="menu-info">
+              <h3><%= menu.title %></h3>
+              <small>店名：<%= @restaurants.find(menu.restaurant_id).name %></small>
+            </div>
+          </div>
+        <% end %>
+
       </div>
     </div>
 

@@ -133,8 +133,13 @@ h1 {
   margin-bottom: 10px;
 }
 
-h2 {
-  margin-top: 30px;
+.restaurants-all h2 {
+  margin: 30px 0 10px;
+  text-align: center;
+}
+
+.top-menus, .top-restaurant {
+  margin: 10px 0;
 }
 
 .header-image {
@@ -172,7 +177,7 @@ h2 {
 .top-side > div {
   margin-top: 20px;
   padding: 20px;
-  background-color: #eeffff;
+  background-color: #ffefef;
 }
 
 .registration {
@@ -326,11 +331,6 @@ h2 {
   text-align: center;
 }
 
-.restaurant-image {
-  width: 300px;
-  height: 200px;
-}
-
 .restaurant-contents {
   flex: 1;
 }
@@ -419,6 +419,11 @@ footer {
   .profile-head {
     display: flex;
     justify-content: space-between;
+  }
+
+  .restaurant-image {
+    width: 300px;
+    height: 200px;
   }
 
 }
