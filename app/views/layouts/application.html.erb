@@ -82,6 +82,9 @@
               <% end %>
               <% if public_user_signed_in? %>
                 <li><%= link_to 'MyPage', public_user_path(current_public_user) %></li>
+                  <%# if alert.count >= 1 %>
+                    <li><%#= link_to 'お知らせがあります。' %></li>
+                  <%# end %>
                 <li><%= link_to 'ログアウト', destroy_public_user_session_path, method: :delete %></li>
               <% else %>
                 <li><%= link_to '新規登録', new_public_user_registration_path %></li>
@@ -94,7 +97,7 @@
     </div>
 
     <%# スマホ画面ヘッダー %>
-    <div class="sp-header">
+    <div class="flex sp-header">
       <div class="hamburger">
         <span class="bar bar-top"></span>
         <span class="bar bar-center"></span>
@@ -103,6 +106,11 @@
     <%= link_to root_path do %>
       <div class="logo-image"></div>
     <% end %>
+      <%# 未読のお知らせの通知 %>
+      <div class="alert">
+        <i class="fa-2x far fa-bell"><div class="hidden icon"></div></i>
+      </div>
+      <%# ハンバーガーメーニュー %>
       <div class="hamburger-menu">
         <ul>
           <li><%= link_to 'TOP', root_path %></li>
@@ -125,7 +133,6 @@
   <div class="body-container">
     <%= yield %>
   </div>
-  <%# ハンバーガーメーニュー %>
 </main>
 
 <footer>
