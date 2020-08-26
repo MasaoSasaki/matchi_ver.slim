@@ -1,9 +1,11 @@
 class Public::ReservationsController < Public::Base
 
-  @@menu = 0
   @@payment_method = 0
 
   def index
+    @reservations = Reservation.where(user_id: current_public_user.id)
+    @menus = Menu.all
+    @restaurants = Restaurant.all
   end
 
   def show
@@ -37,6 +39,7 @@ class Public::ReservationsController < Public::Base
   end
 
   def completion
+    @reservation = Reservation.find_by(user_id: current_public_user.id)
   end
   private
   def reservation_params
