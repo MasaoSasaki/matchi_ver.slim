@@ -68,7 +68,7 @@
             <% @menus.each do |menu| %>
               <li>
                 <%= link_to "#{menu.title}", public_menu_path(menu) %></p>
-                <%#= attachment_image_tag :menu_image %>
+                <%= attachment_image_tag menu, :menu_image %>
               </li>
             <% end %>
           </ul>

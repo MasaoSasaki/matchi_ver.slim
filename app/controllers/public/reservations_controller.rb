@@ -12,7 +12,7 @@ class Public::ReservationsController < Public::Base
     @current_user = current_public_user
     @reservation = Reservation.find(params[:id])
     @menu = Menu.find(@reservation.menu_id)
-    @restaurant = Restaurant.find(@menu).restaurant_id)
+    @restaurant = Restaurant.find(@menu.restaurant_id)
     @current_user = current_public_user
   end
 
@@ -47,7 +47,9 @@ class Public::ReservationsController < Public::Base
   end
   private
   def reservation_params
-    params.require(:reservation).permit(:menu_id, :people, :payment_method)
+    params.require(:reservation).permit(
+      :menu_id, :people, :payment_method,
+      :reservation_year, :reservation_month, :reservation_day, :reservation_time)
   end
 
 end

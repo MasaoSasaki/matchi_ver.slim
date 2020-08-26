@@ -1,28 +1,32 @@
 <div class="contents public-reservation-confirm">
   <%= form_with model: [current_public_user, @reservation], url: public_user_reservations_path, local: true do |f| %>
-  <h2>予約情報の確認</h2>
-  <h3>メニュー名</h3>
-  <%= @menu.title %>
-  <h3>内容</h3>
-  <%= @menu.content %>
-  <h3>キャンセル規定</h3>
-  <%= @menu.cancel %>
-  <div class="reservation-form">
-  <h3>人数</h3>
-  <p><%= params[:people] %> 名</p>
-  <%= f.hidden_field :people, value: params[:people] %>
-  <h3>お支払い方法</h3>
-  <% case params[:payment_method] %>
-  <% when "cash" %>
-    <p>当日現金支払い</p>
-  <% when "credit" %>
-    <p>クレジットカード支払い</p>
-  <% when "bank" %>
-    <p>銀行振り込み</p>
-  <% end %>
+    <h2>予約情報の確認</h2>
+    <h3>メニュー名</h3>
+    <%= @menu.title %>
+    <h3>内容</h3>
+    <%= @menu.content %>
+    <h3>キャンセル規定</h3>
+    <%= @menu.cancel %>
+    <div class="reservation-form">
+    <h3>人数</h3>
+    <p><%= params[:people] %> 名</p>
+    <%= f.hidden_field :people, value: params[:people] %>
+    <h3>お支払い方法</h3>
+    <% case params[:payment_method] %>
+    <% when "cash" %>
+      <p>当日現金支払い</p>
+    <% when "credit" %>
+      <p>クレジットカード支払い</p>
+    <% when "bank" %>
+      <p>銀行振り込み</p>
+    <% end %>
 
-  <%= f.hidden_field :menu_id, value: @menu.id %>
-  <%= f.submit '確定' %>
+    <%= f.hidden_field :menu_id, value: @menu.id %>
+    <%= f.hidden_field :reservation_year, value: params[:reservation_year] %>
+    <%= f.hidden_field :reservation_month, value: params[:reservation_month] %>
+    <%= f.hidden_field :reservation_day, value: params[:reservation_day] %>
+    <%= f.hidden_field :reservation_time, value: params[:reservation_time] %>
+    <%= f.submit '確定' %>
   <% end %>
 
 </div>

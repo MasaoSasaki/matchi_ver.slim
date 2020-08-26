@@ -16,7 +16,7 @@
       </li>
       <li>タグ：<%#= @menu %></li>
     </ul>
-    <div class="menus-show-head-right"><%#= attachment_image_tag @menu.menu_image %></div>
+    <div class="menus-show-head-right"><%= attachment_image_tag @menu, :menu_image %></div>
   </div>
   <div class="menus-show-body">
     <div class="menus-content">内容：<br><%= @menu.content %></div>
