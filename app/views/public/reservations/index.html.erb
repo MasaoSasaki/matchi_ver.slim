@@ -15,7 +15,7 @@
       <% @reservations.each do |reservation| %>
       <tr>
         <td><%= reservation.id %></td>
-        <td><%= reservation.created_at %></td>
+        <td><%= reservation.created_at.to_s(:datetime_jp) %></td>
         <td><%#= reservation.id %></td>
         <td><%= @restaurants.find(@menus.find(reservation.menu_id).restaurant_id).name %></td>
         <td><%= reservation.people %> 名</td>
