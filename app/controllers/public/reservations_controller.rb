@@ -9,10 +9,14 @@ class Public::ReservationsController < Public::Base
   end
 
   def show
+    @current_user = current_public_user
+    @reservation = Reservation.find(params[:id])
+    @menu = Menu.find(@reservation.menu_id)
+    @restaurant = Restaurant.find(@menu).restaurant_id)
+    @current_user = current_public_user
   end
 
   def new
-    @@menu = Menu.find(params[:menu_id])
     @menu = Menu.find(params[:menu_id])
     @reservation = Reservation.new
   end
