@@ -39,11 +39,13 @@ class Public::ReservationsController < Public::Base
     reservation.user_id = current_public_user.id
     reservation.payment_method = @@payment_method
     reservation.save
-    redirect_to action: 'completion'
+    # 最新の予約情報を取得
+    new_reservation_id = Reservation.order(created_at: :desc).limit(1).ids
+    redirect_to public_user_reservations_completion_path(new_reservation_id: new_reservation_id)
   end
 
   def completion
-    @reservation = Reservation.find_by(user_id: current_public_user.id)
+    @new_reservation_id = params[:new_reservation_id]
   end
   private
   def reservation_params

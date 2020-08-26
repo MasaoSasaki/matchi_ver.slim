@@ -42,7 +42,7 @@
               <%= attachment_image_tag menu, :menu_image %>
             </div>
             <div class="menu-info">
-              <h3><%= menu.title %></h3>
+              <h3><%= link_to "#{menu.title}", public_menu_path(menu) %></h3>
               <small>店名：<%= @restaurants.find(menu.restaurant_id).name %></small>
             </div>
           </div>

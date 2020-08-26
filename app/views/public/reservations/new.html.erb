@@ -40,7 +40,7 @@
         <tr>
           <td></td>
           <td><h4>時間</h4></td>
-          <td><%= f.time_select :reservation_time, minute_step: 15 %></td>
+          <td><%= f.number_field :reservation_time, min: 0, max: 23, value: Time.new.hour+10 %>時（0時〜23時）</td>
         </tr>
       </tbody>
     </table>

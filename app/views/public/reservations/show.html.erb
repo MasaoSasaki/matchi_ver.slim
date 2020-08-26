@@ -10,12 +10,12 @@
       <tr>
         <td><h3>予約日時（来店日時）</h3></td>
         <td><h4>ご予約日</h4></td>
-        <td><p><%= @menu.title %></p></td>
+        <td><p><%= "#{@reservation.reservation_year} / #{@reservation.reservation_month} / #{@reservation.reservation_day}" %></p></td>
       </tr>
       <tr>
         <td></td>
         <td><h4>ご予約時間帯</h4></td>
-        <td><p><%= @menu.title %></p></td>
+        <td><p><%= @reservation.reservation_time %></p></td>
       </tr>
       <tr>
         <td><h3>店舗名</h3></td>
