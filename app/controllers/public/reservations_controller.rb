@@ -1,4 +1,8 @@
 class Public::ReservationsController < Public::Base
+
+  @@menu = 0
+  @@payment_method = 0
+
   def index
   end
 
@@ -6,27 +10,37 @@ class Public::ReservationsController < Public::Base
   end
 
   def new
+    @@menu = Menu.find(params[:menu_id])
     @menu = Menu.find(params[:menu_id])
     @reservation = Reservation.new
   end
 
   def confirm
+    @menu = Menu.find(params[:menu_id])
+    @reservation = Reservation.new
+    case params[:payment_method]
+    when "credit"
+      @@payment_method = 0
+    when "cash"
+      @@payment_method = 1
+    when "bank"
+      @@payment_method = 2
+    end
   end
 
   def create
-    reservation = Reservation.new
+    reservation = Reservation.new(reservation_params)
     reservation.user_id = current_public_user.id
-    reservation.menu_id = params[:menu_id]
+    reservation.payment_method = @@payment_method
+    reservation.save
+    redirect_to action: 'completion'
   end
 
   def completion
   end
   private
   def reservation_params
-    params.require(:reservation).permit(
-      :reservation_year, :reservation_month, :reservation_day,
-      :reservation_time, :people
-    )
+    params.require(:reservation).permit(:menu_id, :people, :payment_method)
   end
 
 end

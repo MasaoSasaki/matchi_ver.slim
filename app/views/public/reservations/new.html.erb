@@ -8,8 +8,18 @@
   <%= @menu.cancel %>
   <div class="reservation-form">
     <%= form_with url: public_user_reservations_confirm_path, method: :get, local: true do |f| %>
-      <%= f.label :people, value: '人数' %>
-      <%= f.number_field :people %>
+      <h3>人数</h3>
+      <%= f.number_field :people, value: '1', min: 1, size: "100" %>
+      <h3>お支払い方法</h3>
+      <p>
+        <%= f.radio_button :payment_method, :credit %>
+        <%= f.label :payment_method, "クレジットカード支払い", value: :credit %>
+      </p>
+      <p>
+        <%= f.radio_button :payment_method, :cash, checked:true %>
+        <%= f.label :payment_method, "当日現金支払い", value: :cash %>
+      </p>
+      <%= f.hidden_field :menu_id, value: @menu.id %>
 
       <%= f.submit '確認する' %>
     <% end %>
