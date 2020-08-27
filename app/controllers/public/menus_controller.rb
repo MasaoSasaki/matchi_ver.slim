@@ -1,4 +1,7 @@
 class Public::MenusController < Public::Base
+
+  # before_action :current_user?, only: [:index, :show]
+
   def index
     @menus = Menu.all
     @restaurants = Restaurant.all
@@ -10,4 +13,5 @@ class Public::MenusController < Public::Base
     @restaurant = Restaurant.find(restaurant_id)
     @reservation = Reservation.new
   end
+
 end

@@ -36,11 +36,11 @@ Rails.application.routes.draw do
       passwords: 'public/users/passwords'
     }
     # get '/' => 'homes#top'
-    resources :users do
-      resources :bookmarks
-      get 'reservations/confirm' => 'reservations#confirm'
-      get 'reservations/completion' => 'reservations#completion'
-      resources :reservations
+    resources :users, only: [:show, :edit, :update] do
+      resources :bookmarks, only: [:index, :show]
+        get 'reservations/confirm' => 'reservations#confirm'
+        get 'reservations/completion' => 'reservations#completion'
+      resources :reservations, only: [:index, :show, new, :create]
     end
 
     get 'users/:id/profile' => 'users#profile', as: 'users/profile'
@@ -49,8 +49,8 @@ Rails.application.routes.draw do
     patch 'users/:id/withdrawal' => 'users#withdrawal', as: 'users/withdrawal'
     get 'users/:id/withdrew' => 'users#withdrew', as: 'users/withdrew'
 
-    resources :restaurants
-    resources :menus
+    resources :restaurants, only: [:index, :show]
+    resources :menus, only: [:index, :show]
   end
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
