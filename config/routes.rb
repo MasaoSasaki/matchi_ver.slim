@@ -40,7 +40,7 @@ Rails.application.routes.draw do
       resources :bookmarks, only: [:index, :show]
         get 'reservations/confirm' => 'reservations#confirm'
         get 'reservations/completion' => 'reservations#completion'
-      resources :reservations, only: [:index, :show, new, :create]
+      resources :reservations, only: [:index, :show, :new, :create]
     end
 
     get 'users/:id/profile' => 'users#profile', as: 'users/profile'

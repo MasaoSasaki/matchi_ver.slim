@@ -4,7 +4,6 @@ class Public::RestaurantsController < Public::Base
 
   def index
     @restaurants = Restaurant.all
-    @restaurants_address = Restaurant
   end
 
   def show
