@@ -76,6 +76,12 @@ td, th {
   cursor: pointer;
 }
 
+.error-messages li {
+  margin: 0;
+  list-style: disc;
+}
+
+// application.html.erb
 header {
   border-bottom: solid 1px #ccc;
   margin-bottom: 20px;
@@ -319,6 +325,15 @@ h1 {
 }
 
 // public/users/edit
+  .users-edit h2 {
+    margin: 20px 0;
+  }
+
+  .users-edit > h2 {
+    text-align: center;
+  }
+
+
   .users-edit-btn {
     justify-content: space-between;
   }
@@ -348,10 +363,6 @@ h1 {
 
 .session {
   text-align: center;
-}
-
-.session-form {
-  // display: flex;
 }
 
 .actions {

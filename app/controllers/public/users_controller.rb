@@ -8,13 +8,18 @@ class Public::UsersController < Public::Base
   end
 
   def edit
+    @user = User.find_by(id: current_public_user.id)
     @current_user = current_public_user
   end
 
   def update
-    user = User.find_by(id: current_public_user.id)
-    user.update(user_params)
-    redirect_to public_users_info_path(user)
+    @current_user = current_public_user
+    @user = User.find_by(id: current_public_user.id)
+    if @user.update(user_params)
+      redirect_to public_users_info_path(user)
+    else
+      render :edit
+    end
   end
 
   def info
