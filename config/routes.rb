@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'privacy' => 'public/homes#privacy'
   get 'terms' => 'public/homes#terms'
   get 'admin' => 'public/homes#admin'
+  get 'redirect' => 'public/homes#redirect'
 
   namespace :master do
     devise_for :admins, controllers: {

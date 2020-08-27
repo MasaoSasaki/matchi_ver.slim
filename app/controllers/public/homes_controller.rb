@@ -22,7 +22,11 @@ class Public::HomesController < Public::Base
   end
 
   def admin
-    
+
+  end
+
+  def redirect
+    @id = "#{params[:user_id]}" + "#{params[:restaurant_id]}"
   end
 
 end

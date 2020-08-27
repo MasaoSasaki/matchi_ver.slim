@@ -6,10 +6,11 @@
       <div class="menu-body">
         <h3>メニュー名</h3>
         <%= @menu.title %>
-        <h3>正規価格（税込）：</h3>
-        <%= @menu.regular_plice %>
-        <h3>提供価格（税込）：</h3>
-        <%= @menu.discount_plice %>
+        <h3>価格（税込）</h3>
+        <h4>正規価格（税込）：</h4>
+        <p><%= @menu.regular_price %> 円</p>
+        <h4>提供価格（税込）：</h4>
+        <p><%= @menu.discount_price %> 円</p>
         <h3>予約方法</h3>
         <%= @menu.reservation_method %>
         <h3>タグ</h3>
