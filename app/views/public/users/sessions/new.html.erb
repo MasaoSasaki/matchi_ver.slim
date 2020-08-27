@@ -3,7 +3,7 @@
   <%= flash[:error] %>
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="field">
-      <h3><%= f.label :email, value: "ID" %></h3>
+      <h3><%= f.label :email, value: "ログインID" %></h3>
       <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
     </div>
 
