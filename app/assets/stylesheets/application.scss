@@ -86,6 +86,7 @@ header {
 }
 
 .error-message {
+  margin: 10px 0;
   color: red;
 }
 
@@ -340,10 +341,18 @@ h1 {
   flex: 1;
 }
 
-// //devise
-// .devise-form h3, .actions {
-//   margin-top: 20px;
-// }
+//devise
+.devise-form h2 {
+  margin: 10px 0;
+}
+
+.session {
+  text-align: center;
+}
+
+.session-form {
+  // display: flex;
+}
 
 .actions {
   margin: 20px 0;
