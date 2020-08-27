@@ -1,6 +1,8 @@
 class Owner::ReservationsController < Owner::Base
   def index
     @reservations = Reservation.all
+    @menus = Menu.all
+    @users = User.all
   end
 
   def show
