@@ -1,4 +1,7 @@
 class Owner::RestaurantsController < Owner::Base
+
+  before_action :current_restaurant?
+
   def show
     @restaurant = Restaurant.find(params[:id])
     current_menu = Menu.where(restaurant_id: params[:id])

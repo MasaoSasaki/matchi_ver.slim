@@ -23,11 +23,10 @@ Rails.application.routes.draw do
       sessions: 'owner/restaurants/sessions',
       registrations: 'owner/restaurants/registrations'
     }
-    get '/' => 'restaurants#show'
-    resources :restaurants do
+    resources :restaurants, only: [:show, :edit, :update] do
       resources :menus
     end
-    resources :reservations
+    resources :reservations, only: [:index, :show, :update]
   end
 
   namespace :public do

@@ -1,4 +1,7 @@
 class Owner::MenusController < Owner::Base
+
+  before_action :current_restaurant?
+
   def index
     @current_restaurant = current_owner_restaurant
     @menus = Menu.where(restaurant_id: params[:restaurant_id])
@@ -8,13 +11,13 @@ class Owner::MenusController < Owner::Base
     @menu = Menu.find(params[:id])
   end
 
-  def edit
-    @menu = Menu.find(params[:id])
-  end
-
   def new
     @restaurant = Restaurant.find(params[:restaurant_id])
     @menu = Menu.new
+  end
+
+  def edit
+    @menu = Menu.find(params[:id])
   end
 
   def create
@@ -28,7 +31,6 @@ class Owner::MenusController < Owner::Base
     restaurant = Restaurant.find(params[:restaurant_id])
     menu = Menu.find(params[:id])
     menu.reservation_method = params[:reservation_method].to_i
-    # binding.pry
     menu.update(menu_params)
     redirect_to owner_restaurant_menu_path(current_owner_restaurant, menu)
   end
