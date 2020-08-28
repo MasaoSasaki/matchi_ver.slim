@@ -84,7 +84,7 @@ td, th {
 // application.html.erb
 header {
   border-bottom: solid 1px #ccc;
-  margin-bottom: 20px;
+  // margin-bottom: 30px;
 }
 
 .pc-header li {
@@ -117,6 +117,20 @@ header {
   margin: 0 auto;
   padding: 0 70px;
   max-width: 900px;
+}
+
+// main
+main {
+  margin: 30px 0;
+}
+
+// owner/restaurant/show
+.restaurant-introduction {
+  margin: 20px 0;
+}
+
+.restaurant-status {
+  margin: 20px 0;
 }
 
 // owner/restaurants
@@ -379,7 +393,7 @@ h1 {
 // footer
 footer {
   padding-top: 20px;
-  margin: 20px 0;
+  margin-bottom: 20px;
   border-top: 1px solid #ccc;
 }
 
@@ -448,15 +462,31 @@ footer {
     margin: 0 auto;
   }
 
+  // public/user/profile
   .profile-head {
     display: flex;
     justify-content: space-between;
   }
 
-  // .restaurant-image {
-  //   width: 300px;
-  //   height: 200px;
+  // owner/restaurant/show
+  .restaurant-head {
+    display: flex;
+    justify-content: space-between;
+  }
+  // .restaurant-head h1 {
   // }
+  // .restaurant-head p {
+  // }
+
+  .restaurant_image {
+    text-align: center;
+    object-fit: cover;
+  }
+
+  .restaurant-status {
+    display: flex;
+    justify-content: space-around;
+  }
 
 }
 

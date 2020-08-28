@@ -2,8 +2,9 @@
   <section class="contents restaurant-edit">
 
     <%= render partial: 'layouts/error_messages', locals: {model: @restaurant} %>
-    
+
     <%= form_with model: @restaurant, url: owner_restaurant_path, method: :patch, local: :true do |f| %>
+      <%= f.attachment_field :restaurant_image %>
       <table class="restaurant-edit-form">
         <tbody>
           <tr>
