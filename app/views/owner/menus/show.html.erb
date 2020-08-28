@@ -1,22 +1,27 @@
 <div class="contents menus-show">
   <h1>メニュー詳細</h1>
-  <div class="flex menus-show-head-left">
-    <ul>
-      <li>メニュー名：<%= @menu.title %></li>
-      <li>正規価格(税抜き)：<%= @menu.regular_price %></li>
-      <li>提供価格(税抜き)：<%= @menu.discount_price %></li>
-      <li>予約方法：<%= @menu.reservation_method %></li>
-      <li>
-        販売ステータス：
-        <% if @menu.is_sale_frag == true %>
-          <%= '販売中' %>
-        <% else %>
-          <%= '停止中' %>
-        <% end %>
-      </li>
-      <li>タグ：<%#= @menu %></li>
-    </ul>
-    <div class="menus-show-head-right"><%= attachment_image_tag @menu, :menu_image %></div>
+  <div class="menu-head-contents">
+    <div class="menus-info">
+      <ul>
+        <li>メニュー名：<%= @menu.title %></li>
+        <li>正規価格(税抜き)：<%= @menu.regular_price %> 円</li>
+        <li>提供価格(税抜き)：<%= @menu.discount_price %> 円</li>
+        <li>予約方法：<%= @menu.reservation_method %></li>
+        <li>
+          販売ステータス：
+          <% if @menu.is_sale_frag == true %>
+            <%= '販売中' %>
+          <% else %>
+            <%= '停止中' %>
+          <% end %>
+        </li>
+        <%# <li>タグ：</li> %>
+      </ul>
+    </div>
+    <div class="menu-image">
+      <h3>メニュー画像</h3>
+      <%= attachment_image_tag @menu, :menu_image, width: 300, height: 200, fallback: "no_image.png" %>
+    </div>
   </div>
   <div class="menus-show-body">
     <div class="menus-content">内容：<br><%= @menu.content %></div>

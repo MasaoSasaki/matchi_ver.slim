@@ -138,7 +138,7 @@ main {
   text-align: center;
 }
 
-// owner/menus
+// owner/menus/new
 .menus-create {
   text-align: right;
 }
@@ -486,6 +486,16 @@ footer {
   .restaurant-status {
     display: flex;
     justify-content: space-around;
+  }
+
+  // owner/restaurant/menus/show
+  .menu-head-contents {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .menu_image {
+    object-fit: cover;
   }
 
 }

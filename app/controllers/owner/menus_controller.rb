@@ -44,7 +44,7 @@ class Owner::MenusController < Owner::Base
   private
   def menu_params
     params.require(:menu).permit(
-      :title, :menu_imeg, :content, :cancel, :regular_price,
+      :title, :menu_image, :content, :cancel, :regular_price,
       :discount_price, :reservation_method, :is_sale_frag
     )
   end
