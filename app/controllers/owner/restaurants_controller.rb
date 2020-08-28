@@ -13,9 +13,12 @@ class Owner::RestaurantsController < Owner::Base
   end
 
   def update
-    restaurant = Restaurant.find(params[:id])
-    restaurant.update(restaurant_params)
-    redirect_to owner_restaurant_path(restaurant)
+    @restaurant = Restaurant.find(params[:id])
+    if @restaurant.update(restaurant_params)
+      redirect_to owner_restaurant_path(@restaurant)
+    else
+      render :edit
+    end
   end
 
   private

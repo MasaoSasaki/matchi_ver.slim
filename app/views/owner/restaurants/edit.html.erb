@@ -1,5 +1,8 @@
 <div class="restaurant-edit">
   <section class="contents restaurant-edit">
+
+    <%= render partial: 'layouts/error_messages', locals: {model: @restaurant} %>
+    
     <%= form_with model: @restaurant, url: owner_restaurant_path, method: :patch, local: :true do |f| %>
       <table class="restaurant-edit-form">
         <tbody>
