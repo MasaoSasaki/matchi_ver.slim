@@ -7,9 +7,12 @@ class Owner::Base < ApplicationController
   def current_restaurant?
     restaurant_id = params[:restaurant_id]
     id = params[:id]
-    unless restaurant_id == current_owner_restaurant.id.to_s || id == current_owner_restaurant.id.to_s
-      id = "#{params[:restaurant_id]}" + "#{params[:id]}"
-      redirect_to redirect_path(restaurant_id: id)  #redirect先に入力されたIDを渡す
+
+    unless master_admin_signed_in?
+      unless restaurant_id == current_owner_restaurant.id.to_s || id == current_owner_restaurant.id.to_s
+        id = "#{params[:restaurant_id]}" + "#{params[:id]}"
+        redirect_to redirect_path(restaurant_id: id)  #redirect先に入力されたIDを渡す
+      end
     end
   end
 
