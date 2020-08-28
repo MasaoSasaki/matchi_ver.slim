@@ -20,6 +20,8 @@
   --logo-image-width: 100px;
   --logo-image-height: 70px;
   --hamburger-transition: 0.3s;
+  --thema-color1: #fffafa;
+  --thema-color2: #ffefef;
 }
 
 * {
@@ -29,7 +31,7 @@
 }
 
 body {
-  background-color: #fffafa;
+  background-color: var(--thema-color);
 }
 
 ul {
@@ -206,7 +208,7 @@ h1 {
 .top-side > div {
   margin-top: 20px;
   padding: 20px;
-  background-color: #ffefef;
+  background-color: var(--thema-color2);
 }
 
 .registration {
@@ -649,16 +651,17 @@ footer {
     position: relative;
     line-height: 70px;
   }
+
   // 未読メッセージの通知アイコン
-  // .icon {
-  //   width: 10px;
-  //   height: 10px;
-  //   background-color: orange;
-  //   border-radius: 50%;
-  //   position: absolute;
-  //   top: 20px;
-  //   left: 0;
-  // }
+  .icon {
+    width: 10px;
+    height: 10px;
+    background-color: orange;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    left: 0;
+  }
 
   .body-container {
     padding: 0 20px;
