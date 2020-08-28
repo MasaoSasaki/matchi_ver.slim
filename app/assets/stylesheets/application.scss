@@ -20,13 +20,14 @@
   --logo-image-width: 100px;
   --logo-image-height: 70px;
   --hamburger-transition: 0.3s;
+  --thema-color-font: #555;
   --thema-color1: #fffafa;
   --thema-color2: #ffefef;
 }
 
 * {
   margin: 0;
-  color: #555;
+  color: var(--thema-color-font);
   list-style: none;
 }
 
@@ -126,26 +127,31 @@ main {
   margin: 30px 0;
 }
 
-// owner/restaurant/show
+// owner/restaurants/show
 .restaurant-introduction {
   margin: 20px 0;
+}
+
+.restaurant_image {
+  text-align: center;
+  object-fit: cover;
 }
 
 .restaurant-status {
   margin: 20px 0;
 }
 
-// owner/restaurants
+// /owner/restaurants
 .restaurant-edit .submit {
   text-align: center;
 }
 
-// owner/restaurants/menus/new
+// /owner/restaurants/menus/new
 .menus-create {
   text-align: right;
 }
 
-// owner/restaurants/menus/edit
+// /owner/restaurants/menus/edit
 .menu-status div, .menu-form section {
   margin: 20px 0;
 }
@@ -380,6 +386,33 @@ h1 {
   flex: 1;
 }
 
+// /public/menus/index
+.public-menus-index h2 {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.menus {
+  // height: 200px;
+  margin: 20px 0;
+  padding-top: 10px;
+  border: solid 1px var(--thema-color-font);
+  border-radius: 20px;
+}
+
+.menu-image {
+  // object-fit: cover;
+}
+
+.menu-title {
+  justify-content: center;
+}
+
+.menu-body {
+  justify-content: space-between;
+  padding: 0 20px;
+}
+
 //devise
 .devise-form h2 {
   margin: 10px 0;
@@ -449,6 +482,7 @@ footer {
   margin: 0.8em 0;
 }
 
+
 // PC端末用
 @media (min-width: 851px) {
 
@@ -478,7 +512,7 @@ footer {
     justify-content: space-between;
   }
 
-  // owner/restaurant/show
+  // owner/restaurants/show
   .restaurant-head {
     display: flex;
     justify-content: space-between;
@@ -487,11 +521,6 @@ footer {
   // }
   // .restaurant-head p {
   // }
-
-  .restaurant_image {
-    text-align: center;
-    object-fit: cover;
-  }
 
   .restaurant-status {
     display: flex;
@@ -504,14 +533,16 @@ footer {
     justify-content: space-around;
   }
 
-  .menu_image {
-    object-fit: cover;
-  }
-
   // owner/restaurant/menus/show
   .menu-status {
     display: flex;
     justify-content: space-around;
+  }
+
+  // /public/menus/index
+  .menu-list {
+    display: flex;
+    flex-wrap: wrap;
   }
 
 }
@@ -732,4 +763,5 @@ footer {
   .menus-edit-h2 {
     text-align: center;
   }
+
 }
