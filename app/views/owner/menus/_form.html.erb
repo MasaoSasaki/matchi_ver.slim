@@ -1,7 +1,7 @@
 <div class="menu-form">
   <%= form_with model: [restaurant, menu], url: path, local: true do |f| %>
     <section class="menu-status">
-      <div class="flex menu-form-table_image">
+      <div class="menu-form-table">
         <table>
           <tbody>
             <tr>
@@ -26,10 +26,12 @@
             </tr>
           </tbody>
         </table>
-        <div class="menu-form-image">
-        </div>
       </div>
-      <div class="menu-form-tag"></div>
+      <div class="menu-form-image">
+        <h3>メニュー画像</h3>
+        <div class="menu-image"><%= f.attachment_field :menu_image %></div>
+      </div>
+      <%# <div class="menu-form-tag"></div> %>
     </section>
     <section class="menu-form-content">
       <p><%= f.label :content, value: '内容' %></p>

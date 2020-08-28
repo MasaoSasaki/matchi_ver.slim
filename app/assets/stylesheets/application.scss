@@ -138,9 +138,18 @@ main {
   text-align: center;
 }
 
-// owner/menus/new
+// owner/restaurants/menus/new
 .menus-create {
   text-align: right;
+}
+
+// owner/restaurants/menus/edit
+.menu-status div, .menu-form section {
+  margin: 20px 0;
+}
+
+.menu-form .submit {
+  text-align: center;
 }
 
 //public/homes
@@ -498,6 +507,12 @@ footer {
     object-fit: cover;
   }
 
+  // owner/restaurant/menus/show
+  .menu-status {
+    display: flex;
+    justify-content: space-around;
+  }
+
 }
 
 // タブレット端末用
@@ -697,4 +712,22 @@ footer {
     padding-right: 0;
   }
 
+  // owner/restaurants/menus/edit
+  .menu-form-table table {
+    margin: 0 auto;
+  }
+
+  .menu-form-image {
+    h3, div {
+    text-align: center;
+    }
+  }
+
+  .menu-form-content, .menu-form-cancel {
+    text-align: center;
+  }
+
+  .menus-edit-h2 {
+    text-align: center;
+  }
 }

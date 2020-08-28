@@ -31,8 +31,11 @@ class Owner::MenusController < Owner::Base
     restaurant = Restaurant.find(params[:restaurant_id])
     menu = Menu.find(params[:id])
     menu.reservation_method = params[:reservation_method].to_i
-    menu.update(menu_params)
-    redirect_to owner_restaurant_menu_path(current_owner_restaurant, menu)
+    if menu.update(menu_params)
+      redirect_to owner_restaurant_menu_path(current_owner_restaurant, menu)
+    else
+      render :edit
+    end
   end
 
   def destroy
