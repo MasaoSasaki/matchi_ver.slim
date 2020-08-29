@@ -10,12 +10,12 @@
       <tr>
         <td><h3>予約日時（来店日時）</h3></td>
         <td><h4>ご予約日</h4></td>
-        <td><p><%= "#{@reservation.reservation_year} / #{@reservation.reservation_month} / #{@reservation.reservation_day}" %></p></td>
+        <td><p><%= "#{@reservation.reservation_year}年 #{@reservation.reservation_month}月 #{@reservation.reservation_day}日" %></p></td>
       </tr>
       <tr>
         <td></td>
         <td><h4>ご予約時間帯</h4></td>
-        <td><p><%= @reservation.reservation_time %></p></td>
+        <td><p><%= @reservation.reservation_time %>:00</p></td>
       </tr>
       <tr>
         <td><h3>店舗名</h3></td>
@@ -50,7 +50,7 @@
       <tr>
         <td><h3>お支払い方法</h3></td>
         <td></td>
-        <td><p><%= @reservation.payment_method %></p></td>
+        <td><p><%= @reservation.payment_method_i18n %></p></td>
       </tr>
       <tr>
         <td><h3>店舗からのお知らせ</h3></td>

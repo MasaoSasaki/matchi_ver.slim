@@ -27,8 +27,8 @@
           <td><h3>お支払い方法</h3></td>
           <td></td>
           <%# クレジットカード、銀行振り込み未対応のため、現金支払い固定 %>
-          <% if false %><td><%= f.select :payment_method, Reservation.payment_methods.keys.map {|method| [method]} %></td><% end %>
-          <% if true %><td><%= f.select :payment_method, '当日現金支払い': 1 %></td><% end %>
+          <% if true %><td><%= f.select :payment_method, Reservation.payment_methods_i18n.invert %></td><% end %>
+          <% if false %><td><%= f.select :payment_method, 1 %></td><% end %>
         </tr>
         <tr>
           <td><h3>ご来店日時</h3></td>

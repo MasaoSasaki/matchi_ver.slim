@@ -1,7 +1,6 @@
 class Public::ReservationsController < Public::Base
 
   before_action :current_user?
-  @@payment_method = 0
 
   def index
     @reservations = Reservation.where(user_id: current_public_user.id)
@@ -25,7 +24,6 @@ class Public::ReservationsController < Public::Base
   def create
     reservation = Reservation.new(reservation_params)
     reservation.user_id = current_public_user.id
-    reservation.payment_method = @@payment_method
     reservation.save
     # 最新の予約情報を取得
     new_reservation_id = Reservation.order(created_at: :desc).limit(1).ids
@@ -35,14 +33,6 @@ class Public::ReservationsController < Public::Base
   def confirm
     @menu = Menu.find(params[:menu_id])
     @reservation = Reservation.new
-    case params[:payment_method]
-    when "credit"
-      @@payment_method = 0
-    when "cash"
-      @@payment_method = 1
-    when "bank"
-      @@payment_method = 2
-    end
   end
 
   def completion
