@@ -1,3 +1,20 @@
 <div class="contents public-restaurants-show">
-  <h2><%= @restaurant.name %></h2>
+  <section class="restaurant-info">
+    <div class="restaurant-head">
+      <h1 class="restaurant-show-h1">店舗名：<%= @restaurant.name %> 様</h1>
+      <% if false %><p class="">来店前予約件数<%= @reservation_count %>件</p><% end %>
+    </div>
+    <div class="restaurant-image">
+      <%= attachment_image_tag @restaurant, :restaurant_image, style: "height: 250px; width: 100%;" %>
+    </div>
+    <div class="restaurant-introduction">
+      <h3>店舗紹介</h3>
+      <%= @restaurant.introduction %>
+    </div>
+  </section>
+  <section class="restaurant-status">
+    <div class="restaurant-info">
+      <div><%= link_to 'メニュー一覧', public_menus_path %></div>
+    </div>
+  </section>
 </div>

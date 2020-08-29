@@ -1,14 +1,28 @@
 class Public::UsersController < Public::Base
+
+  before_action :current_user?
+
   def show
     @reservation = Reservation.where(user_id: params[:id])
     @current_user = current_public_user
   end
 
-  def info
+  def edit
+    @user = User.find_by(id: current_public_user.id)
     @current_user = current_public_user
   end
 
-  def edit
+  def update
+    @current_user = current_public_user
+    @user = User.find_by(id: current_public_user.id)
+    if @user.update(user_params)
+      redirect_to public_users_info_path(@user)
+    else
+      render :edit
+    end
+  end
+
+  def info
     @current_user = current_public_user
   end
 
@@ -18,12 +32,6 @@ class Public::UsersController < Public::Base
 
   def withdraw
     @current_user = current_public_user
-  end
-
-  def update
-    user = User.find_by(id: current_public_user.id)
-    user.update(user_params)
-    redirect_to public_users_info_path(user)
   end
 
   def withdrawal

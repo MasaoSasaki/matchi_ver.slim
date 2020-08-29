@@ -1,17 +1,54 @@
 <div class="contents public-reservation-new">
   <h2>予約情報の入力</h2>
-  <h3>メニュー名</h3>
-  <%= @menu.title %>
-  <h3>内容</h3>
-  <%= @menu.content %>
-  <h3>キャンセル規定</h3>
-  <%= @menu.cancel %>
-  <div class="reservation-form">
     <%= form_with url: public_user_reservations_confirm_path, method: :get, local: true do |f| %>
-      <%= f.label :people, value: '人数' %>
-      <%= f.number_field :people %>
-
-      <%= f.submit '確認する' %>
-    <% end %>
-  </div>
+    <table>
+      <tbody>
+        <tr>
+          <td><h3>メニュー名</h3></td>
+          <td></td>
+          <td><%= @menu.title %></td>
+        </tr>
+        <tr>
+          <td><h3>内容</h3></td>
+          <td></td>
+          <td><%= @menu.content %></td>
+        </tr>
+        <tr>
+          <td><h3>キャンセル規定</h3></td>
+          <td></td>
+          <td><%= @menu.cancel %></td>
+        </tr>
+        <tr>
+          <td><h3>人数</h3></td>
+          <td></td>
+          <td><%= f.number_field :people, value: '1', min: 1, size: "100" %></td>
+        </tr>
+        <tr>
+          <td><h3>お支払い方法</h3></td>
+          <td></td>
+          <%# クレジットカード、銀行振り込み未対応のため、現金支払い固定 %>
+          <% if true %><td><%= f.select :payment_method, Reservation.payment_methods_i18n.invert %></td><% end %>
+          <% if false %><td><%= f.select :payment_method, 1 %></td><% end %>
+        </tr>
+        <tr>
+          <td><h3>ご来店日時</h3></td>
+          <td><h4>年月日</h4></td>
+          <td>
+            <%= f.number_field :reservation_year, min: Time.new.year, max: Time.new.year+1, value: Time.new.year %>年
+            <%= f.number_field :reservation_month, min: 1, max: 12, value: Time.new.month %>月
+            <%= f.number_field :reservation_day, min: 1, max: 31, value: Time.new.day %>日
+          </td>
+        </tr>
+        <tr>
+          <td></td>
+          <td><h4>時間</h4></td>
+          <td><%= f.number_field :reservation_time, min: 0, max: 23, value: Time.new.hour+10 %>時（0時〜23時）</td>
+        </tr>
+      </tbody>
+    </table>
+    <%= f.hidden_field :menu_id, value: @menu.id %>
+    <%= f.submit '確認する', class: "btn reservation-confirm" %>
+  <% end %>
+  <%= link_to '前のページへ', :back %>
+  <%= link_to 'メニュー一覧へ', root_path %>
 </div>

@@ -1,7 +1,10 @@
 <div class="contents users-edit">
   <h2>登録情報編集</h2>
+
+  <%= render partial: 'layouts/error_messages', locals: {model: @user} %>
+
   <%= form_with model: @current_user, url: public_user_path(@current_user), local: true, method: :patch do |f| %>
-    <h2><%= "#{@current_user.name_family}" + "#{@current_user.name_first}" %> 様</h2>
+    <h2><u><%= "#{@current_user.name_family}" + "#{@current_user.name_first}" %></u> 様</h2>
     <small>お名前の変更は<%= link_to 'こちら', contact_path %>より、直接お問い合わせください。</small>
     <table class="edit-head">
       <body>
@@ -33,32 +36,37 @@
         <tr>
           <td><h3>連絡先</h3></td>
           <td><%= f.label :phone_number, value: '電話番号' %></td>
-          <td><%= f.number_field :phone_number %></td>
+          <td><%= f.number_field :phone_number, placeholder: '必須' %></td>
         </tr>
         <tr>
           <td></td>
           <td><%= f.label :email, value: 'メールアドレス1' %></td>
-          <td><%= f.text_field :email, placeholder: '必須' %></td>
+          <td><%= f.email_field :email, placeholder: '必須' %></td>
         </tr>
         <tr>
           <td></td>
           <td><%= f.label :email_sub, value: 'メールアドレス2' %></td>
-          <td><%= f.text_field :email_sub %></td>
+          <td><%= f.email_field :email_sub %></td>
         </tr>
         <tr>
           <td><h3>生年月日</h3></td>
           <td><%= f.label :birth_year, value: '西暦（4桁）' %></td>
-          <td><%= f.number_field :birth_year %></td>
+          <td><%= f.number_field :birth_year, min: 1900, max: Time.new.year %>年</td>
         </tr>
         <tr>
           <td></td>
           <td><%= f.label :birth_month, value: '月（2桁）' %></td>
-          <td><%= f.number_field :birth_month %></td>
+          <td><%= f.number_field :birth_month, min: 1, max: 12 %>月</td>
         </tr>
         <tr>
           <td></td>
           <td><%= f.label :birth_day, value: '日（2桁）' %></td>
-          <td><%= f.number_field :birth_day %></td>
+          <td><%= f.number_field :birth_day, min: 1, max: 31 %>日</td>
+        </tr>
+        <tr>
+          <td><h3><%= f.label :profile, 'プロフィール' %></h3></td>
+          <td></td>
+          <td><%= f.text_area :profile, size: '30x10' %></td>
         </tr>
 
       </body>

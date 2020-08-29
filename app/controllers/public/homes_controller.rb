@@ -1,4 +1,7 @@
 class Public::HomesController < Public::Base
+
+  # before_action :current_user?, except: [:top, :about, :contact, :privacy, :terms, :redirect]
+
   def top
     @menus = Menu.all
     @restaurants = Restaurant.all
@@ -22,7 +25,11 @@ class Public::HomesController < Public::Base
   end
 
   def admin
-    
+
+  end
+
+  def redirect
+    @id = "#{params[:user_id]}" + "#{params[:restaurant_id]}"
   end
 
 end

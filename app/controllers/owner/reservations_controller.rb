@@ -1,6 +1,11 @@
 class Owner::ReservationsController < Owner::Base
+
+  before_action :current_restaurant?, except: [:index]
+
   def index
     @reservations = Reservation.all
+    @menus = Menu.all
+    @users = User.all
   end
 
   def show

@@ -7,18 +7,18 @@
         <th>メニュー数</td>
         <th>レビュアー数</th>
         <th>レビューイ数</th>
-        <th>レビューイ数</th>
         <th>評価</th>
       </tr>
     </thead>
     <tbody>
       <% @restaurants.each do |restaurant| %>
-        <td><%= link_to "#{restaurant.name}", owner_restaurant_path(restaurant) %></td>
-        <td><%= @menus.where(restaurant_id: restaurant.id).count %></td>
-        <td></td>
-        <td></td>
-        <td></td>
-        <td></td>
+        <tr>
+          <td><%= link_to "#{restaurant.name}", owner_restaurant_path(restaurant) %></td>
+          <td><%= @menus.where(restaurant_id: restaurant.id).count %></td>
+          <td></td>
+          <td></td>
+          <td></td>
+        </tr>
       <% end %>
     </tbody>
   </table>

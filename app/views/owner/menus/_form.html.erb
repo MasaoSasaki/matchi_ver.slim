@@ -1,7 +1,7 @@
 <div class="menu-form">
   <%= form_with model: [restaurant, menu], url: path, local: true do |f| %>
     <section class="menu-status">
-      <div class="flex menu-form-table_image">
+      <div class="menu-form-table">
         <table>
           <tbody>
             <tr>
@@ -9,12 +9,12 @@
               <td><%= f.text_field :title %></td>
             </tr>
             <tr>
-              <td><%= f.label :regular_plice, value: '正規価格（税抜き）：' %></td>
-              <td><%= f.text_field :regular_plice %></td>
+              <td><%= f.label :regular_price.to_s(:delimited), value: '正規価格（税抜き）：' %></td>
+              <td><%= f.number_field :regular_price.to_s(:delimited) %></td>
             </tr>
             <tr>
-              <td><%= f.label :discount_plice, value: '提供価格（税抜き）：' %></td>
-              <td><%= f.text_field :discount_plice %></td>
+              <td><%= f.label :discount_price.to_s(:delimited), value: '提供価格（税抜き）：' %></td>
+              <td><%= f.number_field :discount_price.to_s(:delimited) %></td>
             </tr>
             <tr>
               <td><%= f.label :reservation_method, value: '予約方法' %></td>
@@ -26,10 +26,12 @@
             </tr>
           </tbody>
         </table>
-        <div class="menu-form-image">
-        </div>
       </div>
-      <div class="menu-form-tag"></div>
+      <div class="menu-form-image">
+        <h3>メニュー画像</h3>
+        <div class="menu-image"><%= f.attachment_field :menu_image %></div>
+      </div>
+      <%# <div class="menu-form-tag"></div> %>
     </section>
     <section class="menu-form-content">
       <p><%= f.label :content, value: '内容' %></p>

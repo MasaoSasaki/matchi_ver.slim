@@ -30,7 +30,7 @@
     <%= @user.profile %>
   </div>
 
-  <div class="user-status">
+  <div class="hidden user-status">
     <h3>実績</h3>
     <h4>会員ランク：<%#= @user.rank %></h4>
     <h4>予約数：<%= @user.reservation.count %> 件</h4>
@@ -38,7 +38,7 @@
     <h4>レビューされた数：<%#= @user_reviews.count %></h4>
   </div>
 
-  <div class="user-performance">
+  <div class="hidden user-performance">
     <h3 class="title">最新の実績</h3>
     <div class="flex new-user-performance">
       <div class="box new-menu-reviewees"></div>

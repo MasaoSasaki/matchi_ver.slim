@@ -25,12 +25,31 @@
       <div class="restaurants-all">
         <h2>レストラン一覧</h2>
         <% @restaurants.each do |restaurant| %>
-          <div class="top-restaurant">
-            <%#= attachment_image_tag :restaurant_image %>
-            <h3><%= link_to "#{restaurant.name}", public_restaurant_path(restaurant) %></h3>
-            <p><%= restaurant.prefecture + restaurant.city %></p>
+          <div class="flex top-restaurant">
+            <div class="restaurant-image">
+              <%= attachment_image_tag restaurant, :restaurant_image, fallback: "no_image.png" %>
+            </div>
+            <div class="restaurant-info">
+              <h3><%= link_to "#{restaurant.name}", public_restaurant_path(restaurant) %></h3>
+              <p><%= restaurant.prefecture + restaurant.city %></p>
+            </div>
           </div>
         <% end %>
+        <h2>メニュー一覧</h2>
+        <% @menus.each do |menu| %>
+          <div class="flex top-menus">
+            <div class="menu-image">
+              <%= attachment_image_tag menu, :menu_image, fallback: "no_image.png" %>
+            </div>
+            <div class="menu-info">
+              <h3><%= link_to "#{menu.title}", public_menu_path(menu) %></h3>
+              <small>店名：<%= @restaurants.find(menu.restaurant_id).name %></small>
+              <p>正規価格：<%= menu.regular_price.to_s(:delimited) %> 円</p>
+              <p>提供価格：<%= menu.discount_price.to_s(:delimited) %> 円</p>
+            </div>
+          </div>
+        <% end %>
+
       </div>
     </div>
 
@@ -51,7 +70,7 @@
             <% @menus.each do |menu| %>
               <li>
                 <%= link_to "#{menu.title}", public_menu_path(menu) %></p>
-                <%#= attachment_image_tag :menu_image %>
+                <%= attachment_image_tag menu, :menu_image, width: 200, height: 100, fallback: "no_image.png" %>
               </li>
             <% end %>
           </ul>

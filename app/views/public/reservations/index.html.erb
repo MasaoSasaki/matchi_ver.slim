@@ -1,2 +1,25 @@
-<h1>Public::Reservations#index</h1>
-<p>Find me in app/views/public/reservations/index.html.erb</p>
+<div class="contents public-users-reservations-index">
+  <h2>予約履歴</h2>
+  <table>
+    <thead>
+      <tr>
+        <th>予約ID</th>
+        <th>来店（予定）日</th>
+        <th>店舗名</th>
+        <th>人数</th>
+        <th>メニュー</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @reservations.each do |reservation| %>
+      <tr>
+        <td><%= reservation.id %></td>
+        <td><%= "#{reservation.reservation_year}年 #{reservation.reservation_month}月 #{reservation.reservation_day}日" %></td>
+        <td><%= link_to "#{@restaurants.find(@menus.find(reservation.menu_id).restaurant_id).name}", public_restaurant_path(@menus.find(reservation.menu_id).restaurant_id) %></td>
+        <td><%= reservation.people %> 名</td>
+        <td><%= link_to "#{@menus.find(reservation.menu_id).title}", public_user_reservation_path(current_public_user, reservation) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

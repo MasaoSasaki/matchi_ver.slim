@@ -20,16 +20,19 @@
   --logo-image-width: 100px;
   --logo-image-height: 70px;
   --hamburger-transition: 0.3s;
+  --thema-color-font: #555;
+  --thema-color1: #fff9f9;
+  --thema-color2: #ffefef;
 }
 
 * {
   margin: 0;
-  color: #555;
+  color: var(--thema-color-font);
   list-style: none;
 }
 
 body {
-  background-color: #fffcfc;
+  background-color: var(--thema-color);
 }
 
 ul {
@@ -37,7 +40,7 @@ ul {
 }
 
 td, th {
-  padding: 15px;
+  padding: 10px;
 }
 
 .btn {
@@ -72,13 +75,16 @@ td, th {
 .circle {
   border-radius: 50%;
 }
-.hamburger:hover {
-  cursor: pointer;
+
+.error-messages li {
+  margin: 0;
+  list-style: disc;
 }
 
+// application.html.erb
 header {
   border-bottom: solid 1px #ccc;
-  margin-bottom: 20px;
+  // margin-bottom: 30px;
 }
 
 .pc-header li {
@@ -86,13 +92,8 @@ header {
 }
 
 .error-message {
+  margin: 10px 0;
   color: red;
-}
-
-.header-container {
-  padding: 0 70px;
-  line-height: 70px;
-  margin: 0 auto;
 }
 
 .pc-header {
@@ -100,7 +101,7 @@ header {
 }
 
 .logo-image {
-  background-image: image-url("no_image.png");
+  background-image: image-url("logo.png");
   background-size: cover;
   background-position: center;
   width: var(--logo-image-width);
@@ -118,18 +119,49 @@ header {
   max-width: 900px;
 }
 
-// owner/restaurants
+// main
+main {
+  margin: 30px 0;
+}
+
+// owner/restaurants/show
+.restaurant-introduction {
+  margin: 20px 0;
+}
+
+.restaurant_image {
+  text-align: center;
+  object-fit: cover;
+}
+
+.restaurant-status {
+  margin: 20px 0;
+}
+
+// /owner/restaurants
 .restaurant-edit .submit {
   text-align: center;
 }
 
-// owner/menus
+// /owner/restaurants/menus/new
 .menus-create {
   text-align: right;
 }
 
-//public/homes
+// /owner/restaurants/menus/edit
+.menu-status div, .menu-form section {
+  margin: 20px 0;
+}
 
+.menu-form .submit {
+  text-align: center;
+}
+
+.menu_image {
+  object-fit: cover;
+}
+
+// /public/homes/top
 .homes-container {
   max-width: 900px;
   padding: 70px;
@@ -139,8 +171,20 @@ h1 {
   margin-bottom: 10px;
 }
 
-h2 {
-  margin-top: 30px;
+.restaurants-all h2 {
+  margin: 30px 0 10px;
+  text-align: center;
+}
+
+.top-menus, .top-restaurant {
+  margin: 10px 0;
+  padding: 10px;
+  border: solid var(--thema-color-font) 1px;
+  border-radius: 20px;
+}
+
+.restaurant-info, .menu-info {
+  padding-left: 10px;
 }
 
 .header-image {
@@ -178,7 +222,7 @@ h2 {
 .top-side > div {
   margin-top: 20px;
   padding: 20px;
-  background-color: #eeffff;
+  background-color: var(--thema-color2);
 }
 
 .registration {
@@ -220,6 +264,11 @@ h2 {
   margin-top: 10px;
 }
 
+//public/privacy
+.privacy h2, .terms h2, .contact h2, .administrator h2 {
+  margin: 1.5em 0 0.4em;
+}
+
 //public/About
 .about-contents h1 {
   margin-top: 20px;
@@ -244,13 +293,13 @@ h2 {
   background-color: rgb(255, 240, 240);
 }
 
-//public/users
+// /public/users
 .user-links {
   padding: 20px;
   margin: 20px;
   border: 3px solid black;
   border-radius: 10px;
-  background: #f5f5f5
+  background: var(--thema-color2)
 }
 
 .sns-btn {
@@ -297,7 +346,7 @@ h2 {
   grid-area: box4;
 }
 
-//public/users/profile
+// /public/users/profile
 .profile-image {
   text-align: center;
   margin-right: 20px;
@@ -313,7 +362,16 @@ h2 {
   flex: 1;
 }
 
-// public/users/edit
+// /public/users/edit
+  .users-edit h2 {
+    margin: 20px 0;
+  }
+
+  .users-edit > h2 {
+    text-align: center;
+  }
+
+
   .users-edit-btn {
     justify-content: space-between;
   }
@@ -327,33 +385,89 @@ h2 {
     font-size: 0.8em;
   }
 
-// public/restaurants
+// /public/restaurants
 .public-restaurants-index > h2 {
   text-align: center;
-}
-
-.restaurant-image {
-  width: 300px;
-  height: 200px;
 }
 
 .restaurant-contents {
   flex: 1;
 }
 
+// /public/menus/index
+.public-menus-index h2 {
+  margin: 20px 0;
+  text-align: center;
+}
+
+.menus {
+  margin: 20px 0;
+  padding-top: 10px;
+  border: solid 1px var(--thema-color-font);
+  border-radius: 20px;
+}
+
+.menu-title {
+  justify-content: center;
+}
+
+
+// /public/menus/show
+.public-menus-show h2 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.public-menus-show div {
+  margin: 15px 0;
+}
+
+// /public/users/reservation/index
+.public-users-reservations-index {
+
+  table {
+    margin: 0 auto;
+  }
+  h2 {
+    text-align: center;
+  }
+
+}
+
+// /public/users/reservation/new
+.reservation-confirm {
+  margin: 20px 0;
+}
+
+// /public/users/reservation/confirm
+.reservation-completion {
+  margin: 20px 0;
+}
+
 //devise
-.devise-form h3, .actions {
-  margin-top: 20px;
+.devise-form h2 {
+  margin: 10px 0;
+}
+
+.session {
+  text-align: center;
 }
 
 .actions {
-  margin-bottom: 10px;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.registration-btn {
+  padding: 1em;
+  font-size: 1.1em;
+  background-color: #ffdd00;
 }
 
 // footer
 footer {
   padding-top: 20px;
-  margin: 20px 0;
+  margin-bottom: 20px;
   border-top: 1px solid #ccc;
 }
 
@@ -399,6 +513,7 @@ footer {
   margin: 0.8em 0;
 }
 
+
 // PC端末用
 @media (min-width: 851px) {
 
@@ -416,9 +531,65 @@ footer {
     display: none;
   }
 
+  .header-container {
+    padding: 0 70px;
+    line-height: 70px;
+    margin: 0 auto;
+  }
+
+  .top-menus .menu_image, .top-restaurant .restaurant_image {
+    object-fit: cover;
+    width: 200px;
+    height: 150px;
+  }
+
+  // public/user/profile
   .profile-head {
     display: flex;
     justify-content: space-between;
+  }
+
+  // owner/restaurants/show
+  .restaurant-head {
+    display: flex;
+    justify-content: space-between;
+  }
+  // .restaurant-head h1 {
+  // }
+  // .restaurant-head p {
+  // }
+
+  .restaurant-status {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  // owner/restaurant/menus/show
+  .menu-head-contents {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  // owner/restaurant/menus/show
+  .menu-status {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  // /public/menus/index
+  .menu-list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  // /public/menu/show
+  .menu-head {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .reservation {
+    text-align: center;
   }
 
 }
@@ -442,6 +613,16 @@ footer {
 // スマホ用
 @media (max-width: 600px) {
 
+  h2, h3, h4, p {
+    font-size: 0.9em;
+  }
+
+  .top-menus .menu_image, .top-restaurant .restaurant_image {
+    object-fit: cover;
+    width: 100px;
+    height: 70px;
+  }
+
   .header-container {
     width: auto;
     padding: 0 20px;
@@ -455,14 +636,12 @@ footer {
 
   .sp-header {
     height: 70px;
-    position: relative;
+    justify-content: space-between;
   }
 
   .sp-header .logo-image {
     width: var(--logo-image-width);
     margin-right: 50%;
-    float: left;
-    position: absolute;
     left: 40%;
   }
 
@@ -473,7 +652,6 @@ footer {
     height: 40px;
     border: solid 1px #aaa;
     border-radius: 5px;
-    float: left;
     position: relative;
     text-align: center;
     z-index: 2;
@@ -525,7 +703,6 @@ footer {
     height: 100vh;
     background-color:rgba(0, 0, 0, 0.9);
     position: fixed;
-    text-align: center;
     top: 0;
     left: -100%;
     z-index: 1;
@@ -533,7 +710,10 @@ footer {
   }
 
   .hamburger-menu ul {
-    margin-top: 70px;
+    margin-top: 90px;
+  }
+  .hamburger-menu ul li {
+    margin: 20px 0 20px 30px;
   }
   .hamburger-menu a {
     color: white;
@@ -544,7 +724,6 @@ footer {
     height: 100vh;
     background-color:rgba(0, 0, 0, 0.9);
     position: fixed;
-    text-align: center;
     top: 0;
     left: 0;
     z-index: 1;
@@ -554,6 +733,23 @@ footer {
   .circle {
     transition: var(--hamburger-transition);
     border-radius: 50%;
+  }
+
+  .alert {
+    padding-top: 4px;
+    position: relative;
+    line-height: 70px;
+  }
+
+  // 未読メッセージの通知アイコン
+  .icon {
+    width: 10px;
+    height: 10px;
+    background-color: orange;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    left: 0;
   }
 
   .body-container {
@@ -605,6 +801,25 @@ footer {
 
   .profile_image {
     padding-right: 0;
+  }
+
+  // owner/restaurants/menus/edit
+  .menu-form-table table {
+    margin: 0 auto;
+  }
+
+  .menu-form-image {
+    h3, div {
+    text-align: center;
+    }
+  }
+
+  .menu-form-content, .menu-form-cancel {
+    text-align: center;
+  }
+
+  .menus-edit-h2 {
+    text-align: center;
   }
 
 }
