@@ -26,7 +26,9 @@
         <tr>
           <td><h3>お支払い方法</h3></td>
           <td></td>
-          <td><%= f.select :payment_method, Reservation.payment_methods.keys.map {|method| [method]} %></td>
+          <%# クレジットカード、銀行振り込み未対応のため、現金支払い固定 %>
+          <% if false %><td><%= f.select :payment_method, Reservation.payment_methods.keys.map {|method| [method]} %></td><% end %>
+          <% if true %><td><%= f.select :payment_method, '当日現金支払い': 1 %></td><% end %>
         </tr>
         <tr>
           <td><h3>ご来店日時</h3></td>
@@ -45,6 +47,8 @@
       </tbody>
     </table>
     <%= f.hidden_field :menu_id, value: @menu.id %>
-    <%= f.submit '確認する' %>
+    <%= f.submit '確認する', class: "btn reservation-confirm" %>
   <% end %>
+  <%= link_to '前のページへ', :back %>
+  <%= link_to 'メニュー一覧へ', root_path %>
 </div>
