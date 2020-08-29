@@ -122,6 +122,8 @@ GEM
     dotenv-rails (2.7.6)
       dotenv (= 2.7.6)
       railties (>= 3.2)
+    enum_help (0.0.17)
+      activesupport (>= 3.0.0)
     erubi (1.9.0)
     execjs (2.7.0)
     ffi (1.13.1)
@@ -365,6 +367,7 @@ DEPENDENCIES
   coffee-rails (~> 4.2)
   devise
   dotenv-rails
+  enum_help
   gon
   jbuilder (~> 2.5)
   jp_prefecture (~> 0.10.0)
