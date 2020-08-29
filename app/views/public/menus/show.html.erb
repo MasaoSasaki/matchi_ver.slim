@@ -1,21 +1,23 @@
 <div class="contents public-menus-show">
   <h2>メニュー内容</h2>
-  <h3>店舗名</h3><%= @restaurant.name %>
   <div class="menu-show">
-    <div class="flex menu-head"></div>
+    <div class="menu-head">
       <div class="menu-body">
+        <h3>店舗名</h3>
+        <p><%= @restaurant.name %></p>
         <h3>メニュー名</h3>
-        <%= @menu.title %>
+        <p><%= @menu.title %></p>
         <h3>価格（税込）</h3>
         <h4>正規価格（税込）：</h4>
         <p><%= @menu.regular_price.to_s(:delimited) %> 円</p>
         <h4>提供価格（税込）：</h4>
         <p><%= @menu.discount_price.to_s(:delimited) %> 円</p>
         <h3>予約方法</h3>
-        <%= @menu.reservation_method %>
-        <h3>タグ</h3>
+        <p><%= @menu.reservation_method %></p>
+        <%# <h3>タグ</h3> %>
       </div>
-      <div class="menu-image"> </div>
+      <div class="menu-image"><%= attachment_image_tag @menu, :menu_image, width: 300, height: 250, fallback: "no_image.png" %></div>
+    </div>
     <div class="menu-contents">
       <h3>内容：</h3>
       <%= @menu.content %>
@@ -28,7 +30,7 @@
   <div class="reservation">
     <%= form_with url: new_public_user_reservation_path(current_public_user), method: :get, local: true do |f| %>
       <%= f.hidden_field :menu_id, value: params[:id] %>
-      <%= f.submit '予約情報を入力する' %>
+      <%= f.submit '予約情報を入力する', class: "btn" %>
     <% end %>
   </div>
 </div>

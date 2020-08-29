@@ -296,7 +296,7 @@ h1 {
   background-color: rgb(255, 240, 240);
 }
 
-//public/users
+// /public/users
 .user-links {
   padding: 20px;
   margin: 20px;
@@ -349,7 +349,7 @@ h1 {
   grid-area: box4;
 }
 
-//public/users/profile
+// /public/users/profile
 .profile-image {
   text-align: center;
   margin-right: 20px;
@@ -365,7 +365,7 @@ h1 {
   flex: 1;
 }
 
-// public/users/edit
+// /public/users/edit
   .users-edit h2 {
     margin: 20px 0;
   }
@@ -414,9 +414,15 @@ h1 {
   justify-content: center;
 }
 
-.menu-body {
-  justify-content: space-between;
-  padding: 0 20px;
+
+// /public/menus/show
+.public-menus-show h2 {
+  text-align: center;
+  margin: 20px 0;
+}
+
+.public-menus-show div {
+  margin: 15px 0;
 }
 
 //devise
@@ -549,6 +555,16 @@ footer {
   .menu-list {
     display: flex;
     flex-wrap: wrap;
+  }
+
+  // /public/menu/show
+  .menu-head {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .reservation {
+    text-align: center;
   }
 
 }
