@@ -80,3 +80,10 @@ ja:
         people: 人数
         reservation_status: 予約状況
         payment_method: 支払い方法
+
+  enums:
+    reservation:
+      payment_method:
+        cash: "店舗でお支払い"
+        credit: "クレジットカード支払い"
+        bank: "銀行振り込み"
