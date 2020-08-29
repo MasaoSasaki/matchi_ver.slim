@@ -44,6 +44,8 @@
             <div class="menu-info">
               <h3><%= link_to "#{menu.title}", public_menu_path(menu) %></h3>
               <small>店名：<%= @restaurants.find(menu.restaurant_id).name %></small>
+              <p>正規価格：<%= menu.regular_price.to_s(:delimited).to_s(:delimited) %> 円</p>
+              <p>提供価格：<%= menu.discount_price.to_s(:delimited).to_s(:delimited) %> 円</p>
             </div>
           </div>
         <% end %>

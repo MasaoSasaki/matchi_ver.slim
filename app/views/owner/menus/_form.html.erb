@@ -9,12 +9,12 @@
               <td><%= f.text_field :title %></td>
             </tr>
             <tr>
-              <td><%= f.label :regular_price, value: '正規価格（税抜き）：' %></td>
-              <td><%= f.number_field :regular_price %></td>
+              <td><%= f.label :regular_price.to_s(:delimited), value: '正規価格（税抜き）：' %></td>
+              <td><%= f.number_field :regular_price.to_s(:delimited) %></td>
             </tr>
             <tr>
-              <td><%= f.label :discount_price, value: '提供価格（税抜き）：' %></td>
-              <td><%= f.number_field :discount_price %></td>
+              <td><%= f.label :discount_price.to_s(:delimited), value: '提供価格（税抜き）：' %></td>
+              <td><%= f.number_field :discount_price.to_s(:delimited) %></td>
             </tr>
             <tr>
               <td><%= f.label :reservation_method, value: '予約方法' %></td>

@@ -164,7 +164,7 @@ main {
   object-fit: cover;
 }
 
-//public/homes
+// /public/homes/top
 .homes-container {
   max-width: 900px;
   padding: 70px;
@@ -181,6 +181,13 @@ h1 {
 
 .top-menus, .top-restaurant {
   margin: 10px 0;
+  padding: 10px;
+  border: solid var(--thema-color-font) 1px;
+  border-radius: 20px;
+}
+
+.restaurant-info, .menu-info {
+  padding-left: 10px;
 }
 
 .header-image {
@@ -381,7 +388,7 @@ h1 {
     font-size: 0.8em;
   }
 
-// public/restaurants
+// /public/restaurants
 .public-restaurants-index > h2 {
   text-align: center;
 }

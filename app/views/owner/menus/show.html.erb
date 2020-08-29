@@ -4,8 +4,8 @@
     <div class="menus-info">
       <ul>
         <li>メニュー名：<%= @menu.title %></li>
-        <li>正規価格(税抜き)：<%= @menu.regular_price %> 円</li>
-        <li>提供価格(税抜き)：<%= @menu.discount_price %> 円</li>
+        <li>正規価格(税抜き)：<%= @menu.regular_price.to_s(:delimited) %> 円</li>
+        <li>提供価格(税抜き)：<%= @menu.discount_price.to_s(:delimited) %> 円</li>
         <li>予約方法：<%= @menu.reservation_method %></li>
         <li>
           販売ステータス：

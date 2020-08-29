@@ -17,8 +17,8 @@
           <table>
             <tbody>
               <tr>
-                <td><h4>正規価格</h4><p><%= menu.regular_price %> 円</p></td>
-                <td><h4>提供価格</h4><p><%= menu.discount_price %> 円</p></td>
+                <td><h4>正規価格</h4><p><%= menu.regular_price.to_s(:delimited) %> 円</p></td>
+                <td><h4>提供価格</h4><p><%= menu.discount_price.to_s(:delimited) %> 円</p></td>
               </tr>
               <tr>
                 <td><h3>店舗名</h3><%= link_to "#{@restaurants.find(menu.restaurant_id).name}", public_restaurant_path(menu.restaurant_id) %></td>
