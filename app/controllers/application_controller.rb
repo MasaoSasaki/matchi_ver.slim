@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
 
   before_action :configure_user_permitted_parameters, if: :devise_controller?
   before_action :basic_auth
-  protect_from_forgery with: :exception
+  # protect_from_forgery with: :exception
 
   def basic_auth
     authenticate_or_request_with_http_basic do |username, password|
@@ -10,9 +10,9 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def production?
-    Rails.env.production?
-  end
+  # def production?
+  #   Rails.env.production?
+  # end
 
   protected
   def configure_user_permitted_parameters
