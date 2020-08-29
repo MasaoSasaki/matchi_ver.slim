@@ -160,6 +160,10 @@ main {
   text-align: center;
 }
 
+.menu_image {
+  object-fit: cover;
+}
+
 //public/homes
 .homes-container {
   max-width: 900px;
@@ -393,15 +397,10 @@ h1 {
 }
 
 .menus {
-  // height: 200px;
   margin: 20px 0;
   padding-top: 10px;
   border: solid 1px var(--thema-color-font);
   border-radius: 20px;
-}
-
-.menu-image {
-  // object-fit: cover;
 }
 
 .menu-title {
