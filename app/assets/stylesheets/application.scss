@@ -21,7 +21,7 @@
   --logo-image-height: 70px;
   --hamburger-transition: 0.3s;
   --thema-color-font: #555;
-  --thema-color1: #fffafa;
+  --thema-color1: #fff9f9;
   --thema-color2: #ffefef;
 }
 
@@ -302,7 +302,7 @@ h1 {
   margin: 20px;
   border: 3px solid black;
   border-radius: 10px;
-  background: #f5f5f5
+  background: var(--thema-color2)
 }
 
 .sns-btn {
@@ -425,12 +425,24 @@ h1 {
   margin: 15px 0;
 }
 
-// /public/reservation/new
+// /public/users/reservation/index
+.public-users-reservations-index {
+
+  table {
+    margin: 0 auto;
+  }
+  h2 {
+    text-align: center;
+  }
+
+}
+
+// /public/users/reservation/new
 .reservation-confirm {
   margin: 20px 0;
 }
 
-// /public/reservation/confirm
+// /public/users/reservation/confirm
 .reservation-completion {
   margin: 20px 0;
 }

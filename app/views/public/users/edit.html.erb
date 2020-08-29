@@ -63,6 +63,11 @@
           <td><%= f.label :birth_day, value: '日（2桁）' %></td>
           <td><%= f.number_field :birth_day, min: 1, max: 31 %>日</td>
         </tr>
+        <tr>
+          <td><h3><%= f.label :profile, 'プロフィール' %></h3></td>
+          <td></td>
+          <td><%= f.text_area :profile, size: '30x10' %></td>
+        </tr>
 
       </body>
     </table>

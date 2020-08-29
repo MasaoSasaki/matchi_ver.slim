@@ -16,7 +16,7 @@ class Public::UsersController < Public::Base
     @current_user = current_public_user
     @user = User.find_by(id: current_public_user.id)
     if @user.update(user_params)
-      redirect_to public_users_info_path(user)
+      redirect_to public_users_info_path(@user)
     else
       render :edit
     end
