@@ -27,7 +27,7 @@
         <% @restaurants.each do |restaurant| %>
           <div class="flex top-restaurant">
             <div class="restaurant-image">
-              <%= attachment_image_tag restaurant, :restaurant_image, width: 200, height: 150, fallback: "no_image.png" %>
+              <%= attachment_image_tag restaurant, :restaurant_image, fallback: "no_image.png" %>
             </div>
             <div class="restaurant-info">
               <h3><%= link_to "#{restaurant.name}", public_restaurant_path(restaurant) %></h3>
@@ -39,7 +39,7 @@
         <% @menus.each do |menu| %>
           <div class="flex top-menus">
             <div class="menu-image">
-              <%= attachment_image_tag menu, :menu_image, width: 200, height: 150, fallback: "no_image.png" %>
+              <%= attachment_image_tag menu, :menu_image, fallback: "no_image.png" %>
             </div>
             <div class="menu-info">
               <h3><%= link_to "#{menu.title}", public_menu_path(menu) %></h3>

@@ -75,9 +75,6 @@ td, th {
 .circle {
   border-radius: 50%;
 }
-.hamburger:hover {
-  cursor: pointer;
-}
 
 .error-messages li {
   margin: 0;
@@ -540,6 +537,12 @@ footer {
     margin: 0 auto;
   }
 
+  .top-menus .menu_image, .top-restaurant .restaurant_image {
+    object-fit: cover;
+    width: 200px;
+    height: 150px;
+  }
+
   // public/user/profile
   .profile-head {
     display: flex;
@@ -609,6 +612,16 @@ footer {
 
 // スマホ用
 @media (max-width: 600px) {
+
+  h2, h3, h4, p {
+    font-size: 0.9em;
+  }
+
+  .top-menus .menu_image, .top-restaurant .restaurant_image {
+    object-fit: cover;
+    width: 100px;
+    height: 70px;
+  }
 
   .header-container {
     width: auto;
@@ -686,7 +699,7 @@ footer {
   }
 
   .hamburger-menu {
-    width: 60%;
+    width: 100%;
     height: 100vh;
     background-color:rgba(0, 0, 0, 0.9);
     position: fixed;
