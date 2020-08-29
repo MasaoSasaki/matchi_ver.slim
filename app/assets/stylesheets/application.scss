@@ -699,11 +699,10 @@ footer {
   }
 
   .hamburger-menu {
-    width: 100%;
+    width: 60%;
     height: 100vh;
     background-color:rgba(0, 0, 0, 0.9);
     position: fixed;
-    text-align: center;
     top: 0;
     left: -100%;
     z-index: 1;
@@ -711,7 +710,10 @@ footer {
   }
 
   .hamburger-menu ul {
-    margin-top: 70px;
+    margin-top: 90px;
+  }
+  .hamburger-menu ul li {
+    margin: 20px 0 20px 30px;
   }
   .hamburger-menu a {
     color: white;
@@ -722,7 +724,6 @@ footer {
     height: 100vh;
     background-color:rgba(0, 0, 0, 0.9);
     position: fixed;
-    text-align: center;
     top: 0;
     left: 0;
     z-index: 1;
