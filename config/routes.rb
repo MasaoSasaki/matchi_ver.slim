@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'contacts/new'
+  post 'contacts/create'
   get '/' => 'public/homes#top', as: 'root'
   get 'about' => 'public/homes#about'
   get 'contact' => 'public/homes#contact'
