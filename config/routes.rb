@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   post 'contacts/create'
   get '/' => 'public/homes#top', as: 'root'
   get 'about' => 'public/homes#about'
-  get 'contact' => 'public/homes#contact'
+  get 'contact' => 'contacts#new'
   get 'privacy' => 'public/homes#privacy'
   get 'terms' => 'public/homes#terms'
   get 'admin' => 'public/homes#admin'

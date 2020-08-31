@@ -613,9 +613,9 @@ footer {
 // スマホ用
 @media (max-width: 600px) {
 
-  h2, h3, h4, p {
-    font-size: 0.9em;
-  }
+  // h2, h3, h4, p {
+  //   font-size: 0.9em;
+  // }
 
   .top-menus .menu_image, .top-restaurant .restaurant_image {
     object-fit: cover;
@@ -819,6 +819,24 @@ footer {
   }
 
   .menus-edit-h2 {
+    text-align: center;
+  }
+
+  // /public/contacts/new
+  .public-contacts-new div {
+    margin: 20px 0;
+  }
+
+  #contact_email {
+    width: 100%;
+  }
+
+  #contact_message {
+    width: 100%;
+    height: 100px;
+  }
+
+  .contact-submit {
     text-align: center;
   }
 
