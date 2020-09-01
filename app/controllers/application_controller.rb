@@ -16,6 +16,16 @@ class ApplicationController < ActionController::Base
   #   Rails.env.production?
   # end
 
+  # 入力されたメニューIDが存在しなければリダイレクト
+  def exist?
+    Restaurant.all.each do |restaurant|
+      if restaurant.id == params[:id].to_i
+        return
+      end
+    end
+    redirect_to root_path
+  end
+
   protected
   def configure_user_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name_family, :name_first, :name_family_kana, :name_first_kana, :phone_number])
