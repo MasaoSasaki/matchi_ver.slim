@@ -18,6 +18,7 @@ Rails.application.routes.draw do
     get '/' => 'admins#top'
     resources :users
     resources :restaurants
+    resources :tags, only: [:index, :create, :destroy]
   end
 
   namespace :owner do
@@ -29,6 +30,7 @@ Rails.application.routes.draw do
       resources :menus
     end
     resources :reservations, only: [:index, :show, :update]
+    resources :menu_tags, only: [:create, :destroy]
   end
 
   namespace :public do
