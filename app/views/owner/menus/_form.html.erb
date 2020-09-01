@@ -36,7 +36,7 @@
           <%= Tag.find(menu_tag.tag_id).name %>
           <%= link_to '削除', {controller: 'menu_tags', action: 'destroy', tag_id: menu_tag, menu_id: params[:id], restaurant_id: params[:restaurant_id]}, method: :delete %>
         <% end %>
-        <h4>タグの追加（一つ以上推奨</h4>
+        <h4>タグの追加（一つ以上推奨）</h4>
         <% count = 0 %>
         <% tags.each do |tag| %>
           <% count = count + 1 %>
