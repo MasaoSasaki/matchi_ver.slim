@@ -28,8 +28,19 @@ class Owner::MenusController < Owner::Base
   def create
     menu_new = Menu.new(menu_params)
     menu_new.restaurant_id = current_owner_restaurant.id
-    menu_new.save
-    redirect_to owner_restaurant_menu_path(current_owner_restaurant, menu_new)
+    if menu_new.save
+      params[:tag_id].each do |tag, box|
+        if box == "1"
+          menu_tag = MenuTag.new
+          menu_tag.menu_id = menu_new.id
+          menu_tag.tag_id = tag.to_i
+          menu_tag.save
+        end
+      end
+      redirect_to owner_restaurant_menu_path(current_owner_restaurant, menu_new)
+    else
+      render :edit
+    end
   end
 
   def update
@@ -38,6 +49,7 @@ class Owner::MenusController < Owner::Base
     menu.reservation_method = params[:reservation_method].to_i
     if menu.update(menu_params)
       params[:tag_id].each do |tag, box|
+        # チェックマークが入っている時の処理
         if box == "1"
           if MenuTag.find_by(tag_id: tag.to_i, menu_id: menu.id).nil?
             menu_tag = MenuTag.new
@@ -45,11 +57,20 @@ class Owner::MenusController < Owner::Base
             menu_tag.tag_id = tag.to_i
             menu_tag.save
           end
+        # チェックマークが入っていない時の処理
         elsif box == "0"
           remove_menu_tag = MenuTag.find_by(tag_id: tag.to_i, menu_id: menu.id)
           unless remove_menu_tag.nil?
             remove_menu_tag.destroy
           end
+        end
+      end
+      params[:tag].each do |tag|
+        unless Tag.find_by(name: "#{tag}")
+          new_tag = Tag.new
+          # binding.pry
+          new_tag.name = "#{tag}"
+          new_tag.save
         end
       end
       redirect_to owner_restaurant_menu_path(current_owner_restaurant, menu)

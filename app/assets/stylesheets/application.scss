@@ -161,6 +161,15 @@ main {
   object-fit: cover;
 }
 
+.menu-tag-list {
+  display: inline-block;
+  padding: 0.2em 0.4em;
+  margin: 5px;
+  background: var(--thema-color2);
+  border-radius: 5px;
+  font-size: 0.9em;
+}
+
 // /public/homes/top
 .homes-container {
   max-width: 900px;
@@ -591,6 +600,7 @@ footer {
   .reservation {
     text-align: center;
   }
+
 
 }
 

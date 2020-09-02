@@ -21,7 +21,7 @@
               <td><%= f.select :reservation_method, Menu.reservation_methods.keys.map {|method| [method]} %></td>
             </tr>
             <tr>
-              <td><%= f.label :is_sale_flag, value: '販売ステータス' %></td>
+              <td><%= f.label :is_sale_frag, value: '販売ステータス' %></td>
               <td><%= f.select :is_sale_frag, [['販売中', true], ['販売停止中', false]] %></td>
             </tr>
           </tbody>
@@ -30,46 +30,37 @@
       <div class="menu-form-image">
         <h3>メニュー画像</h3>
         <div class="menu-image"><%= f.attachment_field :menu_image %></div>
-        <% unless request.fullpath.include?("new") %>
-          <h3>タグ</h3>
-          <h4>タグ一覧</h4>
-          <% menu_tags.each do |menu_tag| %>
-            <%= Tag.find(menu_tag.tag_id).name %>
-            <%= link_to '削除', {controller: 'menu_tags', action: 'destroy', tag_id: menu_tag, menu_id: params[:id], restaurant_id: params[:restaurant_id]}, method: :delete %>
-          <% end %>
-          <h4>タグの追加（一つ以上推奨）</h4>
-          <% if false %>
-            <ul>
-              <% tags.each do |tag| %>
-                <% unless menu_tags.exists?(tag_id: tag.id) %>
-                  <li>
-                    <%= tag.name %>
-                    <%= link_to '追加', {
-                      controller: 'menu_tags', action: 'create',
-                      tag_id: tag.id,
-                      menu_id: params[:id],
-                      restaurant_id: params[:restaurant_id]
-                    }, method: :post %>
-                  </li>
-                <% end %>
-              <% end %>
-            </ul>
-          <% end %>
-          <% tags.each do |tag| %>
-            <div class="check-box">
-              <% if menu_tags.exists?(tag_id: tag.id) %>
-                <%= check_box :tag_id, tag.id, checked: true %>
-                <%= label_tag :tag_id, "#{tag.name}"%>
-              <% else %>
-                <%= check_box :tag_id, tag.id %>
-                <%= label_tag :tag_id, "#{tag.name}"%>
-              <% end %>
-            </div>
-            <% if %>
-
+        <h3>タグ</h3>
+        <h4>タグ一覧</h4>
+        <% menu_tags.each do |menu_tag| %>
+          <%= Tag.find(menu_tag.tag_id).name %>
+          <%= link_to '削除', {controller: 'menu_tags', action: 'destroy', tag_id: menu_tag, menu_id: params[:id], restaurant_id: params[:restaurant_id]}, method: :delete %>
+        <% end %>
+        <h4>タグの追加（一つ以上推奨</h4>
+        <% count = 0 %>
+        <% tags.each do |tag| %>
+          <% count = count + 1 %>
+          <%# 推奨タグ7個を表示 %>
+          <% if count <= 7 %>
+          <div class="check-box">
+            <% if menu_tags.exists?(tag_id: tag.id) %>
+              <%= check_box :tag_id, tag.id, checked: true %>
+              <%= label_tag :tag_id, "#{tag.name}"%>
+            <% else %>
+              <%= check_box :tag_id, tag.id %>
+              <%= label_tag :tag_id, "#{tag.name}"%>
             <% end %>
+          </div>
+          <% else %>
+            <% break %>
           <% end %>
         <% end %>
+        <div class="add-tags">
+          <%= text_field_tag :tag_name %>
+          <%= button_tag '追加', type: 'button' %>
+          <div id="tag-list">
+          </div>
+        </div>
       </div>
 
     </section>
@@ -82,7 +73,7 @@
       <%= f.text_area :cancel, size: '50x10' %>
     </section>
 
-    <div class="submit"><%= f.submit "#{submit}", class: 'btn' %></div>
+    <div class="submit"><%= f.button "#{submit}", onclick: 'submit();', type: 'button', class: 'btn' %></div>
   <% end %>
 
 </div>

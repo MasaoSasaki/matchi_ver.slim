@@ -150,3 +150,16 @@ $(function() {
     });
   });
 });
+
+// メニュータグの追加
+$(function() {
+  $("#tag_name").keypress(function(key) {
+    if (key.which == 13) {
+      var tagName = $("#tag_name").val();
+      $("#tag_name").val('');
+      $("#tag-list").append(`<span class="menu-tag-list">${tagName} <a href="">x</a></span>`)
+      $("#tag-list").append(`<input type="hidden" value="${tagName}" name="tag[]"></input>`)
+      console.log(tagName);
+    }
+  });
+});
