@@ -15,6 +15,8 @@ class Owner::MenusController < Owner::Base
   def new
     @restaurant = Restaurant.find(params[:restaurant_id])
     @menu = Menu.new
+    @menu_tags = MenuTag.where(menu_id: params[:id])
+    @tags = Tag.all
   end
 
   def edit

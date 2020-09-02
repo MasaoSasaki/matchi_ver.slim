@@ -30,21 +30,32 @@
       <div class="menu-form-image">
         <h3>メニュー画像</h3>
         <div class="menu-image"><%= f.attachment_field :menu_image %></div>
-        <h3>タグ</h3>
-        <p>タグ一覧</p>
-        <% menu_tags.each do |menu_tag| %>
-          <%= Tag.find(menu_tag.tag_id).name %>
-          <%= link_to '削除', owner_menu_tag_path(menu_tag), method: :delete %>
-        <% end %>
-        <p>タグの追加</p>
-        <% tags.each do |tag| %>
-          <%= tag.name %>
-          <%= link_to '追加', {
-            controller: 'menu_tags', action: 'create',
-            tag_id: tag.id,
-            menu_id: params[:id],
-            restaurant_id: params[:restaurant_id]
-            }, method: :post %>
+        <% unless request.fullpath.include?("new") %>
+          <h3>タグ</h3>
+          <h4>タグ一覧</h4>
+          <% menu_tags.each do |menu_tag| %>
+            <%= Tag.find(menu_tag.tag_id).name %>
+            <%= link_to '削除', owner_menu_tag_path(menu_tag), method: :delete %>
+          <% end %>
+          <h4>タグの追加（一つ以上推奨）</h4>
+          <% if false %>
+            <ul>
+              <% tags.each do |tag| %>
+                <% unless menu_tags.exists?(tag_id: tag.id) %>
+                  <li>
+                    <%= tag.name %>
+                    <%= link_to '追加', {
+                      controller: 'menu_tags', action: 'create',
+                      tag_id: tag.id,
+                      menu_id: params[:id],
+                      restaurant_id: params[:restaurant_id]
+                    }, method: :post %>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+          <% end %>
+          <%= f. %>
         <% end %>
       </div>
 
