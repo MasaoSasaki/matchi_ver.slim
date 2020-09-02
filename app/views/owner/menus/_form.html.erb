@@ -10,11 +10,11 @@
             </tr>
             <tr>
               <td><%= f.label :regular_price, value: '正規価格（税抜き）：' %></td>
-              <td><%= f.number_field :regular_price %></td>
+              <td><%= f.number_field :regular_price %> 円</td>
             </tr>
             <tr>
               <td><%= f.label :discount_price, value: '提供価格（税抜き）：' %></td>
-              <td><%= f.number_field :discount_price %></td>
+              <td><%= f.number_field :discount_price %> 円</td>
             </tr>
             <tr>
               <td><%= f.label :reservation_method, value: '予約方法' %></td>
@@ -35,7 +35,7 @@
           <h4>タグ一覧</h4>
           <% menu_tags.each do |menu_tag| %>
             <%= Tag.find(menu_tag.tag_id).name %>
-            <%= link_to '削除', owner_menu_tag_path(menu_tag), method: :delete %>
+            <%= link_to '削除', {controller: 'menu_tags', action: 'destroy', tag_id: menu_tag, menu_id: params[:id], restaurant_id: params[:restaurant_id]}, method: :delete %>
           <% end %>
           <h4>タグの追加（一つ以上推奨）</h4>
           <% if false %>
@@ -55,7 +55,20 @@
               <% end %>
             </ul>
           <% end %>
-          <%= f. %>
+          <% tags.each do |tag| %>
+            <div class="check-box">
+              <% if menu_tags.exists?(tag_id: tag.id) %>
+                <%= check_box :tag_id, tag.id, checked: true %>
+                <%= label_tag :tag_id, "#{tag.name}"%>
+              <% else %>
+                <%= check_box :tag_id, tag.id %>
+                <%= label_tag :tag_id, "#{tag.name}"%>
+              <% end %>
+            </div>
+            <% if %>
+
+            <% end %>
+          <% end %>
         <% end %>
       </div>
 
