@@ -9,6 +9,7 @@ class Owner::MenusController < Owner::Base
 
   def show
     @menu = Menu.find(params[:id])
+    @menu_tags = MenuTag.where(menu_id: params[:id])
   end
 
   def new
@@ -18,6 +19,8 @@ class Owner::MenusController < Owner::Base
 
   def edit
     @menu = Menu.find(params[:id])
+    @menu_tags = MenuTag.where(menu_id: params[:id])
+    @tags = Tag.all
   end
 
   def create

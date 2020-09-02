@@ -9,12 +9,12 @@
               <td><%= f.text_field :title %></td>
             </tr>
             <tr>
-              <td><%= f.label :regular_price.to_s(:delimited), value: '正規価格（税抜き）：' %></td>
-              <td><%= f.number_field :regular_price.to_s(:delimited) %></td>
+              <td><%= f.label :regular_price, value: '正規価格（税抜き）：' %></td>
+              <td><%= f.number_field :regular_price %></td>
             </tr>
             <tr>
-              <td><%= f.label :discount_price.to_s(:delimited), value: '提供価格（税抜き）：' %></td>
-              <td><%= f.number_field :discount_price.to_s(:delimited) %></td>
+              <td><%= f.label :discount_price, value: '提供価格（税抜き）：' %></td>
+              <td><%= f.number_field :discount_price %></td>
             </tr>
             <tr>
               <td><%= f.label :reservation_method, value: '予約方法' %></td>
@@ -30,8 +30,24 @@
       <div class="menu-form-image">
         <h3>メニュー画像</h3>
         <div class="menu-image"><%= f.attachment_field :menu_image %></div>
+        <h3>タグ</h3>
+        <p>タグ一覧</p>
+        <% menu_tags.each do |menu_tag| %>
+          <%= Tag.find(menu_tag.tag_id).name %>
+          <%= link_to '削除', owner_menu_tag_path(menu_tag), method: :delete %>
+        <% end %>
+        <p>タグの追加</p>
+        <% tags.each do |tag| %>
+          <%= tag.name %>
+          <%= link_to '追加', {
+            controller: 'menu_tags', action: 'create',
+            tag_id: tag.id,
+            menu_id: params[:id],
+            restaurant_id: params[:restaurant_id]
+            }, method: :post %>
+        <% end %>
       </div>
-      <%# <div class="menu-form-tag"></div> %>
+
     </section>
     <section class="menu-form-content">
       <p><%= f.label :content, value: '内容' %></p>
@@ -41,6 +57,8 @@
       <p><%= f.label :cancel, value: 'キャンセル規定' %></p>
       <%= f.text_area :cancel, size: '50x10' %>
     </section>
+
     <div class="submit"><%= f.submit "#{submit}", class: 'btn' %></div>
   <% end %>
+
 </div>
