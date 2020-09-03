@@ -67,22 +67,26 @@ class Owner::MenusController < Owner::Base
         end
       end
 
-      # Tagの新規追加
-      params[:tag].each do |tag|
-        unless Tag.find_by(name: "#{tag}")
-          new_tag = Tag.new
-          new_tag.name = "#{tag}"
-          new_tag.save
+      # フォームに値があるかどうか？
+      unless params[:tag].nil?
+        # Tagの新規追加
+        params[:tag].each do |tag|
+          unless Tag.find_by(name: "#{tag}")
+            new_tag = Tag.new
+            new_tag.name = "#{tag}"
+            new_tag.save
+          end
         end
-      end
 
-      #MenuTagの新規追加
-      params[:tag].each do |tag|
-        new_menu_tag = MenuTag.new
-        new_menu_tag.menu_id = menu.id
-        new_menu_tag.tag_id = Tag.find_by(name: "#{tag}").id
-        binding.pry
-        new_menu_tag.save
+        #MenuTagの新規追加
+        params[:tag].each do |tag|
+          unless MenuTag.find_by(menu_id: menu.id, tag_id: Tag.find_by(name: "#{tag}").id)
+            new_menu_tag = MenuTag.new
+            new_menu_tag.menu_id = menu.id
+            new_menu_tag.tag_id = Tag.find_by(name: "#{tag}").id
+            new_menu_tag.save
+          end
+        end
       end
       redirect_to owner_restaurant_menu_path(current_owner_restaurant, menu)
     else
