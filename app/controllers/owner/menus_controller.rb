@@ -48,6 +48,7 @@ class Owner::MenusController < Owner::Base
     menu = Menu.find(params[:id])
     menu.reservation_method = params[:reservation_method].to_i
     if menu.update(menu_params)
+      # 推奨タグの新規追加
       params[:tag_id].each do |tag, box|
         # チェックマークが入っている時の処理
         if box == "1"
@@ -65,13 +66,23 @@ class Owner::MenusController < Owner::Base
           end
         end
       end
+
+      # Tagの新規追加
       params[:tag].each do |tag|
         unless Tag.find_by(name: "#{tag}")
           new_tag = Tag.new
-          # binding.pry
           new_tag.name = "#{tag}"
           new_tag.save
         end
+      end
+
+      #MenuTagの新規追加
+      params[:tag].each do |tag|
+        new_menu_tag = MenuTag.new
+        new_menu_tag.menu_id = menu.id
+        new_menu_tag.tag_id = Tag.find_by(name: "#{tag}").id
+        binding.pry
+        new_menu_tag.save
       end
       redirect_to owner_restaurant_menu_path(current_owner_restaurant, menu)
     else
@@ -89,7 +100,7 @@ class Owner::MenusController < Owner::Base
   def menu_params
     params.require(:menu).permit(
       :title, :menu_image, :content, :cancel, :regular_price,
-      :discount_price, :reservation_method, :is_sale_frag, tag_ids: []
+      :discount_price, :reservation_method, :is_sale_frag
     )
   end
 
