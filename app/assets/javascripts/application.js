@@ -153,13 +153,21 @@ $(function() {
 
 // メニュータグの追加
 $(function() {
+  function addTags() {
+    var tagName = $("#tag_name").val();
+    $("#tag_name").val("");
+    $("#tag-list").append(`<span class="menu-tag-list">${tagName} <a href="">x</a></span>`);
+    $("#tag-list").append(`<input type="hidden" value="${tagName}" name="tag[]"></input>`);
+  }
+  // エンターキーを押して追加
   $("#tag_name").keypress(function(key) {
     if (key.which == 13) {
-      var tagName = $("#tag_name").val();
-      $("#tag_name").val("");
-      $("#tag-list").append(`<span class="menu-tag-list">${tagName} <a href="">x</a></span>`);
-      $("#tag-list").append(`<input type="hidden" value="${tagName}" name="tag[]"></input>`);
+      addTags();
     }
+  });
+  // 追加ボタンを押して追加
+  $(".add-tag-btn").on("click", function() {
+    addTags();
   });
 });
 
