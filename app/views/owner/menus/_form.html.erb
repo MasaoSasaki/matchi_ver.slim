@@ -38,7 +38,6 @@
     </section>
     <section class="menu-tag-form">
       <h3>タグ詳細</h3>
-
       <table>
         <tbody>
           <% if truth %>
@@ -85,19 +84,17 @@
           </tr>
         </tbody>
       </table>
+    </section>
 
-      <div class="add-tags">
-
+    <section class="menu-form-area">
+      <div class="content-form">
+        <p><%= f.label :content, value: '内容' %></p>
+        <%= f.text_area :content %>
       </div>
-    </section>
-
-    <section class="menu-form-content">
-      <p><%= f.label :content, value: '内容' %></p>
-      <%= f.text_area :content, size: '50x10' %>
-    </section>
-    <section class="menu-form-cancel">
-      <p><%= f.label :cancel, value: 'キャンセル規定' %></p>
-      <%= f.text_area :cancel, size: '50x10' %>
+      <div class="cancel-form">
+        <p><%= f.label :cancel, value: 'キャンセル規定' %></p>
+        <%= f.text_area :cancel %>
+      </div>
     </section>
 
     <div class="submit"><%= f.button "#{submit}", onclick: 'submit();', type: 'button', class: 'btn' %></div>

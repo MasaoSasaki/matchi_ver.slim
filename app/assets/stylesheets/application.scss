@@ -538,6 +538,19 @@ footer {
     object-fit: cover;
   }
 
+  .menu-form-area {
+    display: flex;
+  }
+
+  .content-form, .cancel-form {
+    flex: 1;
+  }
+
+  #menu_content, #menu_cancel {
+    width: 90%;
+    height: 100px;
+  }
+
 }
 
 // PC・タブレット共通
@@ -785,10 +798,6 @@ footer {
     left: 0;
   }
 
-  .body-container {
-    padding: 0 20px;
-  }
-
   .header-image {
     height: 200px;
   }
@@ -825,11 +834,6 @@ footer {
     border-radius: 5px;
   }
 
-  // homes
-  .homes-container {
-    padding: 0;
-  }
-
   // public/users/profile
 
   .profile_image {
@@ -841,6 +845,16 @@ footer {
     width: 100%;
     height: 250px;
     object-fit: cover;
+  }
+
+  .content-form, .cancel-form {
+    text-align: center;
+  }
+
+  #menu_content, #menu_cancel {
+    width: 90%;
+    height: 200px;
+    margin-bottom: 10px;
   }
 
   // owner/restaurants/menus/edit
