@@ -156,10 +156,25 @@ $(function() {
   $("#tag_name").keypress(function(key) {
     if (key.which == 13) {
       var tagName = $("#tag_name").val();
-      $("#tag_name").val('');
-      $("#tag-list").append(`<span class="menu-tag-list">${tagName} <a href="">x</a></span>`)
-      $("#tag-list").append(`<input type="hidden" value="${tagName}" name="tag[]"></input>`)
-      console.log(tagName);
+      $("#tag_name").val("");
+      $("#tag-list").append(`<span class="menu-tag-list">${tagName} <a href="">x</a></span>`);
+      $("#tag-list").append(`<input type="hidden" value="${tagName}" name="tag[]"></input>`);
     }
+  });
+});
+
+//メニュー写真、店舗写真にプレビューを表示
+$(function() {
+  $("#menu_menu_image").on("change", function() {
+    console.log("認証")
+    var file = $(this).prop('files')[0];
+    if(!file.type.match('image.*')){
+      return;
+    }
+    var fileReader = new FileReader();
+    fileReader.onloadend = function() {
+      $(".image-preview").append(`<img src="${fileReader.result}">`);
+    }
+    fileReader.readAsDataURL(file);
   });
 });

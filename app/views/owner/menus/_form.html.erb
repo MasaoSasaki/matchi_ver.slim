@@ -1,7 +1,8 @@
 <div class="menu-form">
   <%= form_with model: [restaurant, menu], url: path, local: true do |f| %>
     <section class="menu-status">
-      <div class="menu-form-table">
+      <div class="menu-form1">
+        <h3>メニュー詳細</h3>
         <table>
           <tbody>
             <tr>
@@ -27,43 +28,69 @@
           </tbody>
         </table>
       </div>
-      <div class="menu-form-image">
+      <div class="menu-form2">
         <h3>メニュー画像</h3>
-        <div class="menu-image"><%= f.attachment_field :menu_image %></div>
-        <h3>タグ</h3>
-        <h4>タグ一覧</h4>
-        <% menu_tags.each do |menu_tag| %>
-          <%= Tag.find(menu_tag.tag_id).name %>
-          <%= link_to '削除', {controller: 'menu_tags', action: 'destroy', tag_id: menu_tag, menu_id: params[:id], restaurant_id: params[:restaurant_id]}, method: :delete %>
-        <% end %>
-        <h4>タグの追加（一つ以上推奨）</h4>
-        <% count = 0 %>
-        <% tags.each do |tag| %>
-          <% count = count + 1 %>
-          <%# 推奨タグ7個を表示 %>
-          <% if count <= 7 %>
-          <div class="check-box">
-            <% if menu_tags.exists?(tag_id: tag.id) %>
-              <%= check_box :tag_id, tag.id, checked: true %>
-              <%= label_tag :tag_id, "#{tag.name}"%>
-            <% else %>
-              <%= check_box :tag_id, tag.id %>
-              <%= label_tag :tag_id, "#{tag.name}"%>
-            <% end %>
-          </div>
-          <% else %>
-            <% break %>
-          <% end %>
-        <% end %>
-        <div class="add-tags">
-          <%= text_field_tag :tag_name %>
-          <%= button_tag '追加', type: 'button' %>
-          <div id="tag-list">
-          </div>
+        <div class="menu-image">
+          <%= f.attachment_field :menu_image %>
+          <div class="image-preview"></div>
         </div>
       </div>
-
     </section>
+    <section class="menu-tag-form">
+      <h3>タグ詳細</h3>
+
+      <table>
+        <tbody>
+          <% if truth %>
+            <tr>
+              <td><h4>現在のタグ一覧</h4></td>
+              <td>
+                  <% menu_tags.each do |menu_tag| %>
+                    <%= Tag.find(menu_tag.tag_id).name %>
+                    <%= link_to '削除', {controller: 'menu_tags', action: 'destroy', tag_id: menu_tag, menu_id: params[:id], restaurant_id: params[:restaurant_id]}, method: :delete %>
+                  <% end %>
+              </td>
+            </tr>
+          <% end %>
+          <tr>
+            <td><h4>タグの追加<br>（一つ以上選択推奨）</h4></td>
+            <td>
+              <% count = 0 %>
+              <% tags.each do |tag| %>
+                <% count = count + 1 %>
+                <%# 推奨タグ7個を表示 %>
+                <% if count <= 7 %>
+                <div class="check-box">
+                  <% if menu_tags.exists?(tag_id: tag.id) %>
+                    <%= check_box :tag_id, tag.id, checked: true %>
+                    <%= label_tag :tag_id, "#{tag.name}"%>
+                  <% else %>
+                    <%= check_box :tag_id, tag.id %>
+                    <%= label_tag :tag_id, "#{tag.name}"%>
+                  <% end %>
+                </div>
+                <% else %>
+                  <% break %>
+                <% end %>
+              <% end %>
+            </td>
+          </tr>
+          <tr>
+            <td><h4>タグの追加<br>（任意）</h4></td>
+            <td>
+              <%= text_field_tag :tag_name %>
+              <%= button_tag '追加', type: 'button' %>
+              <div id="tag-list"></div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="add-tags">
+
+      </div>
+    </section>
+
     <section class="menu-form-content">
       <p><%= f.label :content, value: '内容' %></p>
       <%= f.text_area :content, size: '50x10' %>
