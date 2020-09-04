@@ -29,7 +29,6 @@ class Owner::MenusController < Owner::Base
   def create
     menu_new = Menu.new(menu_params)
     menu_new.restaurant_id = current_owner_restaurant.id
-    binding.pry
     if menu_new.save
       # 推奨タグの新規追加
       params[:tag_id].each do |tag, box|

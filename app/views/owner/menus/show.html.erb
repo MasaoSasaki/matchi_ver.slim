@@ -17,7 +17,7 @@
         </li>
         <li>タグ：</li>
         <% @menu_tags.each do |menu_tag| %>
-          <%= Tag.find(menu_tag.tag_id).name %>
+          <span class="menu-tag"><%= Tag.find(menu_tag.tag_id).name %></span>
         <% end %>
       </ul>
     </div>
