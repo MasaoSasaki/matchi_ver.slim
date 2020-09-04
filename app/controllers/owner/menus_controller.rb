@@ -1,7 +1,7 @@
 class Owner::MenusController < Owner::Base
 
   before_action :current_restaurant?
-  before_action :api, only: [:edit, :new]
+  before_action :api, only: [:edit, :new, :create, :update]
 
   def index
     @current_restaurant = current_owner_restaurant
