@@ -33,6 +33,8 @@
         <div class="menu-image">
           <%= f.attachment_field :menu_image %>
           <div class="image-preview"></div>
+          <div id="api-tag-list"></div>
+          </div>
         </div>
       </div>
     </section>
@@ -44,10 +46,10 @@
             <tr>
               <td><h4>現在のタグ一覧</h4></td>
               <td>
-                  <% menu_tags.each do |menu_tag| %>
-                    <%= Tag.find(menu_tag.tag_id).name %>
-                    <%= link_to '削除', {controller: 'menu_tags', action: 'destroy', tag_id: menu_tag, menu_id: params[:id], restaurant_id: params[:restaurant_id]}, method: :delete %>
-                  <% end %>
+                <% menu_tags.each do |menu_tag| %>
+                  <%= Tag.find(menu_tag.tag_id).name %>
+                  <%= link_to '削除', {controller: 'menu_tags', action: 'destroy', tag_id: menu_tag, menu_id: params[:id], restaurant_id: params[:restaurant_id]}, method: :delete %>
+                <% end %>
               </td>
             </tr>
           <% end %>

@@ -42,8 +42,8 @@ Rails.application.routes.draw do
     # get '/' => 'homes#top'
     resources :users, only: [:show, :edit, :update] do
       resources :bookmarks, only: [:index, :show]
-        get 'reservations/confirm' => 'reservations#confirm'
-        get 'reservations/completion' => 'reservations#completion'
+      get 'reservations/confirm' => 'reservations#confirm'
+      get 'reservations/completion' => 'reservations#completion'
       resources :reservations, only: [:index, :show, :new, :create]
     end
 

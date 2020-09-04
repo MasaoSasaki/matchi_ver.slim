@@ -173,16 +173,48 @@ $(function() {
 
 //メニュー写真、店舗写真にプレビューを表示
 $(function() {
+  const googlePlatformAPIKey = gon.google_platform_api_key;
+  const googlePlatformAPITagUrl = 'https://vision.googleapis.com/v1/images:annotate?key=';
+  const apiTagUrl = googlePlatformAPITagUrl + googlePlatformAPIKey;
   $("#menu_menu_image").on("change", function() {
-    console.log("認証")
     var file = $(this).prop('files')[0];
     if(!file.type.match('image.*')){
       return;
     }
     var fileReader = new FileReader();
     fileReader.onloadend = function() {
-      $(".image-preview").append(`<img src="${fileReader.result}">`);
+      var dataUrl = fileReader.result;
+      $(".image-preview").append(`<img src="${dataUrl}">`);
+      makeRequest(dataUrl, getAPIInfo);
     }
     fileReader.readAsDataURL(file);
   });
+  function makeRequest(dataUrl, callback) {
+    var end = dataUrl.indexOf(",");
+    var request = "{'requests': [{'image': {'content': '" + dataUrl.slice(end + 1) + "'}, 'features': [{'type': 'LABEL_DETECTION'}]}]}"
+    callback(request)
+  }
+  function getAPIInfo(request) {
+    $.ajax({
+      url: apiTagUrl,
+      type: 'POST',
+      async: true,
+      cache: false,
+      data: request,
+      dataType: 'json',
+      contentType: 'application/json',
+    }).done(function(result) {
+      console.log('取得しました。')
+      showResult(result);
+    }).fail(function(result) {
+      console.log(result.responses[0])
+      console.log('取得に失敗しました。');
+    });
+  }
+  function showResult(result) {
+    for (let i = 0; i < result.responses[0].labelAnnotations.length; i++) {
+      $("#api-tag-list").append(`<span class="menu-tag-list">${result.responses[0].labelAnnotations[i].description} <a href="">x</a></span>`);
+      $("#api-tag-list").append(`<input type="hidden" value="${result.responses[0].labelAnnotations[i].description}" name="tag[]"></input>`);
+    }
+  }
 });
