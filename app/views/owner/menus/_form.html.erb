@@ -33,6 +33,9 @@
         <div class="menu-image">
           <%= f.attachment_field :menu_image %>
           <div class="image-preview"></div>
+          <h4>タグの追加（任意）</h4>
+          <%= text_field_tag :tag_name %>
+          <%= button_tag '追加', type: 'button', class: "add-tag-btn" %>
           <div id="api-tag-list"></div>
           </div>
         </div>
@@ -47,8 +50,10 @@
               <td><h4>現在のタグ一覧</h4></td>
               <td>
                 <% menu_tags.each do |menu_tag| %>
-                  <%= Tag.find(menu_tag.tag_id).name %>
-                  <%= link_to '削除', {controller: 'menu_tags', action: 'destroy', tag_id: menu_tag, menu_id: params[:id], restaurant_id: params[:restaurant_id]}, method: :delete %>
+                  <div class="menu-tag">
+                    <%= Tag.find(menu_tag.tag_id).name %>
+                    <%= link_to 'x', {controller: 'menu_tags', action: 'destroy', tag_id: menu_tag, menu_id: params[:id], restaurant_id: params[:restaurant_id]}, method: :delete %>
+                  </div>
                 <% end %>
               </td>
             </tr>
@@ -74,14 +79,6 @@
                   <% break %>
                 <% end %>
               <% end %>
-            </td>
-          </tr>
-          <tr>
-            <td><h4>タグの追加<br>（任意）</h4></td>
-            <td>
-              <%= text_field_tag :tag_name %>
-              <%= button_tag '追加', type: 'button', class: "add-tag-btn" %>
-              <div id="tag-list"></div>
             </td>
           </tr>
         </tbody>

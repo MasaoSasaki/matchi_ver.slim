@@ -156,8 +156,8 @@ $(function() {
   function addTags() {
     var tagName = $("#tag_name").val();
     $("#tag_name").val("");
-    $("#tag-list").append(`<span class="menu-tag-list">${tagName} <a href="">x</a></span>`);
-    $("#tag-list").append(`<input type="hidden" value="${tagName}" name="tag[]"></input>`);
+    $("#api-tag-list").append(`<p class="inline-block add-menu-tag"><span class="menu-tag">${tagName} <a>x</a></span></p>`);
+    $(".add-menu-tag").append(`<input type="hidden" value="${tagName}" name="tag[]"></input>`);
   }
   // エンターキーを押して追加
   $("#tag_name").keypress(function(key) {
@@ -212,9 +212,18 @@ $(function() {
     });
   }
   function showResult(result) {
-    for (let i = 0; i < result.responses[0].labelAnnotations.length; i++) {
-      $("#api-tag-list").append(`<span class="menu-tag-list">${result.responses[0].labelAnnotations[i].description} <a href="">x</a></span>`);
-      $("#api-tag-list").append(`<input type="hidden" value="${result.responses[0].labelAnnotations[i].description}" name="tag[]"></input>`);
+    var responses = result.responses[0]
+    console.log(responses.labelAnnotations[0])
+    for (let i = 0; i < responses.labelAnnotations.length; i++) {
+      $("#api-tag-list").append(`<p class="inline-block" id=api-tag${i}><span class="menu-tag api-menu-tag">${responses.labelAnnotations[i].description} <a>x</a></span></p>`);
+      $("#api-tag"+i).append(`<input type="hidden" value="${responses.labelAnnotations[i].description}" name="tag[]" class="input-menu-tag${i}"></input>`);
     }
   }
+});
+
+// xを押すとタグの削除
+$(function() {
+  $("body").on('click', ".menu-tag > a", function() {
+    $(this).parents("p").remove();
+  });
 });
