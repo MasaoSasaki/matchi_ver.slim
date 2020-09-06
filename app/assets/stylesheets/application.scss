@@ -172,7 +172,12 @@ main {
   background: var(--thema-color2);
   border-radius: 5px;
   font-size: 0.9em;
+
+  a:hover {
+    cursor: pointer;
+  }
 }
+
 
 // /public/homes/top
 .homes-container {

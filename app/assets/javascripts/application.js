@@ -189,11 +189,15 @@ $(function() {
     }
     fileReader.readAsDataURL(file);
   });
+
+  //base64エンコード
   function makeRequest(dataUrl, callback) {
     var end = dataUrl.indexOf(",");
     var request = "{'requests': [{'image': {'content': '" + dataUrl.slice(end + 1) + "'}, 'features': [{'type': 'LABEL_DETECTION'}]}]}"
     callback(request)
   }
+
+  // APIリクエスト
   function getAPIInfo(request) {
     $.ajax({
       url: apiTagUrl,
@@ -211,12 +215,13 @@ $(function() {
       console.log('取得に失敗しました。');
     });
   }
+
+  // JSONResult
   function showResult(result) {
     var responses = result.responses[0]
-    console.log(responses.labelAnnotations[0])
     for (let i = 0; i < responses.labelAnnotations.length; i++) {
-      $("#api-tag-list").append(`<p class="inline-block" id=api-tag${i}><span class="menu-tag api-menu-tag">${responses.labelAnnotations[i].description} <a>x</a></span></p>`);
-      $("#api-tag"+i).append(`<input type="hidden" value="${responses.labelAnnotations[i].description}" name="tag[]" class="input-menu-tag${i}"></input>`);
+      $("#api-tag-list").append(`<p class="inline-block"><span class="menu-tag api-menu-tag">${responses.labelAnnotations[i].description} <a>x</a></span></p>`);
+      $("#api-tag"+i).append(`<input type="hidden" value="${responses.labelAnnotations[i].description}" name="tag[]"></input>`);
     }
   }
 });
