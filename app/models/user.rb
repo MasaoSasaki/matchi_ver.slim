@@ -7,7 +7,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :reservation
-  has_many :book_mark
 
   enum user_status: [:"有効会員", :"退会済み", :"強制退会"]
 
