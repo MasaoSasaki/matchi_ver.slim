@@ -10,4 +10,5 @@ class Master::RestaurantsController < Master::Base
   def show
     @restaurant = Restaurant.find(params[:id])
   end
+  
 end

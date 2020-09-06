@@ -16,8 +16,8 @@ Rails.application.routes.draw do
       registrations: 'master/admins/registrations'
     }
     get '/' => 'admins#top'
-    resources :users
-    resources :restaurants
+    resources :users, only: [:index, :show, :update]
+    resources :restaurants, only: [:index, :show]
     resources :tags, only: [:index, :create, :destroy]
   end
 
