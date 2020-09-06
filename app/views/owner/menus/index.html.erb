@@ -15,7 +15,7 @@
       <tbody>
         <tr>
           <td><%= menu.id %></td>
-          <td><%#= attachment_image_tag :menu_image %></td>
+          <td><%= attachment_image_tag menu, :menu_image, style: "height: 70px; width: 100px;", fallbak: "no_image.png" %></td>
           <td><%= link_to "#{menu.title}", owner_restaurant_menu_path(@current_restaurant, menu) %></td>
           <td><%= menu.reservation_method %></td>
           <td>

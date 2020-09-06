@@ -1,6 +1,6 @@
 <%= hidden_field_tag :restaurants_json, value: "#{@restaurants_json}" %>
 
-<div class="top">
+<div class="contents">
   <section calss="top-header">
     <div class="header-image"></div>
   </section>
@@ -31,7 +31,7 @@
             </div>
             <div class="restaurant-info">
               <h3><%= link_to "#{restaurant.name}", public_restaurant_path(restaurant) %></h3>
-              <p><%= restaurant.prefecture + restaurant.city %></p>
+              <p><%= "#{restaurant.prefecture}" + "#{restaurant.city}" %></p>
             </div>
           </div>
         <% end %>

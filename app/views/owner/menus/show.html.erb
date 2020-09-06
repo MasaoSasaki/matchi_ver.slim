@@ -15,7 +15,10 @@
             <%= '停止中' %>
           <% end %>
         </li>
-        <%# <li>タグ：</li> %>
+        <li>タグ：</li>
+        <% @menu_tags.each do |menu_tag| %>
+          <span class="menu-tag"><%= Tag.find(menu_tag.tag_id).name %></span>
+        <% end %>
       </ul>
     </div>
     <div class="menu-image">

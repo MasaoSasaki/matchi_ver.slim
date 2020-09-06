@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
 
+  get 'contacts/new'
+  post 'contacts/create'
   get '/' => 'public/homes#top', as: 'root'
   get 'about' => 'public/homes#about'
-  get 'contact' => 'public/homes#contact'
+  get 'contact' => 'contacts#new'
   get 'privacy' => 'public/homes#privacy'
   get 'terms' => 'public/homes#terms'
   get 'admin' => 'public/homes#admin'
@@ -16,6 +18,7 @@ Rails.application.routes.draw do
     get '/' => 'admins#top'
     resources :users
     resources :restaurants
+    resources :tags, only: [:index, :create, :destroy]
   end
 
   namespace :owner do
@@ -27,6 +30,7 @@ Rails.application.routes.draw do
       resources :menus
     end
     resources :reservations, only: [:index, :show, :update]
+    resources :menu_tags, only: [:create, :destroy]
   end
 
   namespace :public do
@@ -38,8 +42,8 @@ Rails.application.routes.draw do
     # get '/' => 'homes#top'
     resources :users, only: [:show, :edit, :update] do
       resources :bookmarks, only: [:index, :show]
-        get 'reservations/confirm' => 'reservations#confirm'
-        get 'reservations/completion' => 'reservations#completion'
+      get 'reservations/confirm' => 'reservations#confirm'
+      get 'reservations/completion' => 'reservations#completion'
       resources :reservations, only: [:index, :show, :new, :create]
     end
 

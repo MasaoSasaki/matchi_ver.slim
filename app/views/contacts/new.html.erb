@@ -1,0 +1,26 @@
+<div class="contents public-contacts-new">
+  <h2>お問い合わせ</h2>
+  <p>ご意見・ご要望・新規出店はこちらよりお問い合わせください。</p>
+  <%= form_with model: @contact, url: contacts_create_path, method: :post, local: true do |f| %>
+
+    <% if public_user_signed_in? %>
+      <div class="form-group">
+      <h3>返信希望のメールアドレス</h3>
+      <p>登録済みのメールアドレスにご返信いたします。</p>
+      <%= f.hidden_field :email, value: current_public_user.email %>
+    <% else %>
+      <div class="form-group">
+        <h3><%= f.label :email, '返信先メールアドレス' %></h3>
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
+    <% end %>
+
+  <div class="form-group">
+    <h3><%= f.label :message, 'お問い合わせ内容' %></h3>
+    <%= f.text_area :message, class: 'form-control' %>
+  </div>
+
+  <div class="contact-submit"><%= f.submit '送信', class: "btn" %></div>
+
+  <% end %>
+</div>

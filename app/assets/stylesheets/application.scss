@@ -76,6 +76,10 @@ td, th {
   border-radius: 50%;
 }
 
+.inline-block {
+  display: inline-block;
+}
+
 .error-messages li {
   margin: 0;
   list-style: disc;
@@ -160,6 +164,20 @@ main {
 .menu_image {
   object-fit: cover;
 }
+
+.menu-tag {
+  display: inline-block;
+  padding: 0.2em 0.4em;
+  margin: 5px;
+  background: var(--thema-color2);
+  border-radius: 5px;
+  font-size: 0.9em;
+
+  a:hover {
+    cursor: pointer;
+  }
+}
+
 
 // /public/homes/top
 .homes-container {
@@ -522,6 +540,26 @@ footer {
     display: flex;
   }
 
+  // owner/restaurants/menus/edit,new
+  .image-preview img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+
+  .menu-form-area {
+    display: flex;
+  }
+
+  .content-form, .cancel-form {
+    flex: 1;
+  }
+
+  #menu_content, #menu_cancel {
+    width: 90%;
+    height: 100px;
+  }
+
 }
 
 // PC・タブレット共通
@@ -576,6 +614,15 @@ footer {
     justify-content: space-around;
   }
 
+  .menu-form1 {
+    flex: 1;
+  }
+  .menu-form2 {
+    flex: 1;
+  }
+
+  .menu
+
   // /public/menus/index
   .menu-list {
     display: flex;
@@ -592,6 +639,7 @@ footer {
     text-align: center;
   }
 
+
 }
 
 // タブレット端末用
@@ -607,15 +655,22 @@ footer {
     padding: 0;
   }
 
+  // /owner/restaurants/menus/edit,new
+  .image-preview img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+
 }
 
 
 // スマホ用
 @media (max-width: 600px) {
 
-  h2, h3, h4, p {
-    font-size: 0.9em;
-  }
+  // h2, h3, h4, p {
+  //   font-size: 0.9em;
+  // }
 
   .top-menus .menu_image, .top-restaurant .restaurant_image {
     object-fit: cover;
@@ -752,10 +807,6 @@ footer {
     left: 0;
   }
 
-  .body-container {
-    padding: 0 20px;
-  }
-
   .header-image {
     height: 200px;
   }
@@ -792,23 +843,35 @@ footer {
     border-radius: 5px;
   }
 
-  // homes
-  .homes-container {
-    padding: 0;
-  }
-
   // public/users/profile
 
   .profile_image {
     padding-right: 0;
   }
 
+  // owner/restaurants/menus/edit,new
+  .image-preview img {
+    width: 100%;
+    height: 250px;
+    object-fit: cover;
+  }
+
+  .content-form, .cancel-form {
+    text-align: center;
+  }
+
+  #menu_content, #menu_cancel {
+    width: 90%;
+    height: 200px;
+    margin-bottom: 10px;
+  }
+
   // owner/restaurants/menus/edit
-  .menu-form-table table {
+  .menu-form1 table {
     margin: 0 auto;
   }
 
-  .menu-form-image {
+  .menu-form2 {
     h3, div {
     text-align: center;
     }
@@ -819,6 +882,24 @@ footer {
   }
 
   .menus-edit-h2 {
+    text-align: center;
+  }
+
+  // /public/contacts/new
+  .public-contacts-new div {
+    margin: 20px 0;
+  }
+
+  #contact_email {
+    width: 100%;
+  }
+
+  #contact_message {
+    width: 100%;
+    height: 100px;
+  }
+
+  .contact-submit {
     text-align: center;
   }
 
