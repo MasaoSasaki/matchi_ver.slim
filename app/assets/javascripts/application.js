@@ -143,11 +143,17 @@ $(function() {
     $(this).toggleClass("circle");
     $(".hamburger-menu").toggleClass("menu-hide");
     $(".hamburger-menu").on("click", function() {
+      close();
+    });
+    $("body").on("click", "main", function() {
+      close();
+    });
+    function close() {
       if ($(".hamburger-menu").hasClass("menu-hide")) {
         $(".hamburger-menu").toggleClass("menu-hide");
         $(".hamburger").toggleClass("circle");
       }
-    });
+    }
   });
 });
 
