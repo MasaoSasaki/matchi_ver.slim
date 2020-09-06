@@ -1,7 +1,7 @@
 <div class="contents users-edit">
   <h2>登録情報編集</h2>
 
-  <%= render partial: 'layouts/error_messages', locals: {model: @user} %>
+  <%= render partial: 'layouts/error_messages', locals: {model: @current_user} %>
 
   <%= form_with model: @current_user, url: public_user_path(@current_user), local: true, method: :patch do |f| %>
     <h2><u><%= "#{@current_user.name_family}" + "#{@current_user.name_first}" %></u> 様</h2>
@@ -73,7 +73,7 @@
     </table>
     <div class="flex users-edit-btn">
       <div class="submit"><%= f.submit '変更を保存', class: 'btn' %></div>
-      <div class="destroy"><%= link_to '退会する', public_users_withdraw_path(@current_user) %></div>
+      <div class="destroy"><%= link_to '退会する', mypage_withdraw_path(@current_user) %></div>
     </div>
   <% end %>
 

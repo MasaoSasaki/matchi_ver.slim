@@ -32,7 +32,7 @@
       <%#= attachment_image_tag :profile_image, @current_user %>
     </div>
   </div>
-  <div class="user-info-edit"><%= link_to '登録情報編集', edit_public_user_path(@current_user) %></div>
+  <div class="user-info-edit"><%= link_to '登録情報編集', mypage_edit_path(@current_user) %></div>
 
   <%= render 'user_links' %>
 

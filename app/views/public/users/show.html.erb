@@ -3,7 +3,7 @@
     <h1>My Page</h1>
     <h2><%= "#{@current_user.name_family}" + "#{@current_user.name_first}" %> 様</h2>
     <ul>
-      <li>予約数：<%= @reservation.count %> 件</li>
+      <li>予約数：<%= @reservation_count %> 件</li>
       <% if false %>
       <li>会員ランク：<%#= current_user.rank %></li>
       <li>ポイント数：<%#= current_user.points %></li>

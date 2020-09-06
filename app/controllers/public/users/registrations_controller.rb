@@ -45,7 +45,7 @@ class Public::Users::RegistrationsController < Devise::RegistrationsController
 
   #アカウント編集後
   def after_update_path_for(resource)
-    public_users_info(resource)
+    myinfo(resource)
   end
 
   # protected

@@ -9,6 +9,11 @@ Rails.application.routes.draw do
   get 'terms' => 'public/homes#terms'
   get 'admin' => 'public/homes#admin'
   get 'redirect' => 'public/homes#redirect'
+  get 'mypage' => 'public/users#show'
+  get 'mypage/edit' => 'public/users#edit'
+  get 'mypage/withdraw' => 'public/users#withdraw'
+  get 'myprofile' => 'public/users#profile'
+  get 'myinfo' => 'public/users#info'
 
   namespace :master do
     devise_for :admins, controllers: {
@@ -16,8 +21,8 @@ Rails.application.routes.draw do
       registrations: 'master/admins/registrations'
     }
     get '/' => 'admins#top'
-    resources :users
-    resources :restaurants
+    resources :users, only: [:index, :show, :update]
+    resources :restaurants, only: [:index, :show]
     resources :tags, only: [:index, :create, :destroy]
   end
 
@@ -40,16 +45,13 @@ Rails.application.routes.draw do
       passwords: 'public/users/passwords'
     }
     # get '/' => 'homes#top'
-    resources :users, only: [:show, :edit, :update] do
+    resources :users, only: [:update] do
       resources :bookmarks, only: [:index, :show]
       get 'reservations/confirm' => 'reservations#confirm'
       get 'reservations/completion' => 'reservations#completion'
       resources :reservations, only: [:index, :show, :new, :create]
     end
 
-    get 'users/:id/profile' => 'users#profile', as: 'users/profile'
-    get 'users/:id/info' => 'users#info', as: 'users/info'
-    get 'users/:id/withdraw' => 'users#withdraw', as: 'users/withdraw'
     patch 'users/:id/withdrawal' => 'users#withdrawal', as: 'users/withdrawal'
     get 'users/:id/withdrew' => 'users#withdrew', as: 'users/withdrew'
 
