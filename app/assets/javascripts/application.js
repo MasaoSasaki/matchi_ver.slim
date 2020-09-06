@@ -190,7 +190,7 @@ $(function() {
     fileReader.readAsDataURL(file);
   });
 
-  //base64エンコード
+  // base64エンコード
   function makeRequest(dataUrl, callback) {
     var end = dataUrl.indexOf(",");
     var request = "{'requests': [{'image': {'content': '" + dataUrl.slice(end + 1) + "'}, 'features': [{'type': 'LABEL_DETECTION'}]}]}"
@@ -208,7 +208,6 @@ $(function() {
       dataType: 'json',
       contentType: 'application/json',
     }).done(function(result) {
-      console.log('取得しました。')
       showResult(result);
     }).fail(function(result) {
       console.log(result.responses[0])
@@ -220,7 +219,7 @@ $(function() {
   function showResult(result) {
     var responses = result.responses[0]
     for (let i = 0; i < responses.labelAnnotations.length; i++) {
-      $("#api-tag-list").append(`<p class="inline-block"><span class="menu-tag api-menu-tag">${responses.labelAnnotations[i].description} <a>x</a></span></p>`);
+      $("#api-tag-list").append(`<p class="inline-block" id=api-tag${i}><span class="menu-tag api-menu-tag">${responses.labelAnnotations[i].description} <a>x</a></span></p>`);
       $("#api-tag"+i).append(`<input type="hidden" value="${responses.labelAnnotations[i].description}" name="tag[]"></input>`);
     }
   }
