@@ -14,13 +14,13 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-103585894-15"></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=<%= ENV['GOOGLE_ANALYTICS_TRACKING_ID'] %>"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'UA-103585894-15');
+    gtag('config', "<%= ENV['GOOGLE_ANALYTICS_TRACKING_ID'] %>");
   </script>
 </head>
 
