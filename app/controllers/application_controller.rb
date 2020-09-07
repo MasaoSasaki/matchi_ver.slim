@@ -18,12 +18,9 @@ class ApplicationController < ActionController::Base
 
   # 入力されたメニューIDが存在しなければリダイレクト
   def exist?
-    Restaurant.all.each do |restaurant|
-      if restaurant.id == params[:id].to_i
-        return
-      end
+    unless Restaurant.find_by(id: params[:id])
+      redirect_to root_path
     end
-    redirect_to root_path
   end
 
   def api
