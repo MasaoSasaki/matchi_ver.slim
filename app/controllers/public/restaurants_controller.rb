@@ -1,7 +1,7 @@
 class Public::RestaurantsController < Public::Base
 
   # before_action :current_user?
-  before_action :exist?, only: [:show]
+  before_action :exist_restaurant?, only: [:show]
 
   def index
     @restaurants = Restaurant.all

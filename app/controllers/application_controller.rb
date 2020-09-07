@@ -17,9 +17,15 @@ class ApplicationController < ActionController::Base
   # end
 
   # 入力されたメニューIDが存在しなければリダイレクト
-  def exist?
+  def exist_restaurant?
     unless Restaurant.find_by(id: params[:id])
       redirect_to root_path
+    end
+  end
+
+  def exist_public_menu?
+    unless Menu.find_by(id: params[:id])
+      redirect_to public_menus_path
     end
   end
 
