@@ -3,16 +3,19 @@ class Owner::Base < ApplicationController
   # 管理者がログイン中は登録店舗全て閲覧可能
   before_action :authenticate_owner_restaurant!, unless: :master_admin_signed_in?
 
-  # 閲覧しようとするページがログイン店舗のID（パラメータ）かどうか？
+  # 閲覧しようとする店舗ページがログイン店舗のものかどうか？
   def current_restaurant?
-    restaurant_id = params[:restaurant_id]
-    id = params[:id]
-
     unless master_admin_signed_in?
-      unless restaurant_id == current_owner_restaurant.id.to_s || id == current_owner_restaurant.id.to_s
-        id = "#{params[:restaurant_id]}" + "#{params[:id]}"
-        redirect_to redirect_path(restaurant_id: id)  #redirect先に入力されたIDを渡す
+      unless (params[:restaurant_id] || params[:id]) == current_owner_restaurant.id.to_s
+        redirect_to owner_restaurant_path(current_owner_restaurant)
       end
+    end
+  end
+
+  # 閲覧しようとするメニューページがログイン店舗のものかどうか？
+  def current_menu?
+    unless Menu.find_by(id: params[:id], restaurant_id: current_owner_restaurant.id)
+      redirect_to owner_restaurant_menus_path(current_owner_restaurant)
     end
   end
 

@@ -1,6 +1,6 @@
 class Public::MenusController < Public::Base
 
-  # before_action :current_user?, only: [:index, :show]
+  before_action :exist_public_menu?, only: %i[show]
 
   def index
     @menus = Menu.all

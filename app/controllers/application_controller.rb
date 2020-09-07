@@ -16,16 +16,7 @@ class ApplicationController < ActionController::Base
   #   Rails.env.production?
   # end
 
-  # 入力されたメニューIDが存在しなければリダイレクト
-  def exist?
-    Restaurant.all.each do |restaurant|
-      if restaurant.id == params[:id].to_i
-        return
-      end
-    end
-    redirect_to root_path
-  end
-
+  # Google Cloud PlatformのAPIキーをJSON形式で保存（gem'gon'）
   def api
     gon.google_platform_api_key = ENV['GOOGLE_PLATFORM_API_KEY']
   end
