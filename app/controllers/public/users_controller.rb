@@ -1,7 +1,6 @@
 class Public::UsersController < Public::Base
 
-  # before_action :current_user?
-  before_action :current_user
+  before_action :set_current_user
 
   def show
     @reservation_count = Reservation.where(user_id: @current_user.id).count
@@ -36,7 +35,7 @@ class Public::UsersController < Public::Base
   def withdrew
   end
 
-  def current_user
+  def set_current_user
     @current_user = current_public_user
   end
 
