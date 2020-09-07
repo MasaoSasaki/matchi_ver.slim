@@ -1,5 +1,6 @@
 class Owner::MenusController < Owner::Base
 
+  before_action :exist_owner_menu?, only: [:show, :edit, :update, :destroy]
   before_action :current_restaurant?
   before_action :api, only: [:edit, :new, :create, :update]
 

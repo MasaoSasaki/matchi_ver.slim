@@ -29,6 +29,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def exist_owner_menu?
+    unless Menu.find_by(id: params[:id])
+      redirect_to owner_restaurant_menus_path(current_owner_restaurant)
+    end
+  end
+
   def api
     gon.google_platform_api_key = ENV['GOOGLE_PLATFORM_API_KEY']
   end
