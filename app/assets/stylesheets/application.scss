@@ -258,13 +258,24 @@ h1 {
   margin-top: 10px;
 }
 
-.new-menus-list {
-  width: 160px;
+.new-menus {
+  h4 {
+  width: 180px;
   margin: 0 auto;
-  font-size: 0.9em;
-  font-weight: bold;
-  text-align: center;
   border-bottom: 1px solid #dddddd;
+  }
+
+  li {
+    text-align: center;
+  }
+}
+
+.side-bar-menu-image {
+  text-align: center;
+}
+
+#menu-show-link {
+  text-align: left;
 }
 
 #get-position {
@@ -536,7 +547,7 @@ footer {
 @media (min-width: 851px) {
 
   .top-main {
-    padding: 0 30px;
+    padding: 0 70px;
     display: flex;
   }
 
