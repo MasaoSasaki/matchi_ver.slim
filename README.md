@@ -15,11 +15,11 @@ Rails 5.2.4
 #### ライブラリ
 jQuery 1.12.4
 #### 外部API
-Google(Google Maps Javascript/Geolocation/Geocoding)
+Google(Google Maps Javascript/Geolocation/Geocoding/CloudVision)
 #### インフラ
 vagrant
 AWS(EC2/RDS/Route53/Certificate Manager/ALB/WorkMail)
-gem(devise/refile/)
+gem(devise/refile/gon/dotenv)
 MySQL 5.7.22
 
 ## 設計書
