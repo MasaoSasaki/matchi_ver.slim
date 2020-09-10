@@ -29,6 +29,7 @@
   margin: 0;
   color: var(--thema-color-font);
   list-style: none;
+  box-sizing: border-box;
 }
 
 body {
@@ -675,14 +676,26 @@ footer {
 
 }
 
-
 // スマホ用
 @media (max-width: 600px) {
+  // /public/homes/top
+  
+  // .top-menus, .top-restaurant {
+  //   object-fit: cover;
+  //   width: 100%;
+  //   height: 300px;
+  // }
 
-  .top-menus, .menu_image, .top-restaurant, .restaurant_image {
+  .top-restaurant .restaurant_image {
     object-fit: cover;
-    width: 100%;
-    height: 300px;
+    width: 100px;
+    height: 70px;
+  }
+
+  .top-menus .menu_image {
+    object-fit: cover;
+    width: 100px;
+    height: 70px;
   }
 
   .header-container {
