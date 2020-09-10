@@ -50,7 +50,9 @@
         <% if menu_count < 3 %>
           <div class="flex top-menus">
             <div class="menu-image">
-              <%= attachment_image_tag menu, :menu_image, fallback: "no_image.png" %>
+              <%= link_to public_menu_path(menu) do %>
+                <%= attachment_image_tag menu, :menu_image, fallback: "no_image.png" %>
+              <% end %>
             </div>
             <div class="menu-info">
               <h3><%= link_to "#{menu.title}", public_menu_path(menu) %></h3>
@@ -87,7 +89,9 @@
             <% if menu_count < 3 %>
               <li class="top-menu">
                 <p><%= link_to "#{menu.title}", public_menu_path(menu), id: 'menu-show-link' %></p>
-                <%= attachment_image_tag menu, :menu_image, width: 200, height: 100, fallback: "no_image.png", class: "side-bar-menu-image" %>
+                <%= link_to public_menu_path(menu) do %>
+                  <%= attachment_image_tag menu, :menu_image, width: 200, height: 100, fallback: "no_image.png", class: "side-bar-menu-image" %>
+                <% end %>
               </li>
               <% menu_count += 1 %>
             <% else %>
