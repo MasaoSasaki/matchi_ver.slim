@@ -162,10 +162,6 @@ main {
   text-align: center;
 }
 
-.menu_image {
-  object-fit: cover;
-}
-
 .menu-tag {
   display: inline-block;
   padding: 0.2em 0.4em;
@@ -212,6 +208,11 @@ h1 {
   background-size: cover;
   background-position: center;
   height: 300px;
+}
+
+.top-container {
+  margin: 0 auto;
+  padding: 0 70px;
 }
 
 .top-contents {
@@ -615,12 +616,6 @@ footer {
   }
 
   // owner/restaurant/menus/show
-  .menu-head-contents {
-    display: flex;
-    justify-content: space-around;
-  }
-
-  // owner/restaurant/menus/show
   .menu-status {
     display: flex;
     justify-content: space-around;
@@ -647,10 +642,26 @@ footer {
     justify-content: space-around;
   }
 
+  .menu-head-contents {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .menu-body {
+    flex: 1;
+  }
+
+  .menu-image {
+    flex: 1;
+  }
+
+  .menu-image .menu_image {
+    object-fit: cover;
+  }
+
   .reservation {
     text-align: center;
   }
-
 
 }
 
