@@ -9,8 +9,10 @@
   <%= include_gon %>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <% self_css_path = "/assets/"+controller.controller_path  %>
+  <%= stylesheet_link_tag self_css_path, :media => "all" %>
+  <%= javascript_include_tag 'application' %>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -116,7 +118,7 @@
     <% end %>
       <%# 未読のお知らせの通知 %>
       <div class="alert">
-        <i class="fa-2x far fa-bell"><div class="hidden icon"></div></i>
+        <i id="alert-bell" class="fa-2x far fa-bell"><div class="hidden icon"></div></i>
       </div>
       <%# ハンバーガーメーニュー %>
       <div class="hamburger-menu">
@@ -165,6 +167,6 @@
   <div id="move-head">
     <div class="circle move-head"><i class="fa-2x fas fa-arrow-up"></i></div>
   </div>
-</footer>
 </body>
+</footer>
 </html>
