@@ -9,8 +9,8 @@
   <%= include_gon %>
   <%= csrf_meta_tags %>
   <%= csp_meta_tag %>
-  <% self_css_path = "/assets/"+params[:controller]  %>
   <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <% self_css_path = "/assets/"+params[:controller]  %>
   <%= stylesheet_link_tag self_css_path, :media => "all" %>
   <%= javascript_include_tag 'application' %>
   <meta name="viewport" content="width=device-width,initial-scale=1">
