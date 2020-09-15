@@ -17,7 +17,7 @@
 //= require_tree .
 
 // 地図情報取得
-window.addEventListener('DOMContentLoaded', function() {
+addEventListener('DOMContentLoaded', function() {
   if (document.getElementById("restaurants_json") != null) {
     // homes/top.html.erb(:1 JSONタグ)が読み込まれたら現在地を取得開始
     $("#restaurants_json").ready(function() {
@@ -157,29 +157,29 @@ $(function() {
   });
 });
 
-// メニュータグの追加
-window.addEventListener('DOMContentLoaded', function() {
-  const tagForm = document.getElementById("tag_name");
-  if (tagForm != null) {
+// メニュータグの追加(CoffeeScript owner/menus.coffeeに移動)
+// addEventListener('DOMContentLoaded', function() {
+//   const tagForm = document.getElementById("tag_name");
+//   if (tagForm != null) {
 
-    function addTags() {
-      let tagName = tagForm.value;
-      document.getElementById("tag-list").insertAdjacentHTML('beforeend', `<p class="inline-block add-menu-tag"><span class="menu-tag">${tagName} <a>x</a></span></p>`)
-      document.getElementsByClassName("add-menu-tag")[0].insertAdjacentHTML('beforeend', `<input type="hidden" value="${tagName}" name="tag[]"></input>`)
-      tagForm.value = ""
-    }
-    // エンターキーを押して追加
-    tagForm.addEventListener('keypress', function(key) {
-      if (key.which == 13) {
-        addTags();
-      }
-    });
-    // 追加ボタンを押して追加
-    document.getElementsByClassName("add-tag-btn")[0].addEventListener('click', function() {
-      addTags();
-    });
-  }
-});
+//     function addTags() {
+//       let tagName = tagForm.value;
+//       document.getElementById("tag-list").insertAdjacentHTML('beforeend', `<p class="inline-block add-menu-tag"><span class="menu-tag">${tagName} <a>x</a></span></p>`)
+//       document.getElementsByClassName("add-menu-tag")[0].insertAdjacentHTML('beforeend', `<input type="hidden" value="${tagName}" name="tag[]"></input>`)
+//       tagForm.value = ""
+//     }
+//     // エンターキーを押して追加
+//     tagForm.addEventListener('keypress', function(key) {
+//       if (key.which == 13) {
+//         addTags();
+//       }
+//     });
+//     // 追加ボタンを押して追加
+//     document.getElementsByClassName("add-tag-btn")[0].addEventListener('click', function() {
+//       addTags();
+//     });
+//   }
+// });
 
 // xを押すとタグの削除
 $(function() {
