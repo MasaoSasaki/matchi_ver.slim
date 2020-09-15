@@ -158,24 +158,56 @@ $(function() {
 });
 
 // メニュータグの追加
-$(function() {
-  function addTags() {
-    var tagName = $("#tag_name").val();
-    $("#tag_name").val("");
-    $("#api-tag-list").append(`<p class="inline-block add-menu-tag"><span class="menu-tag">${tagName} <a>x</a></span></p>`);
-    $(".add-menu-tag").append(`<input type="hidden" value="${tagName}" name="tag[]"></input>`);
-  }
-  // エンターキーを押して追加
-  $("#tag_name").keypress(function(key) {
-    if (key.which == 13) {
-      addTags();
+window.addEventListener('DOMContentLoaded', function() {
+  const tagForm = document.getElementById("tag_name");
+  if (tagForm != null) {
+
+    function addTags() {
+      let tagName = tagForm.value;
+      document.getElementById("tag-list").insertAdjacentHTML('beforeend', `<p class="inline-block add-menu-tag"><span class="menu-tag">${tagName} <a>x</a></span></p>`)
+      document.getElementsByClassName("add-menu-tag")[0].insertAdjacentHTML('beforeend', `<input type="hidden" value="${tagName}" name="tag[]"></input>`)
+      tagForm.value = ""
     }
-  });
-  // 追加ボタンを押して追加
-  $(".add-tag-btn").on("click", function() {
-    addTags();
+    // エンターキーを押して追加
+    tagForm.addEventListener('keypress', function(key) {
+      if (key.which == 13) {
+        addTags();
+      }
+    });
+    // 追加ボタンを押して追加
+    document.getElementsByClassName("add-tag-btn")[0].addEventListener('click', function() {
+      addTags();
+    });
+  }
+});
+
+// xを押すとタグの削除
+$(function() {
+  $("body").on('click', ".menu-tag > a", function() {
+    $(this).parents("p").remove();
   });
 });
+
+// ここから上記コードのjQuery版
+// メニュータグの追加
+// $(function() {
+  //   function addTags() {
+    //     var tagName = $("#tag_name").val();
+    //     $("#tag_name").val("");
+    //     $("#tag-list").append(`<p class="inline-block add-menu-tag"><span class="menu-tag">${tagName} <a>x</a></span></p>`);
+    //     $(".add-menu-tag").append(`<input type="hidden" value="${tagName}" name="tag[]"></input>`);
+    //   }
+//   // エンターキーを押して追加
+//   $("#tag_name").keypress(function(key) {
+//     if (key.which == 13) {
+//       addTags();
+//     }
+//   });
+//   // 追加ボタンを押して追加
+//   $(".add-tag-btn").on("click", function() {
+//     addTags();
+//   });
+// });
 
 //メニュー写真、店舗写真にプレビューを表示
 window.addEventListener('DOMContentLoaded', function() {
@@ -226,16 +258,9 @@ window.addEventListener('DOMContentLoaded', function() {
     function showResult(result) {
       var responses = result.responses[0]
       for (let i = 0; i < responses.labelAnnotations.length; i++) {
-        $("#api-tag-list").append(`<p class="inline-block" id=api-tag${i}><span class="menu-tag api-menu-tag">${responses.labelAnnotations[i].description} <a>x</a></span></p>`);
+        $("#tag-list").append(`<p class="inline-block" id=api-tag${i}><span class="menu-tag api-menu-tag">${responses.labelAnnotations[i].description} <a>x</a></span></p>`);
         $("#api-tag"+i).append(`<input type="hidden" value="${responses.labelAnnotations[i].description}" name="tag[]"></input>`);
       }
     }
   }
-});
-
-// xを押すとタグの削除
-$(function() {
-  $("body").on('click', ".menu-tag > a", function() {
-    $(this).parents("p").remove();
-  });
 });
