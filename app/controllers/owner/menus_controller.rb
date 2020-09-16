@@ -72,21 +72,23 @@ class Owner::MenusController < Owner::Base
     menu = Menu.find(params[:id])
     menu.reservation_method = params[:reservation_method].to_i
     if menu.update(menu_params)
-      # 推奨タグの追加・削除
-      params[:tag_id].each do |tag, box|
-        # チェックマークが入っている時の処理（追加）
-        if box == "1"
-          if MenuTag.find_by(tag_id: tag.to_i, menu_id: menu.id).nil?
-            menu_tag = MenuTag.new
-            menu_tag.menu_id = menu.id
-            menu_tag.tag_id = tag.to_i
-            menu_tag.save
-          end
-        # チェックマークが入っていない時の処理（削除）
-        elsif box == "0"
-          remove_menu_tag = MenuTag.find_by(tag_id: tag.to_i, menu_id: menu.id)
-          unless remove_menu_tag.nil?
-            remove_menu_tag.destroy
+      unless params[:tag_id].nil?
+        # 推奨タグの追加・削除
+        params[:tag_id].each do |tag, box|
+          # チェックマークが入っている時の処理（追加）
+          if box == "1"
+            if MenuTag.find_by(tag_id: tag.to_i, menu_id: menu.id).nil?
+              menu_tag = MenuTag.new
+              menu_tag.menu_id = menu.id
+              menu_tag.tag_id = tag.to_i
+              menu_tag.save
+            end
+          # チェックマークが入っていない時の処理（削除）
+          elsif box == "0"
+            remove_menu_tag = MenuTag.find_by(tag_id: tag.to_i, menu_id: menu.id)
+            unless remove_menu_tag.nil?
+              remove_menu_tag.destroy
+            end
           end
         end
       end
