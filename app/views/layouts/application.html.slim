@@ -1,0 +1,122 @@
+doctype html
+html lang="ja"
+  head
+    = favicon_link_tag('favicon.ico')
+    = favicon_link_tag 'home-icon.png', rel: 'apple-touch-icon', size: '180x180', type: 'image/png'
+    = favicon_link_tag 'home-icon.png', rel: 'android-touch-icon', size: '192x192', type: 'image/png'
+    title Matchi
+    script src="//maps.google.com/maps/api/js?key=#{ENV['GOOGLE_PLATFORM_API_KEY']}"
+    = include_gon
+    = csrf_meta_tags
+    = csp_meta_tag
+    = stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload'
+    = javascript_include_tag 'application'
+    meta name="viewport" content="width=device-width,initial-scale=1"
+    link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet"
+    / Global site tag (gtag.js) - Google Analytics
+    javascript: async src="https://www.googletagmanager.com/gtag/js?id=#{ENV['GOOGLE_ANALYTICS_TRACKING_ID']}"
+
+  body
+    header
+      .header-container
+        / PC画面ヘッダー
+        .flex.pc-header
+          = link_to root_path do
+            .logo-image
+          .header-nav
+            nav
+              ul.flex.header-ul
+                - url = request.fullpath
+                / urlに'owner'があれば店舗用ヘッダー
+                - if url.include?('owner')
+                  - if master_admin_signed_in?
+                    li = link_to '管理者トップ', new_master_admin_session_path
+                    li = link_to '管理者ログアウト', destroy_master_admin_session_path, method: :delete
+                  - if owner_restaurant_signed_in?
+                    li = link_to '店舗トップ', owner_restaurant_path(current_owner_restaurant)
+                    li = link_to '店舗ログアウト', destroy_owner_restaurant_session_path, method: :delete
+                  - if public_user_signed_in?
+                    li = link_to '一般会員TOP', mypage_path(current_public_user)
+                    li = link_to '一般会員ログアウト', destroy_public_user_session_path, method: :delete
+                  - else
+                    li = link_to '一般会員ログイン', new_public_user_session_path
+                / urlに'master'があれば管理者用ヘッダー
+                - elsif url.include?('master')
+                  - if master_admin_signed_in?
+                    li = link_to '店舗新規登録', new_owner_restaurant_registration_path
+                    li = link_to '管理者トップ', new_master_admin_session_path
+                    li = link_to '管理者ログアウト', destroy_master_admin_session_path, method: :delete
+                  - if public_user_signed_in?
+                    li = link_to '一般会員TOP', mypage_path(current_public_user)
+                    li = link_to '一般会員ログアウト', destroy_public_user_session_path, method: :delete
+                  - else
+                    li = link_to '一般会員ログイン', new_public_user_session_path
+                  - if owner_restaurant_signed_in?
+                    li = link_to '店舗トップ', owner_restaurant_path(current_owner_restaurant)
+                    li = link_to '店舗ログアウト', destroy_owner_restaurant_session_path, method: :delete
+                  - else
+                    li = link_to '店舗ログイン', new_owner_restaurant_session_path
+                / 上記以外なら一般ユーザー用ヘッダー
+                - else
+                  - if master_admin_signed_in? && owner_restaurant_signed_in?
+                    li = link_to '管理者トップ', new_master_admin_session_path
+                    li = link_to '管理者ログアウト', destroy_master_admin_session_path, method: :delete
+                    li = link_to '店舗TOP', owner_restaurant_path(current_owner_restaurant)
+                    li = link_to '店舗ログアウト', destroy_owner_restaurant_session_path, method: :delete
+                  - elsif owner_restaurant_signed_in?
+                    li = link_to '店舗TOP', owner_restaurant_path(current_owner_restaurant)
+                    li = link_to '店舗ログアウト', destroy_owner_restaurant_session_path, method: :delete
+                  - elsif master_admin_signed_in?
+                    li = link_to '管理者トップ', new_master_admin_session_path
+                    li = link_to '管理者ログアウト', destroy_master_admin_session_path, method: :delete
+                    li = link_to '店舗ログイン', new_owner_restaurant_session_path
+                  - if public_user_signed_in?
+                    li = link_to 'MyPage', mypage_path(current_public_user)
+                      / if alert.count >= 1
+                          li = link_to 'お知らせがあります。'
+                    li = link_to 'ログアウト', destroy_public_user_session_path, method: :delete
+                  - else
+                    li = link_to '新規登録', new_public_user_registration_path
+                    li = link_to 'ログイン', new_public_user_session_path
+        /スマホ画面ヘッダー
+        .flex.sp-header
+          .hamburger
+            span.bar.bar-top
+            span.bar.bar-center
+            span.bar.bar-bottom
+          = link_to root_path do
+            .logo-image
+          / 未読のお知らせの通知
+          .alert
+            i#alert-bell.fa-2x.far.fa-bell
+              .hidden.icon
+          / ハンバーガーメーニュー
+          .hamburger-menu
+            ul
+              - if public_user_signed_in?
+                li = link_to 'MyPage', mypage_path(current_public_user)
+              - else
+                li = link_to '新規登録', new_public_user_registration_path
+                li = link_to 'ログイン', new_public_user_session_path
+              li = link_to 'サービス紹介', about_path
+              li = link_to 'レストラン一覧', public_restaurants_path
+              li = link_to 'メニュー一覧', public_menus_path
+              - if public_user_signed_in?
+                li = link_to 'ログアウト', destroy_public_user_session_path, method: :delete
+    main
+      .body-container == yield
+    footer
+      .flex.footer-container
+        = link_to root_path do
+          .logo-image
+          .footer-menu
+            ul.footer-links
+              li = link_to 'お問い合わせ', contacts_new_path
+              li = link_to '利用規約', terms_path
+              li = link_to 'プライバシーポリシー', privacy_path
+              li = link_to '運営者情報', admin_path
+      .copyright
+        small ©︎ 2020 MasaoSasaki
+      #move-head
+        .circle.move-head
+          i.fa-2x.fas.fa-arrow-up

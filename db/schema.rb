@@ -24,13 +24,6 @@ ActiveRecord::Schema.define(version: 2020_09_01_015446) do
     t.index ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true
   end
 
-  create_table "bookmarks", force: :cascade do |t|
-    t.integer "user_id"
-    t.integer "restaurant_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "contacts", force: :cascade do |t|
     t.string "email"
     t.text "message"

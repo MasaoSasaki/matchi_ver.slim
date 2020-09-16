@@ -1,0 +1,75 @@
+.menu-form
+  = form_with model: [restaurant, menu], url: path, local: true do |f|
+    section.menu-status
+      .menu-form1
+        h3 メニュー詳細
+        table
+          tbody
+            tr
+              td = f.label :title, value: 'メニュー名'
+              td = f.text_field :title
+            tr
+              td = f.label :regular_price, value: '正規価格（税抜き）：'
+              td
+                = f.number_field :regular_price
+                | 円
+            tr
+              td = f.label :discount_price, value: '提供価格（税抜き）：'
+              td
+                = f.number_field :discount_price
+                | 円
+            tr
+              td = f.label :reservation_method, value: '予約方法'
+              td = f.select :reservation_method, Menu.reservation_methods.keys.map {|method| [method]}
+            tr
+              td = f.label :is_sale_frag, value: '販売ステータス'
+              td = f.select :is_sale_frag, [['販売中', true], ['販売停止中', false]]
+      .menu-form2
+        h3 メニュー画像
+        .menu-image
+          = f.attachment_field :menu_image
+          .image-preview
+          h4 タグの追加（任意）
+          = text_field_tag :tag_name
+          = button_tag '追加', type: 'button', class: "add-tag-btn"
+          #tag-list
+    section.menu-tag-form
+      h3 タグ詳細
+      table
+        tbody
+          / 編集画面でのみ表示
+          - if truth
+            tr
+              td
+                h4 現在のタグ一覧
+              td
+                - menu_tags.each do |menu_tag|
+                  .menu-tag
+                    = Tag.find(menu_tag.tag_id).name
+                    = link_to 'x', {controller: 'menu_tags', action: 'destroy', tag_id: menu_tag, menu_id: params[:id], restaurant_id: params[:restaurant_id]}, method: :delete
+          tr
+            td
+              h4 タグの追加<br>（一つ以上選択推奨）
+            td
+              - tag_count = 0
+              - tags.each do |tag|
+                / 推奨タグ7個を表示
+                - if tag_count < 7
+                  .check-box
+                    - if menu_tags.exists?(tag_id: tag.id)
+                      = check_box :tag_id, tag.id, checked: true
+                      = label_tag :tag_id, "#{tag.name}"
+                    - else
+                      = check_box :tag_id, tag.id
+                      = label_tag :tag_id, "#{tag.name}"
+                  - tag_count += 1
+                - else
+                  - breeak
+    section.menu-form-area
+      .content-form
+        p = f.label :content, value: '内容'
+        = f.text_area :content
+      .cancel-form
+        p = f.label :cancel, value: 'キャンセル規定'
+        = f.text_area :cancel
+    .submit= f.button "#{submit}", onclick: 'submit();', type: 'button', class: 'btn'
