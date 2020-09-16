@@ -8,17 +8,13 @@ section.top-container.top-main
   .top-contents
     ul.flex.top-nav
       = link_to about_path do
-        li
-          | サービス紹介
+        li サービス紹介
       = link_to do
-        li
-          | 特集
+        li 特集
       = link_to do
-        li
-          | ランキング
+        li ランキング
       = link_to do
-        li
-          | お知らせ
+        li お知らせ
     .restaurants-all
       h2 レストラン一覧
       - restaurant_count = 0
@@ -46,12 +42,9 @@ section.top-container.top-main
                 = attachment_image_tag menu, :menu_image, fallback: "no_image.png"
             .menu-info
               h3 = link_to "#{menu.title}", public_menu_path(menu)
-              small 店名：
-                = @restaurants.find(menu.restaurant_id).name
-              p 正規価格：
-                = menu.regular_price.to_s(:delimited) 円
-              p 提供価格：
-                = menu.discount_price.to_s(:delimited) 円
+              small 店名： = @restaurants.find(menu.restaurant_id).name
+              p 正規価格： = menu.regular_price.to_s(:delimited) 円
+              p 提供価格： = menu.discount_price.to_s(:delimited) 円
           - menu_count += 1
         - else
           - break
@@ -83,8 +76,7 @@ section.top-container.top-main
               - break
     .search
       p#get-position
-        u
-          | 周辺から探す
+        u 周辺から探す
       small
         span#loading
       p.location-result.true.hidden
