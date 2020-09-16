@@ -134,6 +134,9 @@ GEM
       i18n (>= 0.7)
       multi_json
       request_store (>= 1.0)
+    hpricot (0.8.6)
+    html2slim (0.2.0)
+      hpricot
     http-accept (1.7.0)
     http-cookie (1.0.3)
       domain_name (~> 0.5)
@@ -309,6 +312,13 @@ GEM
       rack (~> 2.0)
       rack-protection (= 2.0.8.1)
       tilt (~> 2.0)
+    slim (4.1.0)
+      temple (>= 0.7.6, < 0.9)
+      tilt (>= 2.0.6, < 2.1)
+    slim-rails (3.2.0)
+      actionpack (>= 3.1)
+      railties (>= 3.1)
+      slim (>= 3.0, < 5.0)
     spring (2.1.0)
     spring-watcher-listen (2.0.1)
       listen (>= 2.7, < 4.0)
@@ -324,6 +334,7 @@ GEM
     sshkit (1.21.0)
       net-scp (>= 1.1.2)
       net-ssh (>= 2.8.0)
+    temple (0.8.2)
     thor (1.0.1)
     thread_safe (0.3.6)
     tilt (2.0.10)
@@ -369,6 +380,7 @@ DEPENDENCIES
   dotenv-rails
   enum_help
   gon
+  html2slim
   jbuilder (~> 2.5)
   jp_prefecture (~> 0.10.0)
   jquery-rails
@@ -386,6 +398,7 @@ DEPENDENCIES
   rubocop-rails
   sass-rails (~> 5.0)
   selenium-webdriver
+  slim-rails
   spring
   spring-watcher-listen (~> 2.0.0)
   sqlite3
