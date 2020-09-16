@@ -21,6 +21,10 @@ class ApplicationController < ActionController::Base
     gon.google_platform_api_key = ENV['GOOGLE_PLATFORM_API_KEY']
   end
 
+  def tracking_id
+    gon.google_analytics_tracking_id = ENV['GOOGLE_ANALYTICS_TRACKING_ID']
+  end
+
   protected
   def configure_user_permitted_parameters
     devise_parameter_sanitizer.permit(:sign_up, keys: [:name_family, :name_first, :name_family_kana, :name_first_kana, :phone_number])

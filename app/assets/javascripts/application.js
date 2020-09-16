@@ -264,3 +264,11 @@ window.addEventListener('DOMContentLoaded', function() {
     }
   }
 });
+
+// Google Analytics
+window.addEventListener('DOMContentLoaded', function() {
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', gon.google_analytics_tracking_id);
+});
