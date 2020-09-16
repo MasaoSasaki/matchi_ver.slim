@@ -1,0 +1,93 @@
+= hidden_field_tag :restaurants_json, value: "#{@restaurants_json}"
+
+section.top-header
+  .header-image
+
+/ メインコンテンツ
+section.top-container.top-main
+  .top-contents
+    ul.flex.top-nav
+      = link_to about_path do
+        li
+          | サービス紹介
+      = link_to do
+        li
+          | 特集
+      = link_to do
+        li
+          | ランキング
+      = link_to do
+        li
+          | お知らせ
+    .restaurants-all
+      h2 レストラン一覧
+      - restaurant_count = 0
+      - @restaurants.each do |restaurant|
+        / 最新の店舗3件まで表示
+        - if restaurant_count < 3
+          .flex.top-restaurant
+            .restaurant-image
+              = link_to public_restaurant_path(restaurant) do
+                = attachment_image_tag restaurant, :restaurant_image, fallback: "no_image.png"
+            .restaurant-info
+              h3 = link_to "#{restaurant.name}", public_restaurant_path(restaurant)
+              p = "#{restaurant.prefecture}" + "#{restaurant.city}"
+          - restaurant_count += 1
+        - else
+          - break
+      h2 メニュー一覧
+      - menu_count = 0
+      - @menus.each do |menu|
+        / 最新のメニュー3個まで表示
+        - if menu_count < 3
+          .flex top-menus
+            .menu-image
+              = link_to public_menu_path(menu) do
+                = attachment_image_tag menu, :menu_image, fallback: "no_image.png"
+            .menu-info
+              h3 = link_to "#{menu.title}", public_menu_path(menu)
+              small 店名：
+                = @restaurants.find(menu.restaurant_id).name
+              p 正規価格：
+                = menu.regular_price.to_s(:delimited) 円
+              p 提供価格：
+                = menu.discount_price.to_s(:delimited) 円
+          - menu_count += 1
+        - else
+          - break
+
+  / サイドバー
+  .top-side
+    - if public_user_signed_in?
+      .simple-mypage マイページ
+    - else
+      .new-registration
+        = link_to '新規登録', new_public_user_registration_path, class: "btn registration"
+        p
+          | 登録済みの方は
+          = link_to 'こちら', new_public_user_session_path
+    .new-menus
+      h4
+        | 最近更新されたメニュー
+        ul.new-menus-list
+          - menu_count = 0
+          - @menus.each do |menu|
+            / 最新のメニュー3個まで表示
+            - if menu_count < 3
+              li.top-menu
+                p = link_to menu.title, public_menu_path(menu), id: 'menu-show-link'
+                = link_to public_menu_path(menu) do
+                  = attachment_image_tag menu, :menu_image, width: 200, height: 100, fallback: "no_image.png", class: "side-bar-menu-image"
+              - menu_count += 1
+            - else
+              - break
+    .search
+      p#get-position
+        u
+          | 周辺から探す
+      small
+        span#loading
+      p.location-result.true.hidden
+      p.location-result.false.hidden 現在地情報が利用できませんでした。
+      p.location-result.error.hidden レストラン情報が取得できませんでした。
+      #map.location-result.true.hidden
