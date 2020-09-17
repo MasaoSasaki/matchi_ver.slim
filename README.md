@@ -1,5 +1,6 @@
 # アプリ名
-matchi(マッチ)
+matchi(マッチ)<br>
+(このリポジトリは[matchi](https://github.com/MasaoSasaki/matchi)のslim学習用コピーです。)
 
 ## サイトURL
 https://matchi-gourmet.com
