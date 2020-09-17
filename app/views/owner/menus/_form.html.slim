@@ -40,16 +40,14 @@
           / 編集画面でのみ表示
           - if truth
             tr
-              td
-                h4 現在のタグ一覧
+              td: h4 現在のタグ一覧
               td
                 - menu_tags.each do |menu_tag|
                   .menu-tag
                     = Tag.find(menu_tag.tag_id).name
                     = link_to 'x', {controller: 'menu_tags', action: 'destroy', tag_id: menu_tag, menu_id: params[:id], restaurant_id: params[:restaurant_id]}, method: :delete
           tr
-            td
-              h4 タグの追加<br>（一つ以上選択推奨）
+            td: h4 タグの追加<br>（一つ以上選択推奨）
             td
               - tag_count = 0
               - tags.each do |tag|
